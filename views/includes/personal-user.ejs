@@ -1,0 +1,156 @@
+<div class="personal-user__content">
+    <div class="container">
+        <div style="height: 100%; width: 100%;" class="row">
+            <div class="personal-user__content-left col-4">
+                <img src="<%= user.avatar%>" alt="" class="personal-user__content-left-avatar">
+                <div class="personal-user__content-left-des">
+                    <h2 class="personal-user__content-left-des-username">
+                        <%= user.username %>
+                    </h2>
+                    <div class="personal-user__content-left-des-wrapper">
+                        <div class="personal-user__content-left-des-wrapper-text">
+                            ID:
+                        </div>
+                        <div class="personal-user__content-left-des-wrapper-value">
+                            <%= user._id %>
+                        </div>
+                    </div>
+                    <div class="personal-user__content-left-des-wrapper">
+                        <div class="personal-user__content-left-des-wrapper-text">
+                            Tên thật:
+                        </div>
+                        <div class="personal-user__content-left-des-wrapper-value">
+                            <%= user.username %>
+                        </div>
+                    </div>
+                    <div class="personal-user__content-left-des-wrapper">
+                        <div class="personal-user__content-left-des-wrapper-text">
+                            Sinh nhật:
+                        </div>
+                        <div
+                            class="personal-user__content-left-des-wrapper-value personal-user__content-left-des-wrapper-value--date">
+                            <% if(!(user.day && user.month && user.year)) { %>
+                                <%= user.createdAt %>
+                            <% } else {%>
+                                <%= user.day + '/' + user.month + '/' + user.year %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="personal-user__content-left-des-wrapper">
+                        <div class="personal-user__content-left-des-wrapper-text">
+                            Giới Tính:
+                        </div>
+                        <div class="personal-user__content-left-des-wrapper-value">
+                            <% if(!(user.gender)) { %>
+                                    Khác
+                                <% } else {%>
+                                    <%= user.gender %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% if (!identity) { %>
+                        <div class="personal-user__content-left-des-wrapper">
+                            <div class="personal-user__content-left-des-wrapper-button">
+                                <div class="personal-user__content-left-des-wrapper-button-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="personal-user__content-left-des-wrapper-button-des">
+                                    Kết bạn
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <div
+                        class="personal-user__content-left-des-wrapper personal-user__content-left-des-wrapper-createdAt">
+                        <div class="personal-user__content-left-des-wrapper-text">
+                            👋Tham gia từ:
+                        </div>
+                        <div
+                            class="personal-user__content-left-des-wrapper-value personal-user__content-left-des-wrapper-value--createdAt">
+                            <%= user.createdAt %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="personal-user__content-right col-8">
+                <img src="/img/img-user/personal-user-1.png" alt=""
+                    class="personal-user__content-right-img">
+                <ul class="personal-user__content-right__theme">
+                    <li
+                        class="personal-user__content-right__theme-item personal-user__content-right__theme-item--vietnam">
+                        <a href="" class="personal-user__content-right__theme-item-link">
+                            <div class="personal-user__content-right__theme-item-des">
+                                BXH VIỆT
+                            </div>
+                            <div class="personal-user__content-right__theme-item-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li
+                        class="personal-user__content-right__theme-item personal-user__content-right__theme-item--usuk">
+                        <a href="" class="personal-user__content-right__theme-item-link">
+                            <div class="personal-user__content-right__theme-item-des">
+                                BXH USUK
+                            </div>
+                            <div class="personal-user__content-right__theme-item-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li
+                        class="personal-user__content-right__theme-item personal-user__content-right__theme-item--korean">
+                        <a href="" class="personal-user__content-right__theme-item-link">
+                            <div class="personal-user__content-right__theme-item-des">
+                                BXH HÀN
+                            </div>
+                            <div class="personal-user__content-right__theme-item-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li
+                        class="personal-user__content-right__theme-item personal-user__content-right__theme-item--rap">
+                        <a href="" class="personal-user__content-right__theme-item-link">
+                            <div class="personal-user__content-right__theme-item-des">
+                                Hot Rap Việt
+                            </div>
+                            <div class="personal-user__content-right__theme-item-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="personal-user-navigation">
+    <ul class="personal-user-navigation-list">
+        <li class="personal-user-navigation-items">
+            <a href="/user/<%= user._id %>" class=" <%= pageTitle.split('|')[1] === ' Home' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link personal-user-navigation-items__link--icon">
+                <i class="fas fa-home"></i>     
+            </a>
+        </li>
+        <li class="personal-user-navigation-items">
+            <a href="/user/<%= user._id %>/playlist" class=" <%= pageTitle.split('|')[1] === ' Playlist' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Playlist  
+            </a>
+        </li>
+        <li class="personal-user-navigation-items">
+            <a href="/user/<%= user._id %>/video" class=" <%= pageTitle.split('|')[1] === ' Video' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Video   
+            </a>
+        </li>
+        <li class="personal-user-navigation-items">
+            <a href="/user/<%= user._id %>/bai-hat-tui-upload" class=" <%= pageTitle.split('|')[1] === ' Tui Upload' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Tui Upload
+            </a>
+        </li>
+        <li class="personal-user-navigation-items">
+            <a href="/user/<%= user._id %>/ban-be" class=" <%= pageTitle.split('|')[1] === ' Bạn Bè' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Bạn Bè
+            </a>
+        </li>
+    </ul>
+</nav>

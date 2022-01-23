@@ -1,0 +1,43 @@
+<aside style="width: 20.83333%" class="admin-user-aside col-3">
+    <img src="<%= user.avatar %>" alt="" class="admin-user-aside__avatar">
+    <a href="/" class="admin-user-aside__username">
+        <%= user.username %>
+    </a>
+    <ul class="admin-user-aside__list">
+        <li class="<%= pageTitle.split('|')[1] === ' Quản lý' ? 'admin-user-aside__list-item--hightlight' : '' %> admin-user-aside__list-item">
+            <a href="/user/<%= user._id%>/quan-ly" class="admin-user-aside__list-item__link">
+                Quản lý tài khoản
+            </a>
+        </li>
+        <li class="<%= pageTitle.split('|')[1] === ' Bạn bè' ? 'admin-user-aside__list-item--hightlight' : '' %> admin-user-aside__list-item">
+            <a href="/user/<%= user._id%>/quan-ly-ban-be" class="admin-user-aside__list-item__link">
+                Bạn bè
+            </a>
+        </li>
+        <li class="<%= pageTitle.split('|')[1] === ' Playlist' ? 'admin-user-aside__list-item--hightlight' : '' %> admin-user-aside__list-item">
+            <a href="/user/<%= user._id%>/quan-ly-playlist" class="admin-user-aside__list-item__link">
+                Playlist
+            </a>
+        </li>
+        <li class="<%= pageTitle.split('|')[1] === ' Video' ? 'admin-user-aside__list-item--hightlight' : '' %> admin-user-aside__list-item">
+            <a href="/user/<%= user._id%>/quan-ly-video" class="admin-user-aside__list-item__link">
+                Video
+            </a>
+        </li>
+        <li class="<%= pageTitle.split('|')[1] === ' Lịch sử' ? 'admin-user-aside__list-item--hightlight' : '' %> admin-user-aside__list-item">
+            <a href="/user/<%= user._id%>/quan-ly-lich-su" class="admin-user-aside__list-item__link">
+                Lịch sử
+            </a>
+        </li>
+        <li class="<%= pageTitle.split('|')[1] === ' Quản lý thiết bị' ? 'admin-user-aside__list-item--hightlight' : '' %> admin-user-aside__list-item">
+            <a href="/user/<%= user._id%>/quan-ly-thiet-bi" class="admin-user-aside__list-item__link">
+                Quản lý thiết bị
+            </a>
+        </li>
+        <li class="admin-user-aside__list-item">
+            <a href="" class="admin-user-aside__list-item__link">
+                Đăng xuất
+            </a>
+        </li>
+    </ul>
+</aside>

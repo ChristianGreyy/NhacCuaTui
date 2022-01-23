@@ -1,0 +1,31 @@
+<%- include('../../includes/head.ejs') %>
+    <body>
+        <div class="app">
+            <%- include('../../includes/navigation.ejs') %>
+            <div class="personal-user">
+                <%- include('../../includes/personal-user.ejs') %>
+                <div class="personal-user__component">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="personal-user__nothing">   
+                                    <div class="personal-user__nothing-icon">
+                                        <i class="fas fa-check-circle"></i> 
+                                    </div> 
+                                    <div class="personal-user__nothing-des">
+                                        <%= user.username %> hiện chưa có gì.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                hi
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
+<%- include('../../includes/end.ejs') %>
