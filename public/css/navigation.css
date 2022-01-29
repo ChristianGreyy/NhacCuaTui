@@ -239,11 +239,27 @@
   margin: 8px 0 8px 4px;
   display: flex;
   align-items: center;
+  position: relative;
+}
+.header-right-login-child-component-left-form-group-note {
+  position: absolute;
+  left: 28%;
+  display: none;
+  color: red;
+  bottom: -56%;
+}
+.header-right-login-child-component-left-form-group--marginBottom
+  .header-right-login-child-component-left-form-group-note {
+  bottom: -94%;
 }
 .header-right-login-child-component-left-form-group-label {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 4px;
   flex: 1;
 }
 .header-right-login-child-component-left-form-group-label-star {
+  margin-left: 1px;
   color: red;
 }
 .header-right-login-child-component-left-form-group-input {
@@ -251,6 +267,17 @@
   width: 66%;
   outline: blue;
   margin-right: 27px;
+}
+.header-right-login-child-component-left-form-group--error
+  .header-right-login-child-component-left-form-group-input {
+  border: 1px solid red;
+}
+.header-right-login-child-component-left-form-group--error
+  .header-right-login-child-component-left-form-group-note {
+  display: block;
+}
+.header-right-login-child-component-left-form-group--marginBottom {
+  margin-bottom: 20px;
 }
 .header-right-login-child-component-left-password {
   margin-left: 109px;

@@ -8,32 +8,36 @@
                         <div class="row">
                             <div class="col-9 music-content-left">
                                 <div class="music-content-left__music">
+                                    <audio class="music-content-left__music-audio">
+                                        <source class="music-content-left__music-audio-source" src="<%= music.path %>" type="audio/ogg">
+                                    </audio>
                                     <div class="music-content-left__music-des">
                                         <div class="music-content-left__music-name">
-                                            Bước qua mùa cô dơn - Vũ
+                                            <%= music.name %> - <%= music.singer %>
                                         </div>
                                         <div class="music-content-left__music-views">
                                             <div class="music-content-left__music-views-icon">
                                                 <i class="fas fa-headphones"></i>
                                             </div>
                                             <div class="music-content-left__music-views-number">
-                                                1.000.000
+                                                <%= music.views %>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="music-content-left__music-dashboard">
                                     <div class="music-content-left__music-dashboard-des">
-                                        <img src="https://i1.sndcdn.com/artworks-vjfASjlxOE1AKd9y-OGrz1Q-t500x500.jpg" alt="" class="music-content-left__music-dashboard-des-avatar">
+                                        <img src="<%= music.background %>" alt="" class="music-content-left__music-dashboard-des-avatar">
                                         <div class="music-content-left__music-dashboar-des-subtitle">
-                                            Mùa thu rơi vào em vào trong giấc mơ hôm qua
+                                            <%= music.name %> - <%= music.singer %>
                                         </div>
                                     </div>
-                                    <input type="range" min="0" max="100" class="music-content-left__music-dashboard-range">
+                                    <input type="range" min="0" max="200" value="0" class="music-content-left__music-dashboard-range">
                                     <div class="music-content-left__music-dashboard-controls">
                                         <div class="music-content-left__music-dashboard-controls__left">
                                             <div class="music-content-left__music-dashboard-controls__left-play">
                                                 <i class="fas fa-play"></i>
+                                                <i class="fas fa-pause"></i>
                                             </div>
                                             <div class="music-content-left__music-dashboard-controls__left-next">
                                                 <i class="fas fa-forward"></i>
@@ -90,7 +94,7 @@
                                                     <i class="fas fa-volume-mute"></i>
                                                 </div>
                                                 <div class="music-content-left__music-dashboard-controls__right-volume-child">
-                                                    <input type="range" class="music-content-left__music-dashboard-controls__right-volume-child-range">
+                                                    <input type="range" value="10" max="10" class="music-content-left__music-dashboard-controls__right-volume-child-range">
                                                 </div>
                                             </div>
 
@@ -127,29 +131,104 @@
                                     </li>
                                 </ul>
                                 <div class="music-content-left__music-subtitle">
-                                    <div class="music-content-left__music-subtitle__left">
-                                        <h1 class="music-content-left__music-subtitle__left-titles">
-                                            Lời bài hát: Bước qua mùa cô đơn
-                                        </h1>
-                                        <div class="music-content-left__music-subtitle__left-author">
-                                            Nhạc sĩ: Vũ
-                                        </div>
-                                        <div class="music-content-left__music-subtitle__left-post">
-                                            <div class="music-content-left__music-subtitle__left-post-text">
-                                                Được đăng bởi
+                                    <div class="music-content-left__music-subtitle-heading">
+                                        <div class="music-content-left__music-subtitle__left">
+                                            <h1 class="music-content-left__music-subtitle__left-titles">
+                                                Lời bài hát: <%= music.name %>
+                                            </h1>
+                                            <div class="music-content-left__music-subtitle__left-author">
+                                                Nhạc sĩ: Vũ
                                             </div>
-                                            <a href="" class="music-content-left__music-subtitle__left-post-person">
-                                                truongthanhhung
-                                            </a>
+                                            <div class="music-content-left__music-subtitle__left-post">
+                                                <div class="music-content-left__music-subtitle__left-post-text">
+                                                    Được đăng bởi
+                                                </div>
+                                                <a href="" class="music-content-left__music-subtitle__left-post-person">
+                                                    <%= music.poster %>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="music-content-left__music-subtitle__right">
+                                            <div class="music-content-left__music-subtitle__right-icon">
+                                                <i class="far fa-copy"></i>
+                                            </div>
+                                            <div class="music-content-left__music-subtitle__right-text">
+                                                Sao chép
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="music-content-left__music-subtitle__right">
-
-                                    </div>
+                                    <ul class="music-content-left__music-subtitle-list">
+                                        <% music.subtitle.split('.').forEach(item => { %>
+                                            <% if (item !== '') { %>
+                                            <li class="music-content-left__music-subtitle-list-items">
+                                                <%= item %>
+                                            </li>
+                                            <% } %>
+                                        <% }) %>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="col-3 music-content-right">
-                                Bước qua nhau
+                                <div class="music-content-right-heading">
+                                    <div class="music-content-right-heading__titles">
+                                        Nghe Tiếp
+                                    </div>
+                                    <div class="music-content-right-heading__des">
+                                        <div class="music-content-right-heading__des-text">
+                                            Autoplay
+                                        </div>
+                                        <div class="music-content-right-heading__des-note">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        </div>
+                                        <div class="music-content-left__music-dashboard-controls__right-auto">
+                                            <div class="music-content-left__music-dashboard-controls__right-auto-yes">
+                                                <div class="music-content-left__music-dashboard-controls__right-auto-check">
+                                                    <i class="fas fa-check"></i>
+                                                </div>
+                                                <div class="music-content-left__music-dashboard-controls__right-auto-circle">
+
+                                                </div>
+                                            </div>
+                                            <div class="music-content-left__music-dashboard-controls__right-auto-no">
+                                                <div class="music-content-left__music-dashboard-controls__right-auto-circle">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="music-content-right-list">
+                                    <% musics.forEach(item => { %>
+                                        <li class="music-content-right-items">
+                                            <a href="/bai-hat/<%= item._id %>" class="music-content-right-items-link">
+                                                <div class="music-content-right-items-link-left">
+                                                    <div class="music-content-right-items-link-left__icon">
+                                                        <i class="fas fa-music music-content-right-items-link-left__icon--music"></i>
+                                                        <i class="fas fa-play music-content-right-items-link-left__icon--play"></i>
+                                                    </div>
+                                                    <div class="music-content-right-items-link-left__des">
+                                                        <div class="music-content-right-items-link-left__des-name">
+                                                            <%= item.name %>
+                                                        </div>
+                                                        <div class="music-content-right-items-link-left__des-singer">
+                                                            <%= item.singer %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="music-content-right-items-link-right">
+                                                    <div class="music-content-right-items-link-right-views">
+                                                        <div class="music-content-right-items-link-right-views__icon">
+                                                            <i class="fas fa-headphones"></i>
+                                                        </div>
+                                                        <div class="music-content-right-items-link-right-views__number">
+                                                            <%= item.views %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    <% }) %>
+                                </ul>
                             </div>
                         </div>
                     </div>

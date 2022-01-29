@@ -37,12 +37,6 @@ if(document.querySelector('.header-right-login-child-component-right-button')) {
     }
 }
 
-// Click On Sign Up POST
-if(document.querySelector('.header-right-login-child-component-left-button--signup')) {
-    document.querySelector('.header-right-login-child-component-left-button--signup').onclick = (e) => {
-        document.querySelector('.header-right-login-form--signup').submit();
-    }
-}
 
 // Event Click On Close
 if(document.querySelectorAll('.header-right-login-child-close')) {
@@ -86,4 +80,9 @@ const solveLengthUsernameExceed = () => {
 
 if(document.querySelector('.header-right-user-des-name')) {
     solveLengthUsernameExceed();
+}
+
+if(document.querySelector('.header-right-login-child-component-left-error')) {
+    document.querySelector('.header-right-login-child').style.display = 'block';
+    console.log('ok')
 }

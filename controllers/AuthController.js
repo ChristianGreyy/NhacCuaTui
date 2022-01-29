@@ -1,7 +1,13 @@
 const User = require('../models/UserModel');
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator');
 
 exports.postSignUp = (req, res, next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+        console.log(errors)
+        return res.status(422).json('Error 422')
+    }
     const { username } = req.body;
     const { password } = req.body;
     const { repassword } = req.body;
@@ -42,20 +48,29 @@ exports.postLogin = (req, res, next) => {
     User.findOne({username: username})
     .then(user => {
         if(!user) {
-            console.log('Username not found');
-            return res.redirect('/');
+            return res.render('home', {
+                errorMessage: true,
+                pageTitle: 'Trang chủ Nhaccuatui',
+                user: user
+            });
         }
+        console.log(user)
         bcrypt.compare(password, user.password)
         .then(isPassword => {
-            if(!isPassword) {
-                console.log('Incorrect password');
-                res.redirect('/');
+            console.log(isPassword) 
+            if(!isPassword) {   
+                return res.render('home', {
+                    errorMessage: true,
+                    pageTitle: 'Trang chủ Nhaccuatui',
+                    user: user
+                });
             }
             console.log('login successful')
             req.session.user = user._id;
             res.redirect('/');
         })
         .catch(err => {
+            console.log(err)
             console.log('error server when hashing');
         })
     })

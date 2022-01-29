@@ -1,3 +1,107 @@
+// Home Page
+
+// Validation Username
+const validationUsername = () => {
+    document.querySelectorAll('.header-right-login-child-component-left-form-group-input--username').forEach(item => {
+        item.onblur = (e) => {
+            let valueUsername = e.target.value;
+            if(valueUsername.length < 5) {
+                let parElement = e.target.parentNode;
+                parElement.classList.add('header-right-login-child-component-left-form-group--error');
+            }
+        }
+    })
+    document.querySelectorAll('.header-right-login-child-component-left-form-group-input--username').forEach(item => {
+        item.onclick = (e) => {
+            let parElement = e.target.parentNode;
+            parElement.classList.remove('header-right-login-child-component-left-form-group--error');
+            parElement.classList.remove('header-right-login-child-component-left-form-group--marginBottom');
+        }
+    })
+}
+validationUsername();
+
+// Validation password
+const validationPassword = () => {
+    const regexPassword = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    document.querySelector('.header-right-login-child-component-left-form-group-input--password').onblur = (e) => {
+        let valuePassword = e.target.value;
+        if(!regexPassword.test(valuePassword)) {
+            let parElement = e.target.parentNode;
+            parElement.classList.add('header-right-login-child-component-left-form-group--error');
+            parElement.classList.add('header-right-login-child-component-left-form-group--marginBottom');
+        }
+    }
+    document.querySelector('.header-right-login-child-component-left-form-group-input--password').onclick = (e) => {
+        let valuePassword = e.target.value;
+        if(!regexPassword.test(valuePassword)) {
+            let parElement = e.target.parentNode;
+            parElement.classList.remove('header-right-login-child-component-left-form-group--error');
+            parElement.classList.remove('header-right-login-child-component-left-form-group--marginBottom');
+        }
+    }
+}
+validationPassword();
+
+// Validation Repassword
+const validationRepassword = () => {
+    document.querySelector('.header-right-login-child-component-left-form-group-input--repassword').onblur = (e) => {
+        let valuerePassword = e.target.value;
+        let valuePassword = document.querySelector('.header-right-login-child-component-left-form-group-input--password').value;
+        if(valuerePassword !== valuePassword) {
+            let parElement = e.target.parentNode;
+            parElement.classList.add('header-right-login-child-component-left-form-group--error');
+            parElement.classList.add('header-right-login-child-component-left-form-group--marginBottom');
+        }
+    }
+    document.querySelector('.header-right-login-child-component-left-form-group-input--repassword').onclick = (e) => {
+        let valuerePassword = e.target.value;
+        let parElement = e.target.parentNode;
+        parElement.classList.remove('header-right-login-child-component-left-form-group--error');
+        parElement.classList.remove('header-right-login-child-component-left-form-group--marginBottom');
+    }
+}
+validationRepassword();
+
+// Validation Email
+const validationEmail = () => {
+    const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    document.querySelector('.header-right-login-child-component-left-form-group-input--email').onblur = (e) => {
+        let valueEmail = e.target.value;
+        if(!regexEmail.test(valueEmail)) {
+            let parElement = e.target.parentNode;
+            parElement.classList.add('header-right-login-child-component-left-form-group--error');
+        }
+    }
+    document.querySelector('.header-right-login-child-component-left-form-group-input--email').onclick = (e) => {
+        let valueEmail = e.target.value;
+        if(!regexEmail.test(valueEmail)) {
+            let parElement = e.target.parentNode;
+            parElement.classList.remove('header-right-login-child-component-left-form-group--error');
+        }
+    }
+}
+validationEmail();
+
+// Check validation
+
+if(document.querySelector('.header-right-login-child-component-left-button--signup')) {
+    const isValidation = () => {
+        document.querySelector('.header-right-login-child-component-left-button--signup').onclick = (e) => {
+            let any = true;
+            document.querySelectorAll('.header-right-login-child-component-left-form-group').forEach(item => {
+                if(item.classList.contains('header-right-login-child-component-left-form-group--error')) {
+                    any = false;
+                }
+            })
+            if(any) {
+                document.querySelector('.header-right-login-form--signup').submit();
+            }
+        }
+    }
+    isValidation();
+}
+
 // personal Page
 
 // Solve username if it exceed required length

@@ -247,6 +247,7 @@
   background-color: black;
   border-radius: 4px;
   padding: 12px;
+  position: relative;
   margin-top: 12px;
 }
 .music-content-left__music-dashboard-des {
@@ -258,7 +259,7 @@
 }
 .music-content-left__music-dashboar-des-subtitle {
   margin: 0 auto;
-  margin-top: 4px;
+  margin-top: 12px;
   height: 28px;
   font-size: 22px;
   color: white;
@@ -291,6 +292,19 @@
   color: white;
   font-size: 18px;
   cursor: pointer;
+}
+
+.music-content-left__music-dashboard-controls__left-play--active .fa-play {
+  display: none;
+}
+
+.music-content-left__music-dashboard-controls__left-play.music-content-left__music-dashboard-controls__left-play--active
+  .fa-pause {
+  display: block;
+}
+
+.music-content-left__music-dashboard-controls__left-play .fa-pause {
+  display: none;
 }
 
 .music-content-left__music-dashboard-controls__left-next:hover,
@@ -431,6 +445,18 @@
   margin-left: 14px;
   color: white;
 }
+.music-content-left__music-dashboard-controls__right-volume
+  .music-content-left__music-dashboard-controls__right-volume-icon--pause {
+  display: none;
+}
+.music-content-left__music-dashboard-controls__right-volume.music-content-left__music-dashboard-controls__right-volume--active
+  .music-content-left__music-dashboard-controls__right-volume-icon--pause {
+  display: block;
+}
+.music-content-left__music-dashboard-controls__right-volume.music-content-left__music-dashboard-controls__right-volume--active
+  .music-content-left__music-dashboard-controls__right-volume-icon--play {
+  display: none;
+}
 .music-content-left__music-dashboard-controls__right-volume:hover
   .music-content-left__music-dashboard-controls__right-volume-child {
   display: block;
@@ -497,9 +523,13 @@
 }
 
 .music-content-left__music-subtitle {
+  border: #dadada solid 1px;
+  padding: 16px;
+}
+.music-content-left__music-subtitle-heading {
   display: flex;
   align-items: center;
-  justfy-content: space-between;
+  justify-content: space-between;
 }
 .music-content-left__music-subtitle__left {
 }
@@ -522,4 +552,128 @@
 .music-content-left__music-subtitle__left-post-person {
   margin-left: 4px;
   text-decoration: none;
+}
+
+.music-content-left__music-subtitle__right {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 104px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+.music-content-left__music-subtitle__right-icon {
+}
+.music-content-left__music-subtitle__right-text {
+  margin-left: 4px;
+}
+.far.fa-copy {
+}
+
+.music-content-left__music-subtitle-list {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 0;
+  color: #333;
+  list-style: none;
+}
+.music-content-left__music-subtitle-list-items {
+  padding: 2px 0;
+  border-bottom: 1px solid #dadada;
+}
+
+.music-content-right-heading {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.music-content-right-heading__titles {
+  font-size: 22px;
+  color: var(--main-color);
+  text-transform: uppercase;
+}
+.music-content-right-heading__des {
+  display: flex;
+  align-items: center;
+}
+.music-content-right-heading__des-text {
+  color: #9a9a9a;
+  font-size: 14px;
+}
+.music-content-right-heading__des-note {
+  color: #808080;
+  margin: 0 6px;
+}
+
+.music-content-right-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 12px;
+}
+.music-content-right-items {
+  padding: 4px 0;
+  border-bottom: 1px solid #dadada;
+}
+.music-content-right-items-link {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: black;
+  display: flex;
+}
+.music-content-right-items-link-left {
+  display: flex;
+  align-items: center;
+}
+.music-content-right-items-link-left__icon {
+  color: #7a7a7a;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #7a7a7a;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.music-content-right-items-link:hover
+  .music-content-right-items-link-left__icon--play {
+  display: block;
+}
+.music-content-right-items-link-left__icon--play {
+  display: none;
+}
+.music-content-right-items-link:hover
+  .music-content-right-items-link-left__icon--music {
+  display: none;
+}
+.music-content-right-items-link-left__des {
+  margin-left: 6px;
+}
+.music-content-right-items-link-left__des-name {
+  font-size: 14px;
+}
+.music-content-right-items-link-left__des-singer {
+  font-size: 12px;
+  color: #a2a2a2;
+}
+.music-content-right-items-link-right-views {
+  display: flex;
+  align-items: center;
+  color: #999999;
+  font-size: 12px;
+}
+.music-content-right-items-link-right-views__icon {
+}
+.music-content-right-items-link-right-views__number {
+  margin-left: 4px;
+}
+.fas.fa-headphones {
 }
