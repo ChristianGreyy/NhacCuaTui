@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Đăng bài hát
+            </div>
+            <form action="tao-bai-hat" method="POST" class="app-admin-right__form">
+                <div class="app-admin-right__form-group">
+                    <label for="name" class="app-admin-right__form-group-label">
+                        Tên bài hát
+                    </label>
+                    <input type="text" id="name" name="name" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="author" class="app-admin-right__form-group-label">
+                        Tên tác giả
+                    </label>
+                    <input type="text" id="author" name="author" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="singer" class="app-admin-right__form-group-label">
+                        Tên ca sĩ
+                    </label>
+                    <input type="text" id="singer" name="singer" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="music" class="app-admin-right__form-group-label">
+                        Bài hát
+                    </label>
+                    <input type="file" id="music" name="music" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="background" class="app-admin-right__form-group-label">
+                        Ảnh
+                    </label>
+                    <input type="file" id="background" name="background" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="kind" class="app-admin-right__form-group-label">
+                        Thể loại
+                    </label>
+                    <input type="text" id="kind" name="kind" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="subtitle" class="app-admin-right__form-group-label">
+                        Lời bài hát
+                    </label>
+                    <textarea id="subtitle" name="subtitle" autocomplete="off" class="app-admin-right__form-group-input" cols="30" rows="10"></textarea>
+                </div>
+                <div class="app-admin-right-button">
+                    Tạo bài hát
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>

@@ -32,6 +32,10 @@ const musicSchema = new Schema({
     background: {
         type: String,
         required: true,
+    },
+    kind: {
+        type: String,
+        required:  true,
     }
 }, {
     timestamps: true

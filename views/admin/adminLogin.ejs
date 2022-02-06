@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập admin</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="admin-login">
+        <div class="admin-login-container">
+            <h3 class="admin-login-container-heading">
+                Đăng nhập trang admin
+            </h3>
+            <form action="/admin/login" method="POST" class="admin-login-container__form">
+                <div class="admin-login-container__form-group">
+                    <label for="username" class="admin-login-container__form-group-label">
+                        Đăng nhập
+                    </label>
+                    <input type="text" name="username" id="username" class="admin-login-container__form-group-input">
+                </div>
+                <div class="admin-login-container__form-group">
+                    <label for="password" class="admin-login-container__form-group-label">
+                        Mật khẩu
+                    </label>
+                    <input type="password" name="password" id="password" class="admin-login-container__form-group-input">
+                </div>
+                <div class="admin-login-container__button">
+                    Đăng nhập
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="/js/admin.js"></script>

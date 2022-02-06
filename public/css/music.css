@@ -66,6 +66,16 @@
   color: white;
 }
 
+.music-content-left__kind-list-items-list__items-link.music-content-left__kind-list-items-list__items-link--active {
+  background-color: #e74c3c;
+  color: white;
+}
+.music-content-left__kind-list-items-list__items-link.music-content-left__kind-list-items-list__items-link--active
+  .music-content-left__kind-list-items-list__items-icon {
+  background-color: #e74c3c;
+  color: white;
+}
+
 .music-content-left__kind-list-items-list__items-link:hover {
   background-color: #e74c3c;
   color: white;
@@ -160,6 +170,8 @@
   align-items: center;
   color: #999999;
   font-size: 12px;
+  width: 386px;
+  position: relative;
 }
 .music-content-left__newMusic-list__items-right-mark {
   display: flex;
@@ -208,6 +220,8 @@
   padding: 0;
   margin-left: 80px;
   font-size: 14px;
+  position: absolute;
+  right: 0;
 }
 .music-content-left__newMusic-list__items-right-icon-items {
   margin: 0 6px;

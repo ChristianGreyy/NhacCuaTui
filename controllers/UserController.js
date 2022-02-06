@@ -82,7 +82,7 @@ exports.getPersonalFriendUser = (req, res, next) => {
             pageTitle: username + ' | ' + 'Bạn Bè',
             user: user ,
             identity: req.identity,
-        }); 
+    }); 
     })
     .catch(err => {
         console.log('err');

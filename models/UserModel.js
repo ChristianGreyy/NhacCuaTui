@@ -51,6 +51,10 @@ const userChema = new Schema({
     introduce: {
         type: String,
     },
+    description: {
+        type: String,
+        required: true,
+    }
 }, {
     timestamps: true
 });

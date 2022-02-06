@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --main-color: #00aeef;
+}
+
+.admin-login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin-login-container {
+  box-shadow: 1px 1px 6px #333;
+  width: 420px;
+  height: 200px;
+  padding: 12px 18px;
+  border-radius: 6px;
+}
+.admin-login-container-heading {
+  margin-top: 4px;
+}
+.admin-login-container__form {
+  margin-top: 12px;
+}
+.admin-login-container__form-group {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.admin-login-container__form-group-label {
+  width: 24%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 8px;
+  font-size: 14px;
+}
+.admin-login-container__form-group-input {
+  height: 32px;
+  flex: 1;
+}
+
+.admin-login-container__button {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 14px;
+  padding: 6px 4px;
+  /* margin-left: 10%; */
+  margin-top: 16px;
+}
+
+/* admin */
+
+.app-admin {
+  display: flex;
+}
+.app-admin-left {
+  width: 20%;
+  background-color: #3a4651;
+  height: 100vh;
+  position: relative;
+}
+.app-admin-left__heading {
+  padding: 12px;
+  padding-left: 20px;
+  color: white;
+}
+.app-admin-left__list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.app-admin-left__items {
+  padding: 12px;
+  color: white;
+}
+.app-admin-left__items:hover {
+  background-color: var(--main-color);
+}
+.app-admin-left__items--active {
+  background-color: var(--main-color);
+}
+.app-admin-left__items-link {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+.app-admin-left__items-icon {
+}
+.app-admin-left__items-des {
+  margin-left: 8px;
+}
+.fas.fa-music {
+}
+
+.app-admin-left__items--information {
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  left: 0;
+  padding: 12px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.app-admin-left__items--information-icon {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.app-admin-right {
+  background-color: #f0f3f6;
+  flex: 1;
+}
+.app-admin-right-heading {
+  font-size: 30px;
+  color: black;
+  padding: 12px 12px;
+  background-color: #d7dde4;
+}
+.app-admin-right__form {
+  padding: 12px;
+}
+.app-admin-right__form-group {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.app-admin-right__form-group-label {
+  width: 100px;
+}
+.app-admin-right__form-group-input {
+  height: 32px;
+  width: 40%;
+  margin-left: 8px;
+  font-size: 16px;
+}
+.app-admin-right-button {
+  padding: 12px;
+  background-color: var(--main-color);
+  width: 180px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+}

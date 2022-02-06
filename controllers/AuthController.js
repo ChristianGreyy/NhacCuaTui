@@ -24,6 +24,9 @@ exports.postSignUp = (req, res, next) => {
             avatar: '/img/avatar.png',
             coin: 0,
             fullname: username,
+            description: 'ordinary', 
+            background: '',
+            nationality: 'Việt Nam',
         });
         
         user.save()
