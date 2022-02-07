@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Danh sách bài hát
+            </div>
+            <table class="app-admin-right-table">
+                <tr>
+                    <th>Tên bài hát</th>
+                    <th>Tên tác giả</th>
+                    <th>Tên ca sĩ</th>
+                    <th>Thể loại</th>
+                    <th>Views</th>
+                </tr>
+                <% musics.forEach(music => { %>
+                    <tr>
+                        <td><%= music.name %></td>
+                        <td><%= music.author %></td>
+                        <td><%= music.singer %></td>
+                        <td><%= music.kind %></td>
+                        <td><%= music.views %></td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>

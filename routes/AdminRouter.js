@@ -4,8 +4,8 @@ const adminController = require('../controllers/AdminController');
 
 router.get('/tao-bai-hat', adminController.getCreateMusicAdmin);
 router.post('/tao-bai-hat', adminController.postCreateMusicAdmin);
-router.get('/tao-loi-bai-hat', adminController.getCreateMusicAdmin);
-router.get('/danh-sach-bai-hat', adminController.getCreateMusicAdmin);
+router.get('/tao-loi-bai-hat', adminController.getCreateSubtitleMusicAdmin);
+router.get('/danh-sach-bai-hat', adminController.getListMusicAdmin);
 router.get('/danh-sach-nguoi-dung', adminController.getCreateMusicAdmin);
 router.get('/su-kien', adminController.getCreateMusicAdmin);
 router.get('/login', adminController.getAdminLogin);

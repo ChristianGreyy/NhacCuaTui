@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
+const multer = require('multer');
 
 const router = require('./routes/index');
-
 const User = require('./models/UserModel');
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -34,6 +34,44 @@ app.use(session({
   saveUninitialized: false,
   store: store,
 }))
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    if(file.fieldname === 'background') {
+      const pathBackground = path.join(__dirname, 'public', 'background');
+      cb(null, pathBackground)
+    } else {
+      const pathMusic = path.join(__dirname, 'public', 'music');
+      cb(null, pathMusic)
+    }
+  },
+  filename: function (req, file, cb) {
+    const {name} = req.body;
+    let nameCustom = '';
+    name.split(' ').forEach(item => {
+      nameCustom += item;
+    })
+
+    if(file.fieldname === 'background') {
+      let nameBackground = nameCustom;
+      if(file.mimetype === 'image/png') {
+        nameBackground += '.png';
+      } else if(file.mimetype === 'image/jpeg') {
+        nameBackground += '.jpg';
+      } else if(file.mimetype === 'image/jpg') {
+        nameBackground += '.jpg';
+      }
+      cb(null, nameBackground);
+    } else {
+      let nameMusic = nameCustom;
+      nameMusic += '.mp3';
+      cb(null, nameMusic);
+    }
+
+  }
+})
+
+app.use(multer({storage: storage}).fields([{name: 'background'}, {name: 'music'}]));
 
 app.use((req, res, next) => {
   let isAuthenticated = req.session.user ? true:false;

@@ -2,8 +2,8 @@
     Dashboard Admin
 </div>
 <ul class="app-admin-left__list">
-    <li class="app-admin-left__items app-admin-left__items--active">
-        <a href="" class="app-admin-left__items-link">
+    <li class="app-admin-left__items <%= pageTitle === 'Tạo bài hát' ? 'app-admin-left__items--active' : '' %>">
+        <a href="tao-bai-hat" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="fas fa-music"></i>
             </div>
@@ -12,8 +12,8 @@
             </div>
         </a>
     </li>
-    <li class="app-admin-left__items">
-        <a href="" class="app-admin-left__items-link">
+    <li class="app-admin-left__items <%= pageTitle === 'Tạo lời bài hát' ? 'app-admin-left__items--active' : '' %>">
+        <a href="tao-loi-bai-hat" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="far fa-closed-captioning"></i>
             </div>
@@ -22,8 +22,8 @@
             </div>
         </a>
     </li>
-    <li class="app-admin-left__items">
-        <a href="" class="app-admin-left__items-link">
+    <li class="app-admin-left__items <%= pageTitle === 'Danh sách bài hát' ? 'app-admin-left__items--active' : '' %>">
+        <a href="danh-sach-bai-hat" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="fas fa-music"></i>
             </div>
