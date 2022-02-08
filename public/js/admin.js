@@ -19,5 +19,98 @@ const solveSubmitCreateMusic = () => {
 solveSubmitCreateMusic();
 
 
+const solveClickOnCheckBox = () => {
+    if(document.querySelectorAll('.app-admin-right-table__checkbox')) {
+        const checkboxes = document.querySelectorAll('.app-admin-right-table__checkbox');
+        checkboxes.forEach(checkbox => {
+            checkbox.onclick = (e) => {
+                solveDeleteButtonAppear();
+                let isChecked = checkbox.checked;
+                let row = checkbox.parentNode.parentNode;
+                if(isChecked) {
+                    row.classList.add('app-admin-right-table__row--active');
+                } else {
+                    row.classList.remove('app-admin-right-table__row--active');
+                }
+            }
+
+        })
+    }
+}
+
+solveClickOnCheckBox();
+
+const solveDeleteButtonAppear = () => {
+    if(document.querySelectorAll('.app-admin-right-table__checkbox')) {
+        let check = false;
+        const checkboxes = document.querySelectorAll('.app-admin-right-table__checkbox');
+        checkboxes.forEach(checkbox => {
+            let isChecked = checkbox.checked;
+            if(isChecked) {
+                check = true;
+            }
+        })
+        if(check) {
+            document.querySelector('.app-admin-right-delete').style.display = 'flex';
+        } else {
+            document.querySelector('.app-admin-right-delete').style.display = 'none';
+        }
+    }
+}
+
+const numberMusicDelete = () => {
+    if(document.querySelectorAll('.app-admin-right-table__checkbox')) {
+        let idDeleted = [];
+        const checkboxes = document.querySelectorAll('.app-admin-right-table__checkbox');
+        checkboxes.forEach(checkbox => {
+            let isChecked = checkbox.checked;
+            if(isChecked) {
+                let parentElement = checkbox.parentNode;
+                idDeleted.push(parentElement.innerText);
+                parentElement.parentNode.remove()
+            }
+        })
+
+        return idDeleted;
+    }
+}
+
+
+const deleteMusic = () => {
+    if(document.querySelector('.app-admin-right-delete')) {
+        document.querySelector('.app-admin-right-delete').onclick = (e) => {
+            let URL = '';
+            const locationHref = window.location.href.split('/')[4]
+            if(locationHref === 'danh-sach-nguoi-dung') {
+                URL = '/admin/danh-sach-nguoi-dung';
+            } else {
+                URL = '/admin/danh-sach-bai-hat';
+            }
+            fetch(URL, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _idArray: numberMusicDelete(),
+                })
+            })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                if(data) {
+                  console.log(data)
+                  document.querySelector('.app-admin-right-delete').style.display = 'none';
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
+    }
+}
+
+deleteMusic();
 
 

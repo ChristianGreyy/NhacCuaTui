@@ -17,21 +17,36 @@
             <div class="app-admin-right-heading">
                 Danh sách bài hát
             </div>
+            <div class="app-admin-right-delete">
+                <div class="app-admin-right-delete__icon">
+                    <i class="far fa-trash-alt"></i>
+                </div>
+                <div class="app-admin-right-delete__des">
+                    Xóa
+                </div>
+            </div>
             <table class="app-admin-right-table">
                 <tr>
-                    <th>Tên bài hát</th>
-                    <th>Tên tác giả</th>
-                    <th>Tên ca sĩ</th>
-                    <th>Thể loại</th>
-                    <th>Views</th>
+                    <th class="app-admin-right-table__heading">Id</th>
+                    <th class="app-admin-right-table__heading">Tên bài hát</th>
+                    <th class="app-admin-right-table__heading">Tên tác giả</th>
+                    <th class="app-admin-right-table__heading">Tên ca sĩ</th>
+                    <th class="app-admin-right-table__heading">Thể loại</th>
+                    <th class="app-admin-right-table__heading">Views</th>
                 </tr>
                 <% musics.forEach(music => { %>
-                    <tr>
-                        <td><%= music.name %></td>
-                        <td><%= music.author %></td>
-                        <td><%= music.singer %></td>
-                        <td><%= music.kind %></td>
-                        <td><%= music.views %></td>
+                    <tr class="app-admin-right-table__row"> <!--app-admin-right-table__row--active-->
+                        <td class="app-admin-right-table__content">
+                            <input type="checkbox" class="app-admin-right-table__checkbox">
+                            <a href="danh-sach-bai-hat/<%= music._id %>" class="app-admin-right-table__edit">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <%= music._id %></td>
+                        <td class="app-admin-right-table__content"><%= music.name %></td>
+                        <td class="app-admin-right-table__content"><%= music.author %></td>
+                        <td class="app-admin-right-table__content"><%= music.singer %></td>
+                        <td class="app-admin-right-table__content"><%= music.kind %></td>
+                        <td class="app-admin-right-table__content"><%= music.views %></td>
                     </tr>
                 <% }) %>
             </table>

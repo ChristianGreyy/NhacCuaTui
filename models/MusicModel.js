@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
 
 const musicSchema = new Schema({
     name: {
@@ -19,7 +18,8 @@ const musicSchema = new Schema({
         type: String,
     },
     poster: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     views: {
         type: Number,

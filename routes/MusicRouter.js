@@ -4,8 +4,8 @@ const musicController = require('../controllers/MusicController');
 
 router.get('/nhac-tre-moi', musicController.getYoungMusic);
 router.get('/nhac-tru-tinh-moi', musicController.getRomanticMusic);
-router.get('/nhac-remix-viet-moi', musicController.getYoungMusic);
-router.get('/nhac-rap-viet-moi', musicController.getYoungMusic);
+router.get('/nhac-remix-viet-moi', musicController.getRemixMusic);
+router.get('/nhac-rap-viet-moi', musicController.getVietnameseRapMusic);
 router.get('/nhac-tien-chien-moi', musicController.getYoungMusic);
 router.get('/nhac-trinh-moi', musicController.getYoungMusic);
 router.get('/nhac-rock-viet-moi', musicController.getYoungMusic);

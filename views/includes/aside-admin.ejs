@@ -3,7 +3,7 @@
 </div>
 <ul class="app-admin-left__list">
     <li class="app-admin-left__items <%= pageTitle === 'Tạo bài hát' ? 'app-admin-left__items--active' : '' %>">
-        <a href="tao-bai-hat" class="app-admin-left__items-link">
+        <a href="/admin/tao-bai-hat" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="fas fa-music"></i>
             </div>
@@ -13,7 +13,7 @@
         </a>
     </li>
     <li class="app-admin-left__items <%= pageTitle === 'Tạo lời bài hát' ? 'app-admin-left__items--active' : '' %>">
-        <a href="tao-loi-bai-hat" class="app-admin-left__items-link">
+        <a href="/admin/tao-loi-bai-hat" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="far fa-closed-captioning"></i>
             </div>
@@ -23,7 +23,7 @@
         </a>
     </li>
     <li class="app-admin-left__items <%= pageTitle === 'Danh sách bài hát' ? 'app-admin-left__items--active' : '' %>">
-        <a href="danh-sach-bai-hat" class="app-admin-left__items-link">
+        <a href="/admin/danh-sach-bai-hat" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="fas fa-music"></i>
             </div>
@@ -32,8 +32,8 @@
             </div>
         </a>
     </li>
-    <li class="app-admin-left__items">
-        <a href="" class="app-admin-left__items-link">
+    <li class="app-admin-left__items <%= pageTitle === 'Danh sách người dùng' ? 'app-admin-left__items--active' : '' %>">
+        <a href="/admin/danh-sach-nguoi-dung" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="far fa-user"></i>
             </div>

@@ -44,7 +44,7 @@ exports.getMusic = (req, res, next) => {
 exports.getYoungMusic = (req, res, next) => {
     Music.find({kind: 'young'})
     .then(musics => {
-        res.render('music/VietNam/youngMusic.ejs', {
+        res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Trẻ mới',
             errorMessage: false,
             musics,
@@ -58,8 +58,36 @@ exports.getYoungMusic = (req, res, next) => {
 exports.getRomanticMusic = (req, res, next) => {
     Music.find({kind: 'romantic'})
     .then(musics => {
-        res.render('music/VietNam/youngMusic.ejs', {
+        res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Trữ Tình mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+exports.getRemixMusic = (req, res, next) => {
+    Music.find({kind: 'vietnameseRemix'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Remix Việt mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+exports.getVietnameseRapMusic = (req, res, next) => {
+    Music.find({kind: 'vietnameseRap'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Rap Việt mới',
             errorMessage: false,
             musics,
         });

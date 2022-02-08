@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Thông tin <%= user._id %>
+            </div>
+            <form action="/admin/danh-sach-nguoi-dung/<%= user._id %>" method="POST" class="app-admin-right__form" enctype="multipart/form-data">
+                <div class="app-admin-right__form-group">
+                    <label for="username" class="app-admin-right__form-group-label">
+                        Username
+                    </label>
+                    <input type="text" id="username" name="username" value="<%= user.username %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="email" class="app-admin-right__form-group-label">
+                        Email
+                    </label>
+                    <input type="text" id="email" name="email" value="<%= user.email %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="fullname" class="app-admin-right__form-group-label">
+                        Họ và tên
+                    </label>
+                    <input type="text" id="fullname" name="fullname" value="<%= user.fullname %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="gender" class="app-admin-right__form-group-label">
+                        Giới tính
+                    </label>
+                    <input type="text" id="gender" name="gender" value="<%= user.gender %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="identityCard" class="app-admin-right__form-group-label">
+                        Số CMND
+                    </label>
+                    <input type="text" id="identityCard" name="identityCard" value="<%= user.identityCard %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="day" class="app-admin-right__form-group-label">
+                        Ngày sinh
+                    </label>
+                    <input type="text" id="day" name="day" value="<%= user.day %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="month" class="app-admin-right__form-group-label">
+                        Tháng sinh
+                    </label>
+                    <input type="text" id="month" name="month" value="<%= user.month %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="year" class="app-admin-right__form-group-label">
+                        Năm sinh
+                    </label>
+                    <input type="text" id="year" name="year" value="<%= user.year %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="phoneNumber" class="app-admin-right__form-group-label">
+                        Số điện thoại
+                    </label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" value="<%= user.phoneNumber %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="address" class="app-admin-right__form-group-label">
+                        Địa chỉ
+                    </label>
+                    <input type="text" id="address" name="address" value="<%= user.address %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="coin" class="app-admin-right__form-group-label">
+                        Coin
+                    </label>
+                    <input type="text" id="coin" name="coin" value="<%= user.coin %>" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>
