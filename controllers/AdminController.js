@@ -1,5 +1,6 @@
 const Admin = require('../models/AdminModel');
 const Music = require('../models/MusicModel');
+const Singer = require('../models/SingerModel');
 const User = require('../models/UserModel');
 const fs = require('fs');
 const path = require('path');
@@ -20,9 +21,9 @@ exports.postAdminLogin = (req, res, next) => {
         }       
         if(password !== admin.password) {
             return res.status(401).json('Incorrect password');
-
         }
-        res.redirect('/admin');
+        req.session.admin = admin._id;
+        res.redirect('/admin/tao-bai-hat');
     })
     .catch(err => {
         console.log(err);
@@ -76,6 +77,45 @@ exports.getListMusicAdmin = async (req, res, next) => {
         console.log(err);
     }
 }
+
+exports.getCreateSingerAdmin = (req, res, next) => {
+    res.render('admin/create-singer', {
+        pageTitle: 'Tạo ca sĩ'
+    })
+}
+
+exports.postCreateSingerAdmin = async (req, res, next) => {
+    const {fullname, day, month, year, gender, introduce} = req.body;
+    const singer = new Singer({
+        fullname, day, month, year, gender, introduce,
+        avatar: req.file.filename,
+    })
+    try {
+        const result = await singer.save();
+        if(!result) {
+            const error = new Error('Error server');
+            error.statusCode = 500;
+            throw error;
+        }
+        console.log('Created singer successfully')
+        res.redirect('/admin/danh-sach-ca-si')
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.getListSingerAdmin = async (req, res, next) => {
+    try {
+        const singers = await Singer.find({})
+        res.render('admin/list-singer', {
+            pageTitle: 'Danh sách ca sĩ',
+            singers: singers,
+        })
+    } catch(err) {
+    console.log(err);
+    } 
+}
+
 
 exports.getUserAdmin = async (req, res, next) => {
     try {

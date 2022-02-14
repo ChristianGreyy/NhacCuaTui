@@ -75,6 +75,32 @@ const numberMusicDelete = () => {
     }
 }
 
+const getDateAdmin = () => {
+    if(document.querySelectorAll('.app-admin-right__form-group-input--select')) {
+        let count = 0;
+        document.querySelectorAll('.app-admin-right__form-group-input--select').forEach(item => {
+            let optionString = "";
+            if(count == 0) {
+                for(let i = 1; i<=31; i++) {
+                    optionString += `<option value="${i}">${i}</option>`
+                }
+            } else if(count == 1) {
+                for(let i = 1; i<=12; i++) {
+                    optionString += `<option value="${i}">${i}</option>`
+                }
+            } else if(count == 2) {
+                for(let i = 2022; i>=1945; i--) {
+                    optionString += `<option value="${i}">${i}</option>`
+                }
+            }
+            item.innerHTML = optionString;
+            count ++;
+        })
+    }
+}
+
+getDateAdmin();
+
 
 const deleteMusic = () => {
     if(document.querySelector('.app-admin-right-delete')) {

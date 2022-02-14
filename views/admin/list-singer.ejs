@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">`
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="/icofont/icofont.min.css">
@@ -16,7 +16,7 @@
         </div>
         <div class="app-admin-right">
             <div class="app-admin-right-heading">
-                Danh sách bài hát
+                Danh sách ca sĩ
             </div>
             <div class="app-admin-right-delete">
                 <div class="app-admin-right-delete__icon">
@@ -29,21 +29,21 @@
             <table class="app-admin-right-table">
                 <tr>
                     <th class="app-admin-right-table__heading">Id</th>
-                    <th class="app-admin-right-table__heading">Username</th>
-                    <th class="app-admin-right-table__heading">Email</th>
-                    <th class="app-admin-right-table__heading">Coin</th>
+                    <th class="app-admin-right-table__heading">Họ tên</th>
+                    <th class="app-admin-right-table__heading">Ngày sinh</th>
+                    <th class="app-admin-right-table__heading">Giới tính</th>
                 </tr>
-                <% users.forEach(user => { %>
+                <% singers.forEach(singer => { %>
                     <tr class="app-admin-right-table__row"> <!--app-admin-right-table__row--active-->
                         <td class="app-admin-right-table__content">
                             <input type="checkbox" class="app-admin-right-table__checkbox">
-                            <a href="danh-sach-nguoi-dung/<%= user._id %>" class="app-admin-right-table__edit">
-                                <i class="fas fa-user-plus"></i>
+                            <a href="danh-sach-nguoi-dung/<%= singer._id %>" class="app-admin-right-table__edit">
+                                <i class="fas fa-singer-plus"></i>
                             </a>
-                            <%= user._id %></td>
-                        <td class="app-admin-right-table__content"><%= user.username %></td>
-                        <td class="app-admin-right-table__content"><%= user.email %></td>
-                        <td class="app-admin-right-table__content"><%= user.coin %></td>
+                            <%= singer._id %></td>
+                        <td class="app-admin-right-table__content"><%= singer.fullname %></td>
+                        <td class="app-admin-right-table__content"><%= singer.day + '/' + singer.month + '/' + singer.year %></td>
+                        <td class="app-admin-right-table__content"><%= singer.gender === 'boy' ? 'Nam' : 'Nữ' %></td>
                     </tr>
                 <% }) %>
             </table>

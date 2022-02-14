@@ -17,6 +17,7 @@ exports.getNewMusic = (req, res, next) => {
 exports.getMusic = (req, res, next) => {
     let musicId = req.params.musicId;
     Music.findById(musicId)
+    .populate('poster')
     .then(music => {
         if(!music) {
             console.log('Music not found');
@@ -24,12 +25,22 @@ exports.getMusic = (req, res, next) => {
         }
         return Music.find({singer: music.singer})
         .then(musics => {
-            console.log(musics)
+            let idPoster = '';
+            let username = '';
+            if(music.poster) {
+                idPoster = music.poster._id;
+                username = music.poster.username;
+            } 
+            // let idPoster = music.poster._id ? music.poster._id : '';
             res.render('music/music', {
                 pageTitle: 'Bước qua mùa cô đơn - vũ',
                 errorMessage: false,
                 music,
                 musics,
+                poster: {
+                    id: idPoster,
+                    username: username,
+                }
             });
         })
         .catch(err => {
