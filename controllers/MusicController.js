@@ -107,3 +107,35 @@ exports.getVietnameseRapMusic = (req, res, next) => {
         console.log(err);
     })
 }
+
+exports.createSubtitleMusic = async (req, res, next) => {
+   try {
+    let idMusic = req.params.musicId;
+    const { idPoster, content } = req.body;
+    if(!idPoster) {
+        const error = new Error('node found user');
+        error.statusCode = 404;
+        throw error;
+    }
+     // res.json({
+    //     message: subtitlePoster,
+    // })
+    const music = await Music.findOne({_id: idMusic});
+    if(!music) {
+        const error = new Error('Not found music');
+        error.statusCode = 404;
+        throw error;
+    }
+    let subtitlePoster = {
+        idPoster,
+        content,
+    }
+    music.subtitlePoster.push(subtitlePoster)
+    const result = music.save();
+    res.redirect(`/bai-hat/${idMusic}`)
+   } catch(err) {
+       const error = new Error('error server');
+       error.statusCode = 500;
+       throw error;
+   }
+}

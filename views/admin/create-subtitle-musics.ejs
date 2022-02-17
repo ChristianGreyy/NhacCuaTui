@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Danh sách lời bài hát chưa duyệt
+            </div>
+            <div class="app-admin-right__subtitle">
+                <ul class="app-admin-right__subtitle-list">
+                    <% musics.forEach(music => { %>
+                        <li class="app-admin-right__subtitle-items">
+                            <a href="/admin/tao-loi-bai-hat/<%= music._id %>" class="app-admin-right__subtitle-items__link">
+                                <img src="<%= music.background %>" alt="" class="-app-admin-right__subtitle-items-avatar">
+                                <div class="app-admin-right__subtitle-items-des">
+                                    <div class="app-admin-right__subtitle-items-des__name">
+                                        <%= music.name %>
+                                    </div>
+                                    <div class="app-admin-right__subtitle-items-des__singer">
+                                        <%= music.singer %>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="app-admin-right__subtitle-items__number">
+                                <%= music.subtitlePoster.length %>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>

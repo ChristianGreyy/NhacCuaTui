@@ -1,0 +1,23 @@
+<%- include('../includes/head.ejs') %>
+<body>
+    <div class="app">
+        <%- include('../includes/navigation.ejs') %>
+        <div class="app-error">
+            <div class="app-error__left">
+                <h2 class="app-error__left-title">
+                    Không tìm thấy đường dẫn này
+                </h2>
+                <a href="/" class="app-error__left-link">Trở về trang chủ NhacCuaTui.com</a>
+            </div>
+            <div class="app-error__right">
+                <div class="app-error__right-image">
+                    <img src="/img/img-error/error.png" alt="" class="app-error__right-image-img">
+                    <img src="/img/img-error/404.png" alt="" class="app-error__right-image-404">
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+<%- include('../includes/end.ejs') %>
+
+

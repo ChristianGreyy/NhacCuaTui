@@ -14,9 +14,24 @@ const musicSchema = new Schema({
         type: String,
         required: true,
     },
+    idSinger: {
+        type: Schema.Types.ObjectId,
+        ref: 'Singer',
+        required: true,
+    },
     subtitle: {
         type: String,
     },
+    subtitlePoster: [
+        {
+            idPoster: {
+                type: Schema.Types.ObjectId,
+            },
+            content: {
+                type: String,
+            }
+        }
+    ],
     poster: {
         type: Schema.Types.ObjectId,
         ref: 'User'

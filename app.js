@@ -34,9 +34,6 @@ app.use(session({
   store: store,
 }))
 
-
-
-
 app.use((req, res, next) => {
   let isAuthenticated = req.session.user ? true:false;
   if(isAuthenticated) {

@@ -4,6 +4,7 @@ const musicRouter = require('./MusicRouter');
 const authRouter = require('./AuthRouter');
 const userRouter = require('./UserRouter');
 const adminRouter = require('./AdminRouter');
+const errorController = require('../controllers/ErrorController');
 const User = require('../models/UserModel');
 
 const routes = (app) => {
@@ -11,7 +12,7 @@ const routes = (app) => {
     app.use(authRouter);
     app.use('/user', userRouter);
     app.use('/bai-hat', musicRouter);
-    app.use('/', (req, res, next) => {
+    app.use('/trang-chu', (req, res, next) => {
         User.findOne({_id: req.session.user})
         .then(user => {
             res.render('home', {
@@ -24,6 +25,7 @@ const routes = (app) => {
             console.log('err');
         })
     })
+    app.use(errorController.get404);
 }
 
 module.exports = routes;

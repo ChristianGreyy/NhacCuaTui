@@ -1,0 +1,28 @@
+/* 404 page */
+
+.app-error {
+  margin-top: 64px;
+  padding: 0px 170px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f1;
+}
+.app-error__left {
+  /* padding-left: 74px; */
+}
+.app-error__left-title {
+}
+.app-error__left-link {
+}
+.app-error__right {
+}
+.app-error__right-image {
+  position: relative;
+}
+.app-error__right-image-img {
+}
+.app-error__right-image-404 {
+  left: 42%;
+  position: absolute;
+}

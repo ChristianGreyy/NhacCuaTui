@@ -15,10 +15,18 @@
             <%- include('../includes/aside-admin.ejs') %>
         </div>
         <div class="app-admin-right">
-            <div class="app-admin-right-heading">
-                Đăng bài hát
-            </div>
-            Tạo lời bài hát
+            <% if(music.subtitlePoster.length >= 1) { %>
+                <div class="app-admin-right-heading">
+                    Lời bài hát <%= music.name %>
+                </div>
+                <div class="app-admin-right__subtitle__single-music">
+                
+                </div>
+            <% } else { %>
+                <div class="app-admin-right-heading">
+                    Chưa có lời bài hát nào được duyệt!
+                </div>
+            <% } %>
         </div>
     </div>
 </body>

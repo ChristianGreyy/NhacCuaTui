@@ -689,5 +689,59 @@
 .music-content-right-items-link-right-views__number {
   margin-left: 4px;
 }
-.fas.fa-headphones {
+.music-content-left__music-subtitle__left-create-subtitle {
+}
+.music-content-left__music-subtitle__left-create-subtitle-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.music-content-left__music-subtitle__left-create-subtitle-des {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+.music-content-left__music-subtitle__left-create-subtitle-child__button,
+.music-content-left__music-subtitle__left-create-subtitle-button {
+  color: white;
+  background-color: var(--main-color);
+  width: max-content;
+  padding: 8px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+.music-content-left__music-subtitle__left-create-subtitle-child {
+  display: none;
+}
+
+.music-content-left__music-subtitle__left-create-subtitle-child__button {
+  padding: 2px 24px;
+}
+
+.music-content-left__music-subtitle__left-create-subtitle-child {
+  position: relative;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 682x;
+  height: 440px;
+  /* overflow-y: scroll; */
+  box-shadow: 0 0 4px black;
+  padding: 8px 0;
+  background-color: white;
+}
+.music-content-left__music-subtitle__left-create-subtitle-child__titles {
+  background-color: white;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.music-content-left__music-subtitle__left-create-subtitle-child__input {
+  width: 100%;
+  /* border: none; */
+  outline: none;
 }

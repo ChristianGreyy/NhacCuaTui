@@ -25,7 +25,7 @@ router.get('/nhac-thieu-nhi-moi', musicController.getYoungMusic);
 router.get('/nhac-khong-loi-moi', musicController.getYoungMusic);
 router.get('/nhac-beat-moi', musicController.getYoungMusic);
 router.get('/bai-hat-moi', musicController.getNewMusic);
+router.post('/tao-loi-bai-hat/:musicId', musicController.createSubtitleMusic);
 router.get('/:musicId', musicController.getMusic);
-
 
 module.exports = router;

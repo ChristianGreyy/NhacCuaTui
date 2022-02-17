@@ -32,6 +32,7 @@
                     <th class="app-admin-right-table__heading">Họ tên</th>
                     <th class="app-admin-right-table__heading">Ngày sinh</th>
                     <th class="app-admin-right-table__heading">Giới tính</th>
+                    <th class="app-admin-right-table__heading">Bài hát</th>
                 </tr>
                 <% singers.forEach(singer => { %>
                     <tr class="app-admin-right-table__row"> <!--app-admin-right-table__row--active-->
@@ -44,6 +45,7 @@
                         <td class="app-admin-right-table__content"><%= singer.fullname %></td>
                         <td class="app-admin-right-table__content"><%= singer.day + '/' + singer.month + '/' + singer.year %></td>
                         <td class="app-admin-right-table__content"><%= singer.gender === 'boy' ? 'Nam' : 'Nữ' %></td>
+                        <td class="app-admin-right-table__content"><%= singer.music.length %></td>
                     </tr>
                 <% }) %>
             </table>

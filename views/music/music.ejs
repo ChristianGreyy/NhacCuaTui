@@ -140,12 +140,39 @@
                                                 Nhạc sĩ: Vũ
                                             </div>
                                             <div class="music-content-left__music-subtitle__left-post">
-                                                <div class="music-content-left__music-subtitle__left-post-text">
-                                                    Được đăng bởi
-                                                </div>
-                                                <a href="/user/<%= poster.id %>" class="music-content-left__music-subtitle__left-post-person">
-                                                    <%= poster.username %>
-                                                </a>
+                                                <% if (poster.id) { %>
+                                                    <div class="music-content-left__music-subtitle__left-post-text">
+                                                        Được đăng bởi
+                                                    </div>
+                                                    <a href="/user/<%= poster.id %>" class="music-content-left__music-subtitle__left-post-person">
+                                                        <%= poster.username %>
+                                                    </a>
+                                                <% } else { %>
+                                                    <form action="/bai-hat/tao-loi-bai-hat/<%= music._id %>" method="POST" class="music-content-left__music-subtitle__left-create-form">
+                                                        <div class="music-content-left__music-subtitle__left-create-subtitle">
+                                                       
+                                                            <div class="music-content-left__music-subtitle__left-create-subtitle-des">
+                                                                Lời bài hát: Hiện chưa có
+                                                            </div>
+                                                            <div class="music-content-left__music-subtitle__left-create-subtitle-button">
+                                                                Tạo lời bài hát
+                                                            </div>
+                                                            <div class="music-content-left__music-subtitle__left-create-subtitle-child">
+                                                                <div class="music-content-left__music-subtitle__left-create-subtitle-close">
+                                                                    <i class="icofont-close-circled"></i>
+                                                                </div>
+                                                                <div class="music-content-left__music-subtitle__left-create-subtitle-child__titles">
+                                                                    Tạo lời bài hát: <%= music.name %>
+                                                                </div>
+                                                                <textarea name="content" id="" cols="90" rows="16" class="music-content-left__music-subtitle__left-create-subtitle-child__input"></textarea>
+                                                                <input type="hidden" name="idPoster" value="User._id">
+                                                                <div class="music-content-left__music-subtitle__left-create-subtitle-child__button">
+                                                                    Gửi
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                <% } %>
                                             </div>
                                         </div>
                                         <div class="music-content-left__music-subtitle__right">

@@ -128,3 +128,30 @@ const music = function() {
 }();
 
 music.run();
+
+if(document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-child__button')) {
+    document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-child__button').onclick = (e) => {
+        document.querySelector('.music-content-left__music-subtitle__left-create-form').submit();
+    }
+}
+
+// Solve event onclick turn on create subtitle
+
+const appearAndAbsentCreateSubtitle = (() => {
+    if(document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-child')) {
+        document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-button').onclick = (e) => {
+            document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-child').style.display = 'block';
+        } 
+
+    }
+
+    
+
+
+})();
+
+if(document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-close')) {
+    document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-close').onclick = (e) => {
+        document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-child').style.display = 'none';
+    }
+}

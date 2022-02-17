@@ -39,30 +39,52 @@ exports.getCreateMusicAdmin = (req, res, next) => {
 exports.postCreateMusicAdmin = async (req, res, next) => {
     const {name, author, singer, kind, subtitle} = req.body;
 
-    console.log(req.files['background']);
-    console.log(req.files['music']);
-    const music = new Music ({
-        name,
-        author,
-        singer,
-        kind,
-        subtitle,
-        background: '/background/' + req.files['background'][0].filename,
-        path: '/music/' + req.files['music'][0].filename,
-        views: 0,
-    })
-    
     try {
+        const singerDoc = await Singer.findOne({fullname: singer});
+        if(!singerDoc) {
+            const error = new Error('not found singer');
+            error.statusCode = 404;
+            throw error;
+        }
+        const music = new Music ({
+            name,
+            author,
+            singer,
+            kind,
+            subtitle,
+            idSinger: singerDoc._id,
+            background: '/background/' + req.files['background'][0].filename,
+            path: '/music/' + req.files['music'][0].filename,
+            views: 0,
+        })
         const result = await music.save();
+        singerDoc.music.push(music._id);
+        const resultSinger = await singerDoc.save();
+
         res.redirect('/admin/tao-bai-hat');
     } catch(err) {
         console.log(err);
     }
 }
 
-exports.getCreateSubtitleMusicAdmin = (req, res, next) => {
+exports.getCreateSubtitleMusicsAdmin = async (req, res, next) => {
+    try {
+        const musics = await Music.find({poster: {$exists: false}}).sort({updatedAt: -1})
+        res.render('admin/create-subtitle-musics', {
+            pageTitle: 'Danh sách bài hát chưa duyệt',
+            musics: musics,
+        })
+    } catch(err) {
+        console.log(err);
+    }   
+}
+ 
+exports.getCreateSubtitleMusicAdmin = async (req, res, next) => {
+    const idMusic = req.params.idMusic;
+    const music = await Music.findOne({_id: idMusic});
     res.render('admin/create-subtitle-music', {
-        pageTitle: 'Tạo lời bài hát'
+        pageTitle: 'Danh sách bài hát chưa duyệt',
+        music,
     })
 }
 
@@ -139,6 +161,20 @@ exports.deleteListMusicAdmin = (req, res, next) => {
             if(!music) {
                 return res.statusCode(404).json('Not found music');
             }
+            Singer.findOne({_id: music.idSinger})
+            .then(singer => {
+                singer.music.pull(id);
+                return singer.save();
+            })
+            .then(result => {
+                console.log('delete music in array of singer');
+            })
+            .catch(err => {
+                console.log(err);
+                const error = new Error('error server');
+                error.statusCode = 500;
+                throw error;
+            })
             let musicPath = path.join(__dirname, '../public', music.path);
             let backgroundPath = path.join(__dirname, '../public', music.background);
             solveUnlinkPath(musicPath);
@@ -150,10 +186,6 @@ exports.deleteListMusicAdmin = (req, res, next) => {
                 message: 'Deleted music',
             })
         })
-        // Music.deleteOne({_id: id})
-        // .then(result => {
-        //     console.log(result);
-        // })
         .catch(err => {
             console.log(err);
         })

@@ -221,3 +221,49 @@ th {
 }
 .far.fa-trash-alt {
 }
+
+.app-admin-right__subtitle {
+}
+.app-admin-right__subtitle-list {
+  list-style: none;
+}
+.app-admin-right__subtitle-items {
+  margin-bottom: 12px;
+  cursor: pointer;
+  background-color: rgba(214, 196, 196, 0.1);
+  position: relative;
+}
+.app-admin-right__subtitle-items__number {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: var(--main-color);
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.app-admin-right__subtitle-items__link {
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+}
+.-app-admin-right__subtitle-items-avatar {
+  width: 60px;
+  height: 60px;
+}
+.app-admin-right__subtitle-items-des {
+  margin-left: 12px;
+}
+.app-admin-right__subtitle-items-des__name {
+  font-weight: bold;
+}
+.app-admin-right__subtitle-items-des__singer {
+  color: #888;
+  font-size: 14px;
+  margin-top: 4px;
+}
