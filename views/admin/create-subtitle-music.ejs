@@ -19,9 +19,29 @@
                 <div class="app-admin-right-heading">
                     Lời bài hát <%= music.name %>
                 </div>
-                <div class="app-admin-right__subtitle__single-music">
-                
-                </div>
+                <ul class="app-admin-right__subtitle__single-music">
+                    <% music.subtitlePoster.forEach(subtitle => { %> 
+                        <li class="app-admin-right__subtitle__single-music-items">
+                            <div class="app-admin-right__subtitle__single-music-poster">
+                                <div class="app-admin-right__subtitle__single-music-poster__left">
+                                    <a href="<%= subtitle.idPoster %>" class="app-admin-right__subtitle__single-music-poster-link">Trương Thành Hưng</a>
+                                    đã đăng
+                                </div>
+                                <div class="app-admin-right__subtitle__single-music-poster__right">
+                                    <div class="app-admin-right__subtitle__single-music-poster__right-agree">
+                                        Duyệt
+                                    </div>
+                                    <div class="app-admin-right__subtitle__single-music-poster__right-delete">
+                                        Xóa
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-admin-right__subtitle__single-music-content">
+                                <%= subtitle.content %>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
             <% } else { %>
                 <div class="app-admin-right-heading">
                     Chưa có lời bài hát nào được duyệt!

@@ -33,6 +33,7 @@ app.use(session({
   saveUninitialized: false,
   store: store,
 }))
+app.use(flash());
 
 app.use((req, res, next) => {
   let isAuthenticated = req.session.user ? true:false;
@@ -49,6 +50,9 @@ app.use((req, res, next) => {
     })
   } else {
     res.locals.isAuthenticated = isAuthenticated;
+    res.locals.User = {
+      _id: '777777777777777777777777',
+    }
     return next();
   }
 })

@@ -3,6 +3,16 @@
         <div class="container-fluid app">
             <%- include('../includes/navigation.ejs') %>
             <div class="music">
+                <% if (errorNotFound) { %>
+                    <div class="music__notFound-user">
+                        <div class="music__notFound-user-icon">
+                            <i class="icofont-exclamation-tringle"></i>
+                        </div>
+                        <div class="music__notFound-user-text">
+                            Bạn chưa đăng nhập, hãy đăng nhập để đăng tải lời bài hát bạn nhé !
+                        </div>
+                    </div>
+                <% } %>
                 <div class="music-content">
                     <div class="container-fluid">
                         <div class="row">
@@ -165,7 +175,7 @@
                                                                     Tạo lời bài hát: <%= music.name %>
                                                                 </div>
                                                                 <textarea name="content" id="" cols="90" rows="16" class="music-content-left__music-subtitle__left-create-subtitle-child__input"></textarea>
-                                                                <input type="hidden" name="idPoster" value="User._id">
+                                                                <input type="hidden" name="idPoster" value="<%= User._id %>">
                                                                 <div class="music-content-left__music-subtitle__left-create-subtitle-child__button">
                                                                     Gửi
                                                                 </div>

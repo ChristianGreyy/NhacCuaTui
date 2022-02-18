@@ -81,7 +81,8 @@ exports.getCreateSubtitleMusicsAdmin = async (req, res, next) => {
  
 exports.getCreateSubtitleMusicAdmin = async (req, res, next) => {
     const idMusic = req.params.idMusic;
-    const music = await Music.findOne({_id: idMusic});
+    const music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
+    console.log(music)
     res.render('admin/create-subtitle-music', {
         pageTitle: 'Danh sách bài hát chưa duyệt',
         music,

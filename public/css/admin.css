@@ -267,3 +267,47 @@ th {
   font-size: 14px;
   margin-top: 4px;
 }
+
+.app-admin-right__subtitle__single-music {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.app-admin-right__subtitle__single-music-items {
+  background-color: rgba(214, 196, 196, 0.1);
+  margin: 12px 0;
+  padding: 12px;
+}
+.app-admin-right__subtitle__single-music-poster {
+  display: flex;
+  justify-content: space-between;
+}
+.app-admin-right__subtitle__single-music-poster__left {
+}
+.app-admin-right__subtitle__single-music-poster-link {
+  text-decoration: none;
+}
+.app-admin-right__subtitle__single-music-poster__right {
+  display: flex;
+  color: white;
+}
+
+.app-admin-right__subtitle__single-music-poster__right-agree {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #e74c3c;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.app-admin-right__subtitle__single-music-poster__right-delete {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #e74c3c;
+  cursor: pointer;
+  margin-left: 12px;
+}
+.app-admin-right__subtitle__single-music-content {
+  margin-top: 4px;
+}

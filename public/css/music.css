@@ -1,6 +1,39 @@
 .music {
   margin-top: 64px;
   padding: 0px 32px;
+  position: relative;
+}
+.music__notFound-user {
+  position: fixed;
+  bottom: 12px;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  right: 12px;
+  background-color: var(--main-color);
+  padding: 6px;
+  border-radius: 6px;
+  animation: messageNotFound 3s linear;
+  opacity: 0;
+}
+
+@keyframes messageNotFound {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+.music__notFound-user-icon {
+  font-size: 24px;
+  color: #f8c904;
+}
+.music__notFound-user-text {
+  font-size: 14px;
+  color: white;
+  margin-left: 12px;
 }
 .music-content {
 }
@@ -703,8 +736,7 @@
   font-size: 18px;
   color: #333;
 }
-.music-content-left__music-subtitle__left-create-subtitle-child__button,
-.music-content-left__music-subtitle__left-create-subtitle-button {
+.music-content-left__music-subtitle__left-create-subtitle-child__button {
   color: white;
   background-color: var(--main-color);
   width: max-content;
@@ -712,11 +744,16 @@
   border-radius: 24px;
   cursor: pointer;
 }
+.music-content-left__music-subtitle__left-create-subtitle-button {
+  color: var(--main-color);
+  cursor: pointer;
+}
 .music-content-left__music-subtitle__left-create-subtitle-child {
   display: none;
 }
 
 .music-content-left__music-subtitle__left-create-subtitle-child__button {
+  margin-left: 12px;
   padding: 2px 24px;
 }
 
@@ -742,6 +779,9 @@
 }
 .music-content-left__music-subtitle__left-create-subtitle-child__input {
   width: 100%;
-  /* border: none; */
+  border-left: none;
+  border-right: none;
+  height: 342px;
+  resize: none;
   outline: none;
 }

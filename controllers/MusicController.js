@@ -1,4 +1,6 @@
 const Music = require('../models/MusicModel');
+const User = require('../models/UserModel');
+const mongoose = require('mongoose');
 
 exports.getNewMusic = (req, res, next) => {
     Music.find({})
@@ -33,8 +35,9 @@ exports.getMusic = (req, res, next) => {
             } 
             // let idPoster = music.poster._id ? music.poster._id : '';
             res.render('music/music', {
-                pageTitle: 'Bước qua mùa cô đơn - vũ',
+                pageTitle: music.name,
                 errorMessage: false,
+                errorNotFound: req.flash('notFoundUser')[0],
                 music,
                 musics,
                 poster: {
@@ -112,14 +115,14 @@ exports.createSubtitleMusic = async (req, res, next) => {
    try {
     let idMusic = req.params.musicId;
     const { idPoster, content } = req.body;
-    if(!idPoster) {
-        const error = new Error('node found user');
-        error.statusCode = 404;
-        throw error;
+    if(typeof idMusic === String) {
+        idPoster = mongoose.Schema.Types.ObjectId(idMusic);
     }
-     // res.json({
-    //     message: subtitlePoster,
-    // })
+    const user = await User.findOne({_id: idPoster});
+    if(!user) {
+        req.flash('notFoundUser', 'Bạn chưa đăng nhập, vui lòng đăng nhập');
+        return res.status(404).redirect(`/bai-hat/${idMusic}`)
+    }
     const music = await Music.findOne({_id: idMusic});
     if(!music) {
         const error = new Error('Not found music');
@@ -134,6 +137,7 @@ exports.createSubtitleMusic = async (req, res, next) => {
     const result = music.save();
     res.redirect(`/bai-hat/${idMusic}`)
    } catch(err) {
+       console.log(err);
        const error = new Error('error server');
        error.statusCode = 500;
        throw error;
