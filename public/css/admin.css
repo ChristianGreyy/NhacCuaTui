@@ -283,6 +283,11 @@ th {
   justify-content: space-between;
 }
 .app-admin-right__subtitle__single-music-poster__left {
+  display: flex;
+  border-bottom: 1px solid #888;
+}
+.app-admin-right__subtitle__single-music-poster__left-id {
+  margin-left: 4px;
 }
 .app-admin-right__subtitle__single-music-poster-link {
   text-decoration: none;

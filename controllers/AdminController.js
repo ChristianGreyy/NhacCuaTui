@@ -81,12 +81,87 @@ exports.getCreateSubtitleMusicsAdmin = async (req, res, next) => {
  
 exports.getCreateSubtitleMusicAdmin = async (req, res, next) => {
     const idMusic = req.params.idMusic;
-    const music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
-    console.log(music)
-    res.render('admin/create-subtitle-music', {
-        pageTitle: 'Danh sách bài hát chưa duyệt',
-        music,
+    const music = await Music.findOne({_id: idMusic});
+    // console.log(music.subtitlePoster[0].idPoster)
+    const usersId = [];
+    const users = [];
+    music.subtitlePoster.forEach(subtitle => {
+        usersId.push(subtitle.idPoster)
     })
+    for(let i in usersId) {
+        User.findOne({_id: usersId[i]})
+        .then(user => {
+            users.push(user);
+            if(i == usersId.length - 1) {
+                res.render('admin/create-subtitle-music', {
+                    pageTitle: 'Danh sách bài hát chưa duyệt',
+                    music,
+                    users,
+                })
+            }
+        })
+        .catch(err => {
+            const error = new Error('error server');
+            error.statusCode = 500;
+            throw error;
+        })
+    }
+    // const user = await User.findOne({_id: music.subtitlePoster.idPoster});
+    // console.log(users)
+   
+}
+
+exports.postCreateSubtitleMusicAdmin = async (req, res, next) => {
+    try {
+        
+        const idPoster = req.body.id;
+        const idPost = req.body.idPost;
+        const idMusic = req.params.idMusic;
+        const music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
+        // music.subtitlePoster.forEach(item => {
+        //     console.log(item)
+        // })
+        const subtitle = music.subtitlePoster.find(item => {
+            return item._id.toString() === idPost.toString(); 
+        })
+        const content = subtitle.content;
+        music.subtitle = content;
+        music.poster = idPoster;
+        delete music.subtitlePoster;
+        const result = await music.save();
+        res.json({
+            message: result,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.deleteCreateSubtitleMusicAdmin = async (req, res, next) => {
+    try {
+        
+        const idPoster = req.body.id;
+        const idPost = req.body.idPost;
+        const idMusic = req.params.idMusic;
+        res.json(idPoster, idPost, idMusic);
+        // const music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
+        // // music.subtitlePoster.forEach(item => {
+        // //     console.log(item)
+        // // })
+        // const subtitle = music.subtitlePoster.find(item => {
+        //     return item._id.toString() === idPost.toString(); 
+        // })
+        // const content = subtitle.content;
+        // music.subtitle = content;
+        // music.poster = idPoster;
+        // delete music.subtitlePoster;
+        // const result = await music.save();
+        // res.json({
+        //     message: result,
+        // })
+    } catch(err) {
+        console.log(err);
+    }
 }
 
 exports.getListMusicAdmin = async (req, res, next) => {

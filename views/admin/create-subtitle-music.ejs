@@ -20,12 +20,17 @@
                     Lời bài hát <%= music.name %>
                 </div>
                 <ul class="app-admin-right__subtitle__single-music">
-                    <% music.subtitlePoster.forEach(subtitle => { %> 
+                    <% for(i in music.subtitlePoster) { %> 
                         <li class="app-admin-right__subtitle__single-music-items">
                             <div class="app-admin-right__subtitle__single-music-poster">
                                 <div class="app-admin-right__subtitle__single-music-poster__left">
-                                    <a href="<%= subtitle.idPoster %>" class="app-admin-right__subtitle__single-music-poster-link">Trương Thành Hưng</a>
-                                    đã đăng
+                                    <a href="/user/<%= music.subtitlePoster[i].idPoster %>" class="app-admin-right__subtitle__single-music-poster-link">
+                                        <%= users[i].fullname %>
+                                    </a>
+                                    <span style="margin-left: 4px">đã đăng - </span>
+                                    <div class="app-admin-right__subtitle__single-music-poster__left-id">
+                                        <%= music.subtitlePoster[i]._id %>    
+                                    </div>
                                 </div>
                                 <div class="app-admin-right__subtitle__single-music-poster__right">
                                     <div class="app-admin-right__subtitle__single-music-poster__right-agree">
@@ -37,10 +42,10 @@
                                 </div>
                             </div>
                             <div class="app-admin-right__subtitle__single-music-content">
-                                <%= subtitle.content %>
+                                <%= music.subtitlePoster[i].content %>
                             </div>
                         </li>
-                    <% }) %>
+                    <% } %>
                 </ul>
             <% } else { %>
                 <div class="app-admin-right-heading">

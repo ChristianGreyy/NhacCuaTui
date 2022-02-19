@@ -17,6 +17,8 @@ router.get('/tao-bai-hat', authAdmin, adminController.getCreateMusicAdmin);
 router.post('/tao-bai-hat', authAdmin, multer({storage: storageMusic}).fields([{name: 'background'}, {name: 'music'}]),  adminController.postCreateMusicAdmin);
 router.get('/tao-loi-bai-hat', authAdmin, adminController.getCreateSubtitleMusicsAdmin);
 router.get('/tao-loi-bai-hat/:idMusic', authAdmin, adminController.getCreateSubtitleMusicAdmin);
+router.post('/tao-loi-bai-hat/:idMusic', authAdmin, adminController.postCreateSubtitleMusicAdmin);
+router.delete('/tao-loi-bai-hat/:idMusic', authAdmin, adminController.deleteCreateSubtitleMusicAdmin);
 router.get('/danh-sach-bai-hat', authAdmin, adminController.getListMusicAdmin);
 router.get('/danh-sach-bai-hat/:idMusic', authAdmin, adminController.getEditMusicAdmin);
 router.post('/danh-sach-bai-hat/:idMusic', authAdmin, adminController.postEditMusicAdmin);

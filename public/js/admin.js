@@ -139,4 +139,72 @@ const deleteMusic = () => {
 
 deleteMusic();
 
+const acceptSubtitle = (() => {
+    if(document.querySelectorAll('.app-admin-right__subtitle__single-music-poster__right-agree')) {
+        document.querySelectorAll('.app-admin-right__subtitle__single-music-poster__right-agree').forEach(acceptButton => {
+            acceptButton.onclick = (e) => {
+                const locationHref = window.location.href.split('/')[5]
+                let id = e.target.parentNode.parentNode.querySelector('.app-admin-right__subtitle__single-music-poster-link').href.split('/')[4];
+                let idPost = e.target.parentNode.parentNode.querySelector('.app-admin-right__subtitle__single-music-poster__left-id').innerText;
+                fetch(`/admin/tao-loi-bai-hat/${locationHref}`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: id,
+                        idPost,
+                    })
+                })
+                .then(res => {
+                    return res.json();
+                })
+                .then(result => {
+                    if(result) {
+                        console.log(result);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            }
+        })
+    }
+    
+})();
+
+const deleteSubtitle = (() => {
+    if(document.querySelectorAll('.app-admin-right__subtitle__single-music-poster__right-delete')) {
+        document.querySelectorAll('.app-admin-right__subtitle__single-music-poster__right-delete').forEach(deleteButton => {
+            deleteButton.onclick = (e) => {
+                const locationHref = window.location.href.split('/')[5]
+                let id = e.target.parentNode.parentNode.querySelector('.app-admin-right__subtitle__single-music-poster-link').href.split('/')[4];
+                let idPost = e.target.parentNode.parentNode.querySelector('.app-admin-right__subtitle__single-music-poster__left-id').innerText;
+                fetch(`/admin/tao-loi-bai-hat/${locationHref}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: id,
+                        idPost,
+                    })
+                })
+                .then(res => {
+                    return res.json();
+                })
+                .then(result => {
+                    if(result) {
+                        console.log(result);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            }
+        })
+    }
+    
+})();
+
 
