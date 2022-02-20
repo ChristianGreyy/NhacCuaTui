@@ -111,6 +111,245 @@ exports.getVietnameseRapMusic = (req, res, next) => {
     })
 }
 
+exports.getWarMusic = (req, res, next) => {
+    Music.find({kind: 'war'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Tiền Chiến mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+exports.getvietnameseRockMusic = (req, res, next) => {
+    Music.find({kind: 'vietnameseRock'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Rock Việt mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+exports.getTrinhMusic = (req, res, next) => {
+    Music.find({kind: 'getTrinhMusic'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Trịnh mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+exports.getRevolutionMusic = (req, res, next) => {
+    Music.find({kind: 'revolution'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Cách Mạng mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+exports.getPopMusic = (req, res, next) => {
+    Music.find({kind: 'pop'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Pop mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getUsUkRockMusic = (req, res, next) => {
+    Music.find({kind: 'usUkRock'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Rock mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getElectronicaMusic = (req, res, next) => {
+    Music.find({kind: 'electronica'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Electronica/Dance mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getR_bMusic = (req, res, next) => {
+    Music.find({kind: 'r&b'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc R&B/Hip Hop/Rap mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getBluesMusic = (req, res, next) => {
+    Music.find({kind: 'blues'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Blues/Jazz mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getCountryMusic = (req, res, next) => {
+    Music.find({kind: 'country'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Country mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getLatinMusic = (req, res, next) => {
+    Music.find({kind: 'latin'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Latin mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getKoreanMusic = (req, res, next) => {
+    Music.find({kind: 'korean'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Hàn mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getChineseMusic = (req, res, next) => {
+    Music.find({kind: 'chinese'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Hoa mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getJapaneseMusic = (req, res, next) => {
+    Music.find({kind: 'japanese'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Nhật mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getThaiMusic = (req, res, next) => {
+    Music.find({kind: 'thai'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Thái mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getChildrenMusic = (req, res, next) => {
+    Music.find({kind: 'children'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Thiếu Nhi mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getInstrumentalMusic = (req, res, next) => {
+    Music.find({kind: 'instrumental'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Không Lời mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+exports.getBeatMusic = (req, res, next) => {
+    Music.find({kind: 'beat'})
+    .then(musics => {
+        res.render('music/generalMusic.ejs', {
+            pageTitle: 'Nhạc Beat mới',
+            errorMessage: false,
+            musics,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
 exports.createSubtitleMusic = async (req, res, next) => {
    try {
     let idMusic = req.params.musicId;

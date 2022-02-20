@@ -91,10 +91,12 @@ exports.postUpdate = (req, res, next) => {
 }
 
 exports.postLogout = (req, res, next) => {  
-    req.session.destroy(err => {
-        if(err) {
-            console.log('Error when logging out');
-        }
-        return res.redirect('/');
-    })
+    delete req.session.user;
+    return res.redirect('/trang-chu');
+    // req.session.destroy(err => {
+    //     if(err) {
+    //         console.log('Error when logging out');
+    //     }
+    //     return res.redirect('/');
+    // })
 }

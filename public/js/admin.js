@@ -162,6 +162,7 @@ const acceptSubtitle = (() => {
                 .then(result => {
                     if(result) {
                         console.log(result);
+                        window.location.href = '/admin/tao-loi-bai-hat';
                     }
                 })
                 .catch(err => {
@@ -196,6 +197,9 @@ const deleteSubtitle = (() => {
                 .then(result => {
                     if(result) {
                         console.log(result);
+                        e.target.parentNode.parentNode.parentNode.remove();
+                    } else {
+                        console.log('Error server');
                     }
                 })
                 .catch(err => {

@@ -117,7 +117,7 @@ exports.postCreateSubtitleMusicAdmin = async (req, res, next) => {
         const idPoster = req.body.id;
         const idPost = req.body.idPost;
         const idMusic = req.params.idMusic;
-        const music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
+        let music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
         // music.subtitlePoster.forEach(item => {
         //     console.log(item)
         // })
@@ -127,7 +127,7 @@ exports.postCreateSubtitleMusicAdmin = async (req, res, next) => {
         const content = subtitle.content;
         music.subtitle = content;
         music.poster = idPoster;
-        delete music.subtitlePoster;
+        music.subtitlePoster = null;
         const result = await music.save();
         res.json({
             message: result,
@@ -143,22 +143,20 @@ exports.deleteCreateSubtitleMusicAdmin = async (req, res, next) => {
         const idPoster = req.body.id;
         const idPost = req.body.idPost;
         const idMusic = req.params.idMusic;
-        res.json(idPoster, idPost, idMusic);
-        // const music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
-        // // music.subtitlePoster.forEach(item => {
-        // //     console.log(item)
-        // // })
-        // const subtitle = music.subtitlePoster.find(item => {
-        //     return item._id.toString() === idPost.toString(); 
+        // res.json({idPoster, idPost, idMusic});
+        const music = await Music.findOne({_id: idMusic}).populate('subtitlePoster.idPoster');
+        // music.subtitlePoster.forEach(item => {
+        //     console.log(item)
         // })
-        // const content = subtitle.content;
-        // music.subtitle = content;
-        // music.poster = idPoster;
-        // delete music.subtitlePoster;
-        // const result = await music.save();
-        // res.json({
-        //     message: result,
-        // })
+        const subtitle = music.subtitlePoster.filter(item => {
+            return item._id.toString() !== idPost.toString(); 
+        })
+        music.subtitlePoster = subtitle;
+        const result = await music.save();
+        // const result = 'ok'
+        res.json({
+            message: result,
+        })
     } catch(err) {
         console.log(err);
     }

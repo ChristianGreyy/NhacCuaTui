@@ -195,7 +195,7 @@
                                         </div>
                                     </div>
                                     <ul class="music-content-left__music-subtitle-list">
-                                        <% music.subtitle.split('.').forEach(item => { %>
+                                        <% music.subtitle.split('\n').forEach(item => { %>
                                             <% if (item !== '') { %>
                                             <li class="music-content-left__music-subtitle-list-items">
                                                 <%= item %>

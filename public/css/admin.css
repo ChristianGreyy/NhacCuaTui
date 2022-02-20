@@ -130,6 +130,8 @@ body {
 .app-admin-right {
   background-color: #f0f3f6;
   flex: 1;
+  height: 100vh;
+  overflow-y: scroll;
 }
 .app-admin-right-heading {
   font-size: 30px;
