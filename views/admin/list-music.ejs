@@ -45,7 +45,14 @@
                             <%= music._id %></td>
                         <td class="app-admin-right-table__content"><%= music.name %></td>
                         <td class="app-admin-right-table__content"><%= music.author %></td>
-                        <td class="app-admin-right-table__content"><%= music.singer %></td>
+                        <td class="app-admin-right-table__content">
+                            <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
+                                    <%= music.singers[i].fullname %>
+                                <% } else { %>
+                                    <%= music.singers[i].fullname %>, 
+                                <% } %>
+                            <% } %>
+                        </td>
                         <td class="app-admin-right-table__content"><%= music.kind %></td>
                         <td class="app-admin-right-table__content"><%= music.views %></td>
                     </tr>

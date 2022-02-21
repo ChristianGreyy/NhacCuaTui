@@ -29,7 +29,12 @@
                                         <%= music.name %>
                                     </div>
                                     <div class="app-admin-right__subtitle-items-des__singer">
-                                        <%= music.singer %>
+                                        <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
+                                            <%= music.singers[i].fullname %>
+                                        <% } else { %>
+                                            <%= music.singers[i].fullname %>, 
+                                        <% } %>
+                                    <% } %>
                                     </div>
                                 </div>
                             </a>

@@ -27,9 +27,16 @@
                                                             </a>
                                                         </div>
                                                         <div class="music-content-left__newMusic-list__items-left-des-singer">
-                                                            <a href="" class="music-content-left__newMusic-list__items-left-des-singer-link">
-                                                                <%= music.singer %>
-                                                            </a>
+                                                            <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
+                                                                <a href="" class="music-content-left__newMusic-list__items-left-des-singer-link">
+                                                                    <%= music.singers[i].fullname %>
+                                                                </a>
+                                                                <% } else { %>
+                                                                    <a href="" class="music-content-left__newMusic-list__items-left-des-singer-link">
+                                                                        <%= music.singers[i].fullname %>, 
+                                                                    </a>
+                                                                <% } %>
+                                                            <% } %>
                                                         </div>
                                                     </div>
                                                 </div>

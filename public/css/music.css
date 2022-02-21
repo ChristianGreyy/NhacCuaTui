@@ -280,6 +280,10 @@
   font-weight: 500;
   font-style: normal;
 }
+.music-content-left__music-name-link {
+  text-decoration: none;
+  color: black;
+}
 .music-content-left__music-views {
   display: flex;
   align-items: center;

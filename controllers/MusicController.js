@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 
 exports.getNewMusic = (req, res, next) => {
     Music.find({})
+    .populate('singers')
     .then(musics => {
+        // console.log(musics[0].singers)
         res.render('music/newMusic', {
             pageTitle: 'Bài hát mới',
             errorMessage: false,
@@ -19,6 +21,7 @@ exports.getNewMusic = (req, res, next) => {
 exports.getMusic = (req, res, next) => {
     let musicId = req.params.musicId;
     Music.findById(musicId)
+    .populate('singers')
     .populate('poster')
     .then(music => {
         if(!music) {
@@ -57,6 +60,7 @@ exports.getMusic = (req, res, next) => {
 
 exports.getYoungMusic = (req, res, next) => {
     Music.find({kind: 'young'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Trẻ mới',
@@ -71,6 +75,7 @@ exports.getYoungMusic = (req, res, next) => {
 
 exports.getRomanticMusic = (req, res, next) => {
     Music.find({kind: 'romantic'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Trữ Tình mới',
@@ -85,6 +90,7 @@ exports.getRomanticMusic = (req, res, next) => {
 
 exports.getRemixMusic = (req, res, next) => {
     Music.find({kind: 'vietnameseRemix'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Remix Việt mới',
@@ -99,6 +105,7 @@ exports.getRemixMusic = (req, res, next) => {
 
 exports.getVietnameseRapMusic = (req, res, next) => {
     Music.find({kind: 'vietnameseRap'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Rap Việt mới',
@@ -113,6 +120,7 @@ exports.getVietnameseRapMusic = (req, res, next) => {
 
 exports.getWarMusic = (req, res, next) => {
     Music.find({kind: 'war'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Tiền Chiến mới',
@@ -127,6 +135,7 @@ exports.getWarMusic = (req, res, next) => {
 
 exports.getvietnameseRockMusic = (req, res, next) => {
     Music.find({kind: 'vietnameseRock'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Rock Việt mới',
@@ -141,6 +150,7 @@ exports.getvietnameseRockMusic = (req, res, next) => {
 
 exports.getTrinhMusic = (req, res, next) => {
     Music.find({kind: 'getTrinhMusic'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Trịnh mới',
@@ -155,6 +165,7 @@ exports.getTrinhMusic = (req, res, next) => {
 
 exports.getRevolutionMusic = (req, res, next) => {
     Music.find({kind: 'revolution'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Cách Mạng mới',
@@ -169,6 +180,7 @@ exports.getRevolutionMusic = (req, res, next) => {
 
 exports.getPopMusic = (req, res, next) => {
     Music.find({kind: 'pop'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Pop mới',
@@ -182,6 +194,7 @@ exports.getPopMusic = (req, res, next) => {
 }
 exports.getUsUkRockMusic = (req, res, next) => {
     Music.find({kind: 'usUkRock'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Rock mới',
@@ -195,6 +208,7 @@ exports.getUsUkRockMusic = (req, res, next) => {
 }
 exports.getElectronicaMusic = (req, res, next) => {
     Music.find({kind: 'electronica'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Electronica/Dance mới',
@@ -208,6 +222,7 @@ exports.getElectronicaMusic = (req, res, next) => {
 }
 exports.getR_bMusic = (req, res, next) => {
     Music.find({kind: 'r&b'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc R&B/Hip Hop/Rap mới',
@@ -221,6 +236,7 @@ exports.getR_bMusic = (req, res, next) => {
 }
 exports.getBluesMusic = (req, res, next) => {
     Music.find({kind: 'blues'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Blues/Jazz mới',
@@ -234,6 +250,7 @@ exports.getBluesMusic = (req, res, next) => {
 }
 exports.getCountryMusic = (req, res, next) => {
     Music.find({kind: 'country'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Country mới',
@@ -247,6 +264,7 @@ exports.getCountryMusic = (req, res, next) => {
 }
 exports.getLatinMusic = (req, res, next) => {
     Music.find({kind: 'latin'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Latin mới',
@@ -260,6 +278,7 @@ exports.getLatinMusic = (req, res, next) => {
 }
 exports.getKoreanMusic = (req, res, next) => {
     Music.find({kind: 'korean'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Hàn mới',
@@ -273,6 +292,7 @@ exports.getKoreanMusic = (req, res, next) => {
 }
 exports.getChineseMusic = (req, res, next) => {
     Music.find({kind: 'chinese'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Hoa mới',
@@ -286,6 +306,7 @@ exports.getChineseMusic = (req, res, next) => {
 }
 exports.getJapaneseMusic = (req, res, next) => {
     Music.find({kind: 'japanese'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Nhật mới',
@@ -299,6 +320,7 @@ exports.getJapaneseMusic = (req, res, next) => {
 }
 exports.getThaiMusic = (req, res, next) => {
     Music.find({kind: 'thai'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Thái mới',
@@ -312,6 +334,7 @@ exports.getThaiMusic = (req, res, next) => {
 }
 exports.getChildrenMusic = (req, res, next) => {
     Music.find({kind: 'children'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Thiếu Nhi mới',
@@ -325,6 +348,7 @@ exports.getChildrenMusic = (req, res, next) => {
 }
 exports.getInstrumentalMusic = (req, res, next) => {
     Music.find({kind: 'instrumental'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Không Lời mới',
@@ -338,6 +362,7 @@ exports.getInstrumentalMusic = (req, res, next) => {
 }
 exports.getBeatMusic = (req, res, next) => {
     Music.find({kind: 'beat'})
+    .populate('singers')
     .then(musics => {
         res.render('music/generalMusic.ejs', {
             pageTitle: 'Nhạc Beat mới',

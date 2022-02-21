@@ -13,6 +13,7 @@ const storageSinger =  multerStorage.storageSinger;
 //   app.use();
 //   app.use();
 
+router.get('/fetch-singer', authAdmin, adminController.fetchSingerAdmin);
 router.get('/tao-bai-hat', authAdmin, adminController.getCreateMusicAdmin);
 router.post('/tao-bai-hat', authAdmin, multer({storage: storageMusic}).fields([{name: 'background'}, {name: 'music'}]),  adminController.postCreateMusicAdmin);
 router.get('/tao-loi-bai-hat', authAdmin, adminController.getCreateSubtitleMusicsAdmin);

@@ -23,7 +23,16 @@
                                     </audio>
                                     <div class="music-content-left__music-des">
                                         <div class="music-content-left__music-name">
-                                            <%= music.name %> - <%= music.singer %>
+                                            <%= music.name %> -   <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
+                                                <a href="" class="music-content-left__music-name-link">
+                                                    <%= music.singers[i].fullname %>
+                                                </a>
+                                                <% } else { %>
+                                                    <a href="" class="music-content-left__music-name-link">
+                                                        <%= music.singers[i].fullname %>, 
+                                                    </a>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                         <div class="music-content-left__music-views">
                                             <div class="music-content-left__music-views-icon">
@@ -39,7 +48,12 @@
                                     <div class="music-content-left__music-dashboard-des">
                                         <img src="<%= music.background %>" alt="" class="music-content-left__music-dashboard-des-avatar">
                                         <div class="music-content-left__music-dashboar-des-subtitle">
-                                            <%= music.name %> - <%= music.singer %>
+                                            <%= music.name %> -  <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
+                                                <%= music.singers[i].fullname %>
+                                                <% } else { %>
+                                                    <%= music.singers[i].fullname %>, 
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                     <input type="range" min="0" max="200" value="0" class="music-content-left__music-dashboard-range">

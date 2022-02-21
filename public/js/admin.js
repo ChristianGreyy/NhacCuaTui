@@ -212,3 +212,38 @@ const deleteSubtitle = (() => {
 })();
 
 
+const solveAddNameSinger = (() => {
+    document.querySelector('.app-admin-right__form-group-add').onclick = (e) => {
+        fetch('/admin/fetch-singer', {
+            method: 'GET',
+        })
+        .then(res => res.json())
+        .then(singers => {
+            const div = document.createElement("div");
+            div.className = 'app-admin-right__form-group';
+            const num = document.querySelectorAll('.app-admin-right__form-group').length - 6;
+            let optionString = '';
+            singers.singers.forEach(singer => {
+                optionString += `
+                    <option value="${singer._id}">${singer.fullname}</option>
+                `
+            })
+            const html = `
+                <label for="singers" class="app-admin-right__form-group-label">
+                    Tên ca sĩ
+                </label>
+                <select name="singers[${num}]" id="singers" class="app-admin-right__form-group-input">
+                    ${optionString}
+                </select>
+                `
+            
+    
+            div.innerHTML = html;
+            document.querySelector('.app-admin-right__form-group--singer').appendChild(div);
+        })
+        .catch(err => {
+            console.log(err);
+        })        
+        
+    }
+})();

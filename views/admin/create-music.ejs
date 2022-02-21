@@ -31,11 +31,24 @@
                     </label>
                     <input type="text" id="author" name="author" autocomplete="off" class="app-admin-right__form-group-input">
                 </div>
-                <div class="app-admin-right__form-group">
-                    <label for="singer" class="app-admin-right__form-group-label">
-                        Tên ca sĩ
-                    </label>
-                    <input type="text" id="singer" name="singer" autocomplete="off" class="app-admin-right__form-group-input">
+                <div class="app-admin-right__form-group--singer">
+                    <div class="app-admin-right__form-group">
+                        <label for="singer" class="app-admin-right__form-group-label">
+                            Tên ca sĩ
+                        </label>
+                        <select name="singers[0]" id="singer" class="app-admin-right__form-group-input">
+                            <% singers.forEach(singer => { %>
+                                <option value="<%= singer._id %>"><%= singer.fullname %></option>
+                            <% }) %>
+                        </select>
+                        <div class="app-admin-right__form-group-add">
+                            <i class="icofont-ui-add"></i>
+                        </div>
+                        <!-- <label for="singer" class="app-admin-right__form-group-label">
+                            Tên ca sĩ
+                        </label>
+                        <input type="text" id="singer" name="singer" autocomplete="off" class="app-admin-right__form-group-input"> -->
+                    </div>
                 </div>
                 <div class="app-admin-right__form-group">
                     <label for="music" class="app-admin-right__form-group-label">

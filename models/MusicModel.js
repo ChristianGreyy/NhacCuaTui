@@ -10,15 +10,13 @@ const musicSchema = new Schema({
         type: String,
         required: true,
     },
-    singer: {
-        type: String,
-        required: true,
-    },
-    idSinger: {
-        type: Schema.Types.ObjectId,
-        ref: 'Singer',
-        required: true,
-    },
+    singers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Singer',
+            required: true,
+        }
+    ],
     subtitle: {
         type: String,
     },
@@ -53,6 +51,10 @@ const musicSchema = new Schema({
     kind: {
         type: String,
         required:  true,
+    },
+    playlist: {
+        type: Schema.Types.ObjectId,
+        ref: 'Playlist'
     }
 }, {
     timestamps: true

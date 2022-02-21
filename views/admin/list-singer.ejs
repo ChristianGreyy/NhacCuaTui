@@ -29,6 +29,7 @@
             <table class="app-admin-right-table">
                 <tr>
                     <th class="app-admin-right-table__heading">Id</th>
+                    <th class="app-admin-right-table__heading">Ảnh</th>
                     <th class="app-admin-right-table__heading">Họ tên</th>
                     <th class="app-admin-right-table__heading">Ngày sinh</th>
                     <th class="app-admin-right-table__heading">Giới tính</th>
@@ -42,6 +43,9 @@
                                 <i class="fas fa-singer-plus"></i>
                             </a>
                             <%= singer._id %></td>
+                        <td class="app-admin-right-table__content">
+                            <img style="width: 60px; height: 60px;" src="/avatar/<%= singer.avatar %>" alt="">
+                        </td>
                         <td class="app-admin-right-table__content"><%= singer.fullname %></td>
                         <td class="app-admin-right-table__content"><%= singer.day + '/' + singer.month + '/' + singer.year %></td>
                         <td class="app-admin-right-table__content"><%= singer.gender === 'boy' ? 'Nam' : 'Nữ' %></td>

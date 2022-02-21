@@ -5,6 +5,17 @@ const User = require('../models/UserModel');
 const fs = require('fs');
 const path = require('path');
 
+exports.fetchSingerAdmin = async (req, res, next) => {
+    try {
+        const singers = await Singer.find({});
+        res.json({
+            singers,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 exports.getAdminLogin = (req, res, next) => {
     res.render('admin/adminLogin.ejs')
 }
@@ -30,38 +41,45 @@ exports.postAdminLogin = (req, res, next) => {
     })
 }
 
-exports.getCreateMusicAdmin = (req, res, next) => {
-    res.render('admin/create-music', {
-        pageTitle: 'Tạo bài hát'
-    })
+exports.getCreateMusicAdmin = async (req, res, next) => {
+    try {
+        const singers = await Singer.find({});
+        res.render('admin/create-music', {
+            pageTitle: 'Tạo bài hát',
+            singers: singers
+        })
+    } catch(err) {
+        console.log(err);
+    }
 }
 
 exports.postCreateMusicAdmin = async (req, res, next) => {
-    const {name, author, singer, kind, subtitle} = req.body;
+    const {name, author, singers, kind, subtitle} = req.body;
 
     try {
-        const singerDoc = await Singer.findOne({fullname: singer});
-        if(!singerDoc) {
-            const error = new Error('not found singer');
-            error.statusCode = 404;
-            throw error;
-        }
+        
         const music = new Music ({
             name,
             author,
-            singer,
+            singers,
             kind,
             subtitle,
-            idSinger: singerDoc._id,
+            // idSinger: singerDoc._id,
             background: '/background/' + req.files['background'][0].filename,
             path: '/music/' + req.files['music'][0].filename,
             views: 0,
         })
         const result = await music.save();
-        singerDoc.music.push(music._id);
-        const resultSinger = await singerDoc.save();
+        for(let i in singers) {
+            let singer = await Singer.findOne({_id: singers[i]});
+            singer.music.push(music._id);
+            const resultSinger = await singer.save();
+            if(i == singers.length - 1) {
+                res.redirect('/admin/tao-bai-hat');
+            }
+        }
+        // singerDoc.music.push(music._id);
 
-        res.redirect('/admin/tao-bai-hat');
     } catch(err) {
         console.log(err);
     }
@@ -70,6 +88,7 @@ exports.postCreateMusicAdmin = async (req, res, next) => {
 exports.getCreateSubtitleMusicsAdmin = async (req, res, next) => {
     try {
         const musics = await Music.find({poster: {$exists: false}}).sort({updatedAt: -1})
+        .populate('singers')
         res.render('admin/create-subtitle-musics', {
             pageTitle: 'Danh sách bài hát chưa duyệt',
             musics: musics,
@@ -78,34 +97,45 @@ exports.getCreateSubtitleMusicsAdmin = async (req, res, next) => {
         console.log(err);
     }   
 }
- 
 exports.getCreateSubtitleMusicAdmin = async (req, res, next) => {
-    const idMusic = req.params.idMusic;
-    const music = await Music.findOne({_id: idMusic});
-    // console.log(music.subtitlePoster[0].idPoster)
-    const usersId = [];
-    const users = [];
-    music.subtitlePoster.forEach(subtitle => {
-        usersId.push(subtitle.idPoster)
-    })
-    for(let i in usersId) {
-        User.findOne({_id: usersId[i]})
-        .then(user => {
-            users.push(user);
-            if(i == usersId.length - 1) {
-                res.render('admin/create-subtitle-music', {
-                    pageTitle: 'Danh sách bài hát chưa duyệt',
-                    music,
-                    users,
-                })
-            }
+   try {
+        const idMusic = req.params.idMusic;
+        const music = await Music.findOne({_id: idMusic});
+        // console.log(music.subtitlePoster[0].idPoster)
+        const usersId = [];
+        const users = [];
+        music.subtitlePoster.forEach(subtitle => {
+            usersId.push(subtitle.idPoster)
         })
-        .catch(err => {
-            const error = new Error('error server');
-            error.statusCode = 500;
-            throw error;
-        })
-    }
+        if(usersId.length == 0) {
+            res.render('admin/create-subtitle-music', {
+                pageTitle: 'Danh sách bài hát chưa duyệt',
+                music,
+                users,
+            })
+        }
+        for(let i in usersId) {
+            User.findOne({_id: usersId[i]})
+            .then(user => {
+                users.push(user);
+                if(i == usersId.length - 1) {
+                    res.render('admin/create-subtitle-music', {
+                        pageTitle: 'Danh sách bài hát chưa duyệt',
+                        music,
+                        users,
+                    })
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                const error = new Error('error server');
+                error.statusCode = 500;
+                throw error;
+            })
+        }
+   } catch(err) {
+       console.log(err);
+   }
     // const user = await User.findOne({_id: music.subtitlePoster.idPoster});
     // console.log(users)
    
@@ -165,6 +195,7 @@ exports.deleteCreateSubtitleMusicAdmin = async (req, res, next) => {
 exports.getListMusicAdmin = async (req, res, next) => {
     try {
         const musics = await Music.find({})
+        .populate('singers')
         res.render('admin/list-music', {
             pageTitle: 'Danh sách bài hát',
             musics: musics,
@@ -235,20 +266,23 @@ exports.deleteListMusicAdmin = (req, res, next) => {
             if(!music) {
                 return res.statusCode(404).json('Not found music');
             }
-            Singer.findOne({_id: music.idSinger})
-            .then(singer => {
-                singer.music.pull(id);
-                return singer.save();
-            })
-            .then(result => {
-                console.log('delete music in array of singer');
-            })
-            .catch(err => {
-                console.log(err);
-                const error = new Error('error server');
-                error.statusCode = 500;
-                throw error;
-            })
+            for(let i in music.singers) {
+                Singer.findOne({_id: music.singers[i]})
+                .then(singer => {
+                    // console.log(singer);
+                    singer.music.pull(id);
+                    return singer.save();
+                })
+                .then(result => {
+                    console.log('delete music in array of singer');
+                })
+                .catch(err => {
+                    console.log(err);
+                    const error = new Error('error server');
+                    error.statusCode = 500;
+                    throw error;
+                })
+            }
             let musicPath = path.join(__dirname, '../public', music.path);
             let backgroundPath = path.join(__dirname, '../public', music.background);
             solveUnlinkPath(musicPath);
