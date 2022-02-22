@@ -3,28 +3,20 @@
 const musicRouter = require('./MusicRouter');
 const authRouter = require('./AuthRouter');
 const userRouter = require('./UserRouter');
+const playlistRouter = require('./PlaylistRouter');
 const adminRouter = require('./AdminRouter');
+const singerRouter = require('./SingerRouter');
 const errorController = require('../controllers/ErrorController');
 const User = require('../models/UserModel');
 
 const routes = (app) => {
     app.use('/admin', adminRouter);
     app.use(authRouter);
+    app.use('/nghe-si', singerRouter);
     app.use('/user', userRouter);
-    app.use('/bai-hat', musicRouter);
+    app.use('/:baihat', musicRouter);
+    app.use('/playlist', playlistRouter);
     app.use('/trang-chu', async (req, res, next) => {
-        // try {
-        //     throw new Error('test');
-        //     const user = await User.findOne({_id: req.session.user})
-        //     res.render('home', {
-        //         errorMessage: false,
-        //         pageTitle: 'Trang chủ Nhaccuatui',
-        //         user: user
-        //     });
-        // } catch(err) {
-        //     return next(err);
-        //     console.log('err');
-        // }
         User.findOne({_id: req.session.user})
         .then(user => {
             res.render('home', {

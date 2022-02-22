@@ -1,77 +1,124 @@
 const Music = require('../models/MusicModel');
 const User = require('../models/UserModel');
+const Playlist = require('../models/PlaylistModel');
 const mongoose = require('mongoose');
 
-exports.getNewMusic = (req, res, next) => {
-    Music.find({})
-    .populate('singers')
-    .then(musics => {
-        // console.log(musics[0].singers)
-        res.render('music/newMusic', {
-            pageTitle: 'Bài hát mới',
-            errorMessage: false,
-            musics: musics,
-        });
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
-
-exports.getMusic = (req, res, next) => {
-    let musicId = req.params.musicId;
-    Music.findById(musicId)
-    .populate('singers')
-    .populate('poster')
-    .then(music => {
-        if(!music) {
-            console.log('Music not found');
-            res.redirect('/');
-        }
-        // console.log(music)
-        return Music.find({singers: music.singers[0]._id})
+exports.getNewMusic = async (req, res, next) => {
+    // console.log(req.originalUrl)
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({})
+        .populate('singers')
         .then(musics => {
-            let idPoster = '';
-            let username = '';
-            if(music.poster) {
-                idPoster = music.poster._id;
-                username = music.poster.username;
-            } 
-            // let idPoster = music.poster._id ? music.poster._id : '';
-            res.render('music/music', {
-                pageTitle: music.name,
+            // console.log(musics[0].singers)
+            res.render('music/newMusic', {
+                pageTitle: 'Bài hát mới',
                 errorMessage: false,
-                errorNotFound: req.flash('notFoundUser')[0],
-                music,
-                musics,
-                poster: {
-                    id: idPoster,
-                    username: username,
-                }
+                musics: musics,
             });
         })
         .catch(err => {
             console.log(err);
         })
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
+            errorMessage: false,
+        });
+    }
 }
 
-exports.getYoungMusic = (req, res, next) => {
-    Music.find({kind: 'young'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Trẻ mới',
+exports.getNewPlaylist = (req, res, next) => {
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'playlist') {
+        res.json('ok')
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
+    }
+}
+
+exports.getMusic = async (req, res, next) => {
+    const url = req.originalUrl.split('/')[1];
+    let musicId = req.params.musicId;
+    if(url === 'bai-hat') {
+        Music.findById(musicId)
+        .populate('singers')
+        .populate('poster')
+        .then(music => {
+            if(!music) {
+                console.log('Music not found');
+                res.redirect('/');
+            }
+            // console.log(music)
+            return Music.find({singers: music.singers[0]._id})
+            .then(musics => {
+                let idPoster = '';
+                let username = '';
+                if(music.poster) {
+                    idPoster = music.poster._id;
+                    username = music.poster.username;
+                } 
+                // let idPoster = music.poster._id ? music.poster._id : '';
+                res.render('music/music', {
+                    pageTitle: music.name,
+                    errorMessage: false,
+                    errorNotFound: req.flash('notFoundUser')[0],
+                    music,
+                    musics,
+                    poster: {
+                        id: idPoster,
+                        username: username,
+                    }
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
+            errorMessage: false,
+        });
+    }
+}
+
+exports.getYoungMusic = async (req, res, next) => {
+    console.log(req.params)
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'young'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Trẻ mới',
+                errorMessage: false,
+                musics,
+            });
+        })
     .catch(err => {
         console.log(err);
     })
+    } else if(url === 'playlist') {
+        const playlists = await Playlist.find({});
+        console.log(playlists)
+        res.json(playlists)
+        // res.render('music/newMusic', {
+        //     pageTitle: 'Playlist mới',
+        //     errorMessage: false,
+        // });
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
+            errorMessage: false,
+        });
+    }
 }
 
 exports.getRomanticMusic = (req, res, next) => {

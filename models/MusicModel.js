@@ -52,10 +52,12 @@ const musicSchema = new Schema({
         type: String,
         required:  true,
     },
-    playlist: {
-        type: Schema.Types.ObjectId,
-        ref: 'Playlist'
-    }
+    playlists: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Playlist'
+        }
+    ]
 }, {
     timestamps: true
 });

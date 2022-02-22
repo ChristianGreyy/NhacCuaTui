@@ -1,4 +1,5 @@
 exports.get500 = (error, req, res, next) => {
+    console.log(error)
     res.render('error/500', {
         pageTitle: 'Lỗi Server', 
         errorMessage: false,

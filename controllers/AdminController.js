@@ -1,15 +1,27 @@
 const Admin = require('../models/AdminModel');
 const Music = require('../models/MusicModel');
 const Singer = require('../models/SingerModel');
+const Playlist = require('../models/PlaylistModel')
 const User = require('../models/UserModel');
 const fs = require('fs');
 const path = require('path');
 
-exports.fetchSingerAdmin = async (req, res, next) => {
+exports.fetchSingersAdmin = async (req, res, next) => {
     try {
         const singers = await Singer.find({});
         res.json({
             singers,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.fetchMusicsAdmin = async (req, res, next) => {
+    try {
+        const musics = await Music.find({});
+        res.json({
+            musics,
         })
     } catch(err) {
         console.log(err);
@@ -361,6 +373,41 @@ exports.postEditMusicAdmin = async (req, res, next) => {
     } catch(err) {
         console.log(err);
     }
+}
+
+exports.getCreatePlaylistMusicAdmin = async (req, res, next) => {
+    try {
+        const musics = await Music.find({});
+
+        res.render('admin/create-playlist', {
+            musics,
+            pageTitle: 'Tạo playlist'
+        })
+    } catch(err) {
+        console.log(err);
+    }
+    
+}
+
+exports.postCreatePlaylistMusicAdmin = async (req, res, next) => {
+    try {
+        const {title, musics, kind} = req.body;
+        const playlist = new Playlist({
+            title, musics, kind,
+            background: '/backgroundPlaylist' + req.file.filename,
+        })
+
+        const result = playlist.save();
+
+        res.redirect('/admin/tao-playlist');
+        // res.render('admin/create-playlist', {
+        //     musics,
+        //     pageTitle: 'Tạo playlist'
+        // })
+    } catch(err) {
+        console.log(err);
+    }
+    
 }
 
 const solveUnlinkPath = (path) => {

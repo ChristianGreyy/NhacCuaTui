@@ -25,6 +25,7 @@ router.get('/nhac-thieu-nhi-moi', musicController.getChildrenMusic);
 router.get('/nhac-khong-loi-moi', musicController.getInstrumentalMusic);
 router.get('/nhac-beat-moi', musicController.getBeatMusic);
 router.get('/bai-hat-moi', musicController.getNewMusic);
+router.get('/playlist-moi', musicController.getNewPlaylist);
 router.post('/tao-loi-bai-hat/:musicId', musicController.createSubtitleMusic);
 router.get('/:musicId', musicController.getMusic);
 

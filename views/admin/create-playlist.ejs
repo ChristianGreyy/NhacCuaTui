@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Tạo playlist
+            </div>
+            <form action="tao-playlist" method="POST" class="app-admin-right__form" enctype="multipart/form-data">
+                <div class="app-admin-right__form-group">
+                    <label for="name" class="app-admin-right__form-group-label">
+                        Tên playlist
+                    </label>
+                    <input type="text" id="name" name="title" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="background" class="app-admin-right__form-group-label">
+                        Background
+                    </label>
+                    <input type="file" id="background" name="background" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group--singer">
+                    <div class="app-admin-right__form-group">
+                        <label for="music" class="app-admin-right__form-group-label">
+                            Tên bài hát
+                        </label>
+                        <select name="musics[0]" id="music" class="app-admin-right__form-group-input">
+                            <% musics.forEach(music => { %>
+                                <option value="<%= music._id %>"><%= music.name %></option>
+                            <% }) %>
+                        </select>
+                        <div class="app-admin-right__form-group-add">
+                            <i class="icofont-ui-add"></i>
+                        </div>
+                        <!-- <label for="singer" class="app-admin-right__form-group-label">
+                            Tên ca sĩ
+                        </label>
+                        <input type="text" id="singer" name="singer" autocomplete="off" class="app-admin-right__form-group-input"> -->
+                    </div>
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="kind" class="app-admin-right__form-group-label">
+                        Thể loại
+                    </label>
+                    <select name="kind" id="kind" class="app-admin-right__form-group-input">
+                        <option value="young">Nhạc trẻ</option>
+                        <option value="romantic">Nhạc trữ tình</option>
+                        <option value="vietnameseRemix">Nhạc remix Việt</option>
+                        <option value="vietnameseRap">Nhạc rap Việt</option>
+                        <option value="war">Nhạc tiền chiến</option>
+                        <option value="trinh">Nhạc Trịnh</option>
+                        <option value="vietnameseRock">Nhạc rock Việt</option>
+                        <option value="revolution">Nhạc cách mạng</option>
+                        <option value="pop">Nhạc pop</option>
+                        <option value="usUkRock">Nhạc rock</option>
+                        <option value="electronica">Nhạc Electronica/Dance</option>
+                        <option value="r&b">Nhạc R&B/Hip Hop/Rap</option>
+                        <option value="blues">Nhạc Blues/jazz</option>
+                        <option value="country">Nhạc Country</option>
+                        <option value="latin">Nhạc Latin</option>
+                        <option value="korean">Nhạc Hàn</option>
+                        <option value="chinese">Nhạc Hoa</option>
+                        <option value="japanese">Nhạc Nhật</option>
+                        <option value="thai">Nhạc Thái</option>
+                        <option value="children">Nhạc thiếu nhi</option>
+                        <option value="instrumental">Nhạc không lời</option>
+                        <option value="beat">Nhạc beat</option>
+                    </select>
+                </div>
+                <div class="app-admin-right-button">
+                    Tạo bài hát
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>

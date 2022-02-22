@@ -214,28 +214,53 @@ const deleteSubtitle = (() => {
 
 const solveAddNameSinger = (() => {
     document.querySelector('.app-admin-right__form-group-add').onclick = (e) => {
-        fetch('/admin/fetch-singer', {
+        let subUrl = "";
+        if(window.location.href.split('/')[window.location.href.split('/').length - 1] === 'tao-playlist') {
+            subUrl = 'fetch-musics';
+        } else {
+            subUrl = 'fetch-singers';
+        }
+        // console.log();
+        // if(window.location.href === '')
+        fetch(`/admin/${subUrl}`, {
             method: 'GET',
         })
         .then(res => res.json())
-        .then(singers => {
+        .then(data => {
             const div = document.createElement("div");
             div.className = 'app-admin-right__form-group';
-            const num = document.querySelectorAll('.app-admin-right__form-group').length - 6;
+            const num = document.querySelectorAll('.app-admin-right__form-group').length - 3;
             let optionString = '';
-            singers.singers.forEach(singer => {
-                optionString += `
-                    <option value="${singer._id}">${singer.fullname}</option>
-                `
-            })
-            const html = `
-                <label for="singers" class="app-admin-right__form-group-label">
-                    Tên ca sĩ
+            let html = '';
+            if(window.location.href.split('/')[window.location.href.split('/').length - 1] === 'tao-playlist') {
+                data.musics.forEach(music => {
+                    optionString += `
+                        <option value="${music._id}">${music.name}</option>
+                    `
+                })
+                html = `
+                <label for="musics" class="app-admin-right__form-group-label">
+                    Tên bài hát
                 </label>
-                <select name="singers[${num}]" id="singers" class="app-admin-right__form-group-input">
+                <select name="musics[${num}]" id="musics" class="app-admin-right__form-group-input">
                     ${optionString}
                 </select>
+            `
+            } else {
+                data.singers.forEach(singer => {
+                    optionString += `
+                        <option value="${singer._id}">${singer.fullname}</option>
+                    `
+                })
+                html = `
+                    <label for="singers" class="app-admin-right__form-group-label">
+                        Tên ca sĩ
+                    </label>
+                    <select name="singers[${num}]" id="singers" class="app-admin-right__form-group-input">
+                        ${optionString}
+                    </select>
                 `
+            }
             
     
             div.innerHTML = html;
