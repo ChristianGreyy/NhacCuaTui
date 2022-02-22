@@ -28,7 +28,8 @@ exports.getMusic = (req, res, next) => {
             console.log('Music not found');
             res.redirect('/');
         }
-        return Music.find({singer: music.singer})
+        // console.log(music)
+        return Music.find({singers: music.singers[0]._id})
         .then(musics => {
             let idPoster = '';
             let username = '';
