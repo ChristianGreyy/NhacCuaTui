@@ -32,7 +32,7 @@ router.get('/tao-playlist', authAdmin, adminController.getCreatePlaylistMusicAdm
 router.post('/tao-playlist', authAdmin, multer({storage: storagePlaylist}).single('background'), adminController.postCreatePlaylistMusicAdmin);
 
 router.get('/tao-ca-si', authAdmin, adminController.getCreateSingerAdmin);
-router.post('/tao-ca-si', authAdmin, multer({storage: storageSinger}).single('avatar'), adminController.postCreateSingerAdmin);
+router.post('/tao-ca-si',  multer({storage: storageSinger}).fields([{name: 'avatar'}, {name: 'background'}]), adminController.postCreateSingerAdmin);
 router.get('/danh-sach-ca-si', authAdmin, adminController.getListSingerAdmin);
 
 router.get('/danh-sach-nguoi-dung', authAdmin, adminController.getListUserAdmin);

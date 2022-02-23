@@ -84,7 +84,7 @@ exports.postCreateMusicAdmin = async (req, res, next) => {
         const result = await music.save();
         for(let i in singers) {
             let singer = await Singer.findOne({_id: singers[i]});
-            singer.music.push(music._id);
+            singer.musics.push(music._id);
             const resultSinger = await singer.save();
             if(i == singers.length - 1) {
                 res.redirect('/admin/tao-bai-hat');
@@ -227,7 +227,8 @@ exports.postCreateSingerAdmin = async (req, res, next) => {
     const {fullname, day, month, year, gender, introduce} = req.body;
     const singer = new Singer({
         fullname, day, month, year, gender, introduce,
-        avatar: req.file.filename,
+        avatar: '/avatar/' + req.files['avatar'][0].filename,
+        background: '/avatar/' + req.files['background'][0].filename,
     })
     try {
         const result = await singer.save();
@@ -394,12 +395,19 @@ exports.postCreatePlaylistMusicAdmin = async (req, res, next) => {
         const {title, musics, kind} = req.body;
         const playlist = new Playlist({
             title, musics, kind,
-            background: '/backgroundPlaylist' + req.file.filename,
+            background: '/backgroundPlaylist/' + req.file.filename,
         })
 
-        const result = playlist.save();
+        const result = await playlist.save();
+        for(let i in musics) {
+            const music = await Music.findOne({_id: musics[i]});
+            music.playlists.push(playlist._id);
+            const answer = await music.save();
 
-        res.redirect('/admin/tao-playlist');
+            if(i == musics.length - 1) {
+                res.redirect('/admin/tao-playlist');
+            }
+        }
         // res.render('admin/create-playlist', {
         //     musics,
         //     pageTitle: 'Tạo playlist'

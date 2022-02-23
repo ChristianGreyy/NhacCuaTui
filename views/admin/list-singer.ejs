@@ -44,12 +44,12 @@
                             </a>
                             <%= singer._id %></td>
                         <td class="app-admin-right-table__content">
-                            <img style="width: 60px; height: 60px;" src="/avatar/<%= singer.avatar %>" alt="">
+                            <img style="width: 60px; height: 60px;" src="<%= singer.avatar %>" alt="">
                         </td>
                         <td class="app-admin-right-table__content"><%= singer.fullname %></td>
                         <td class="app-admin-right-table__content"><%= singer.day + '/' + singer.month + '/' + singer.year %></td>
                         <td class="app-admin-right-table__content"><%= singer.gender === 'boy' ? 'Nam' : 'Nữ' %></td>
-                        <td class="app-admin-right-table__content"><%= singer.music.length %></td>
+                        <td class="app-admin-right-table__content"><%= singer.musics.length %></td>
                     </tr>
                 <% }) %>
             </table>

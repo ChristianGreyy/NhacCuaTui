@@ -43,16 +43,30 @@ exports.storageSinger = multer.diskStorage({
     cb(null, pathAvatar)
   },
   filename: function (req, file, cb) {
-    const { fullname } = req.body;
-    let nameSinger = 'Singer-'.concat(fullname);
-    if(file.mimetype === 'image/png') {
-      nameSinger += '.png';
-    } else if(file.mimetype === 'image/jpeg') {
-      nameSinger += '.jpg';
-    } else if(file.mimetype === 'image/jpg') {
-      nameSinger += '.jpg';
-    }
-    cb(null, nameSinger);
+    if(file.fieldname === 'avatar') {
+      const { fullname } = req.body;
+      let nameSinger = 'Singer-'.concat(fullname);
+      if(file.mimetype === 'image/png') {
+        nameSinger += '.png';
+      } else if(file.mimetype === 'image/jpeg') {
+        nameSinger += '.jpg';
+      } else if(file.mimetype === 'image/jpg') {
+        nameSinger += '.jpg';
+      }
+      cb(null, nameSinger);
+    } else if(file.fieldname === 'background'){
+      const { fullname } = req.body;
+      let nameSinger = 'Singer-background-'.concat(fullname);
+      if(file.mimetype === 'image/png') {
+        nameSinger += '.png';
+      } else if(file.mimetype === 'image/jpeg') {
+        nameSinger += '.jpg';
+      } else if(file.mimetype === 'image/jpg') {
+        nameSinger += '.jpg';
+      }
+      cb(null, nameSinger);
+    } 
+   
   }
 })
 

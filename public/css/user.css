@@ -3,6 +3,7 @@
   width: 100%;
   height: max-content;
   margin-top: 56px;
+  overflow: hidden;
 }
 .personal-user__content {
   width: 100%;
@@ -34,6 +35,10 @@
 }
 .personal-user__content-left-des {
   margin-left: 18px;
+}
+.personal-user__content-left-des--singer {
+  margin-left: 0;
+  margin-top: 6px;
 }
 .personal-user__content-left-des-username {
 }
@@ -71,6 +76,10 @@
   transform: translate(-50%, -50%);
   position: absolute;
 }
+.personal-user__content-right-img--singer {
+  width: 100%;
+  height: 100%;
+}
 .personal-user__content-right.col-8 {
 }
 
@@ -80,6 +89,9 @@
 
 .personal-user__content-right__theme {
   list-style: none;
+}
+.personal-user__content-right__theme--singer {
+  display: none;
 }
 .personal-user__content-right__theme-item {
   position: absolute;
@@ -527,4 +539,120 @@
   color: white;
   margin-top: 6px;
   cursor: pointer;
+}
+
+/* Singer */
+.personal-user__component--singer .col-8 {
+  width: 74%;
+}
+.personal-user__component--singer .row {
+  flex-wrap: nowrap;
+}
+.personal-user__component--singer-list {
+  margin-top: 12px;
+}
+.personal-user__component--singer-list-title {
+  display: flex;
+  color: var(--main-color);
+  font-size: 24px;
+}
+.personal-user__component--singer-list-title-text {
+  text-transform: uppercase;
+}
+.personal-user__component--singer-list-title-icon {
+  margin-left: 4px;
+}
+
+.personal-user__component--singer__content {
+  margin-top: 4px;
+}
+
+.personal-user__component--singer__introduce {
+  font-size: 14px;
+}
+
+.personal-user__component--singer__album {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.personal-user__component--singer__album-items {
+  width: 20%;
+  margin: 12px 0;
+}
+
+.personal-user__component--singer__album-items-image {
+  position: relative;
+  width: 152px;
+  height: 152px;
+  display: block;
+}
+
+.personal-user__component--singer__album-items-image:hover
+  .personal-user__component--singer__album-items-image-icon {
+  opacity: 1;
+}
+
+.personal-user__component--singer__album-items-image:hover
+  .personal-user__component--singer__album-items-image-alpha {
+  opacity: 1;
+}
+
+.personal-user__component--singer__album-items-image-alpha {
+  background-color: rgba(0, 0, 0, 0.24);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.4s opacity linear;
+}
+
+.personal-user__component--singer__album-items-image-icon {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.personal-user__component--singer__album-items-background__link {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.personal-user__component--singer__album-items-background {
+  width: 100%;
+  height: 100%;
+}
+.personal-user__component--singer__album-items-name {
+  margin-top: 4px;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 15px;
+}
+
+.personal-user__component--singer__album-items-name:hover {
+  color: #2daaed !important;
+  cursor: pointer;
+}
+
+.personal-user__component--singer__album-items-singer {
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-size: 12px;
+  text-decoration: none;
+}
+.personal-user__component--singer__content.personal-user__component--singer__album {
 }

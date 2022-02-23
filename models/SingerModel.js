@@ -12,6 +12,11 @@ const singerSchema = new Schema({
         required: true,
     }
     ,
+    background: {
+        type: String,
+        required: true,
+    }
+    ,
     day: {
         type: Number,
     },
@@ -31,7 +36,7 @@ const singerSchema = new Schema({
         required: true,
     }
     ,
-    music: [
+    musics: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Music',
@@ -39,6 +44,8 @@ const singerSchema = new Schema({
         }
     ]
     ,
+}, {
+    timestamps: true
 })
 
 const singerModel = mongoose.model('Singer', singerSchema);

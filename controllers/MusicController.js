@@ -28,10 +28,49 @@ exports.getNewMusic = async (req, res, next) => {
     }
 }
 
-exports.getNewPlaylist = (req, res, next) => {
+exports.getNewPlaylist = async (req, res, next) => {
     const url = req.originalUrl.split('/')[1];
     if(url === 'playlist') {
-        res.json('ok')
+        try {
+            // let music;
+            const playlists = await Playlist.find({})
+            .populate('musics')
+            const names = [];
+            const ids = [];
+            for(let i = 0; i<playlists.length; i++) {
+                let name = '';
+                let id = '';
+                for(let j = 0; j<playlists[i].musics.length; j++) {
+                    const musicsDoc = await playlists[i].musics[j].populate('singers');
+                    musicsDoc.singers.forEach(singer => {
+                        if(name.indexOf(singer.fullname) == -1) {
+                            name += singer.fullname + ',';
+                            id += singer._id + ',';
+                        }
+                    })
+                }
+                names.push(name)
+                ids.push(id)
+            }
+
+            // <% names.[i].split(',').forEach(singer => { %>
+            //     <a href="/nghe-si/<%= ids[i] %>" class="music-content-left__newMusic-list--playlist-items-singer">
+            //         <%= singer %>
+            //     </a>
+            // <% }) %>
+
+            // const music = playlists[0].musics[0].populate('singers');
+            // console.log(playlists)
+            res.render('playlist/newPlaylist', {
+                pageTitle: 'Playlist mới',
+                errorMessage: false,
+                playlists: playlists,
+                names: names,
+                ids,
+            })
+        } catch(err) {
+            console.log(err);
+        }
     } else {
         res.render('error/404', {
             pageTitle: 'Không tìm thấy trang', 
@@ -90,7 +129,6 @@ exports.getMusic = async (req, res, next) => {
 }
 
 exports.getYoungMusic = async (req, res, next) => {
-    console.log(req.params)
     const url = req.originalUrl.split('/')[1];
     if(url === 'bai-hat') {
         Music.find({kind: 'young'})
@@ -106,13 +144,15 @@ exports.getYoungMusic = async (req, res, next) => {
         console.log(err);
     })
     } else if(url === 'playlist') {
-        const playlists = await Playlist.find({});
-        console.log(playlists)
-        res.json(playlists)
-        // res.render('music/newMusic', {
-        //     pageTitle: 'Playlist mới',
-        //     errorMessage: false,
-        // });
+        Playlist.find({kind: 'young'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Trẻ mới',
+                errorMessage: false,
+                musics,
+            });
+        })
     } else {
         res.render('error/404', {
             pageTitle: 'Không tìm thấy trang', 
@@ -122,305 +162,783 @@ exports.getYoungMusic = async (req, res, next) => {
 }
 
 exports.getRomanticMusic = (req, res, next) => {
-    Music.find({kind: 'romantic'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Trữ Tình mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'romantic'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Trữ Tình mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'yoromanticung'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Trữ Tình mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 
 exports.getRemixMusic = (req, res, next) => {
-    Music.find({kind: 'vietnameseRemix'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Remix Việt mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'vietnameseRemix'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Remix Việt mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }else if(url === 'playlist') {
+        Playlist.find({kind: 'vietnameseRemix'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Remix Việt mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 
 exports.getVietnameseRapMusic = (req, res, next) => {
-    Music.find({kind: 'vietnameseRap'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Rap Việt mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'vietnameseRap'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Rap Việt mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }else if(url === 'playlist') {
+        Playlist.find({kind: 'vietnameseRap'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Rap Việt mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 
 exports.getWarMusic = (req, res, next) => {
-    Music.find({kind: 'war'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Tiền Chiến mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'war'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Tiền Chiến mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }else if(url === 'playlist') {
+        Playlist.find({kind: 'war'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Tiền Chiến mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 
 exports.getvietnameseRockMusic = (req, res, next) => {
-    Music.find({kind: 'vietnameseRock'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Rock Việt mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'vietnameseRock'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Rock Việt mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'vietnameseRock'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Rock Việt mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 
 exports.getTrinhMusic = (req, res, next) => {
-    Music.find({kind: 'getTrinhMusic'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Trịnh mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'getTrinhMusic'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Trịnh mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'getTrinhMusic'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Trịnh mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 
 exports.getRevolutionMusic = (req, res, next) => {
-    Music.find({kind: 'revolution'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Cách Mạng mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'revolution'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Cách Mạng mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'revolution'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Cách Mạng mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 
 exports.getPopMusic = (req, res, next) => {
-    Music.find({kind: 'pop'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Pop mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'pop'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Pop mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'pop'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Pop mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
+    }
+} 
 exports.getUsUkRockMusic = (req, res, next) => {
-    Music.find({kind: 'usUkRock'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Rock mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'usUkRock'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Rock mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'usUkRock'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Rock mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getElectronicaMusic = (req, res, next) => {
-    Music.find({kind: 'electronica'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Electronica/Dance mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'electronica'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Electronica/Dance mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'electronica'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Electronica/Dance mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getR_bMusic = (req, res, next) => {
-    Music.find({kind: 'r&b'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc R&B/Hip Hop/Rap mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'r&b'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc R&B/Hip Hop/Rap mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'r&b'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc R&B/Hip Hop/Rap mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getBluesMusic = (req, res, next) => {
-    Music.find({kind: 'blues'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Blues/Jazz mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'blues'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Blues/Jazz mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'blues'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Blues/Jazz mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getCountryMusic = (req, res, next) => {
-    Music.find({kind: 'country'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Country mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'country'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Country mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'country'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Country mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getLatinMusic = (req, res, next) => {
-    Music.find({kind: 'latin'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Latin mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'latin'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Latin mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'latin'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Latin mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getKoreanMusic = (req, res, next) => {
-    Music.find({kind: 'korean'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Hàn mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'korean'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Hàn mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'korean'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Hàn mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getChineseMusic = (req, res, next) => {
-    Music.find({kind: 'chinese'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Hoa mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'chinese'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Hoa mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'chinese'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Hoa mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getJapaneseMusic = (req, res, next) => {
-    Music.find({kind: 'japanese'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Nhật mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'japanese'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Nhật mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'japanese'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Nhật mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getThaiMusic = (req, res, next) => {
-    Music.find({kind: 'thai'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Thái mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'thai'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Thái mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'thai'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Thái mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getChildrenMusic = (req, res, next) => {
-    Music.find({kind: 'children'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Thiếu Nhi mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'children'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Thiếu Nhi mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'children'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Thiếu Nhi mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getInstrumentalMusic = (req, res, next) => {
-    Music.find({kind: 'instrumental'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Không Lời mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'instrumental'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Không Lời mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'instrumental'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Không Lời mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
 }
 exports.getBeatMusic = (req, res, next) => {
-    Music.find({kind: 'beat'})
-    .populate('singers')
-    .then(musics => {
-        res.render('music/generalMusic.ejs', {
-            pageTitle: 'Nhạc Beat mới',
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'beat'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Beat mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
-            musics,
         });
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    }
+}
+
+exports.getIndieMusic = (req, res, next) => {
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'bai-hat') {
+        Music.find({kind: 'indie'})
+        .populate('singers')
+        .then(musics => {
+            res.render('music/generalMusic.ejs', {
+                pageTitle: 'Nhạc Indie mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else if(url === 'playlist') {
+        Playlist.find({kind: 'indie'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Indie mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
+            errorMessage: false,
+        });
+    }
+}
+
+exports.getFilmMusic = (req, res, next) => {
+    const url = req.originalUrl.split('/')[1];
+    if(url === 'playlist') {
+        Playlist.find({kind: 'film'})
+        .populate('singers')
+        .then(musics => {
+            res.render('playlist/generalPlaylist.ejs', {
+                pageTitle: 'Playlist Nhạc Phim mới',
+                errorMessage: false,
+                musics,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
+            errorMessage: false,
+        });
+    }
 }
 
 exports.createSubtitleMusic = async (req, res, next) => {

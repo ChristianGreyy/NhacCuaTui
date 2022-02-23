@@ -1,9 +1,9 @@
 <div class="personal-user__content">
-    <div class="container">
+    <div class="container-fluid">
         <div style="height: 100%; width: 100%;" class="row">
             <div class="personal-user__content-left personal-user__content-left--singer col-4">
-                <img src="/avatar/<%= singer.avatar%>" alt="" class="personal-user__content-left-avatar">
-                <div class="personal-user__content-left-des">
+                <img src="<%= singer.avatar%>" alt="" class="personal-user__content-left-avatar">
+                <div class="personal-user__content-left-des personal-user__content-left-des--singer">
                     <h2 class="personal-user__content-left-des-username--singer">
                         <%= singer.fullname %>
                     </h2>
@@ -27,9 +27,9 @@
                 </div>
             </div>
             <div class="personal-user__content-right col-8">
-                <img src="/img/img-user/personal-user-1.png" alt=""
-                    class="personal-user__content-right-img">
-                <ul class="personal-user__content-right__theme">
+                <img src="<%= singer.background %>" alt=""
+                    class="personal-user__content-right-img personal-user__content-right-img--singer">
+                <ul class="personal-user__content-right__theme personal-user__content-right__theme--singer">
                     <li
                         class="personal-user__content-right__theme-item personal-user__content-right__theme-item--vietnam">
                         <a href="" class="personal-user__content-right__theme-item-link">
@@ -82,28 +82,33 @@
 <nav class="personal-user-navigation">
     <ul class="personal-user-navigation-list">
         <li class="personal-user-navigation-items">
-            <a href="/singer/<%= singer._id %>" class=" <%= pageTitle.split('|')[1] === ' Home' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link personal-user-navigation-items__link--icon">
+            <a href="/nghe-si/<%= singer._id %>" class=" <%= pageTitle.search('Ca sĩ') === 0 ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link personal-user-navigation-items__link--icon">
                 <i class="fas fa-home"></i>     
             </a>
         </li>
         <li class="personal-user-navigation-items">
-            <a href="/singer/<%= singer._id %>/playlist" class=" <%= pageTitle.split('|')[1] === ' Playlist' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
-                Playlist  
+            <a href="/nghe-si/<%= singer._id %>/bai-hat" class=" <%= pageTitle.search('Bài hát') === 0 ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Bài hát
             </a>
         </li>
         <li class="personal-user-navigation-items">
-            <a href="/singer/<%= singer._id %>/video" class=" <%= pageTitle.split('|')[1] === ' Video' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
-                Video   
+            <a href="/nghe-si/<%= singer._id %>/playlist" class=" <%= pageTitle.search('Playlist') === 0 ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Playlist
             </a>
         </li>
         <li class="personal-user-navigation-items">
-            <a href="/singer/<%= singer._id %>/bai-hat-tui-upload" class=" <%= pageTitle.split('|')[1] === ' Tui Upload' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
-                Tui Upload
+            <a href="/nghe-si/<%= singer._id %>/video" class=" <%= pageTitle.search('Video') === 0 ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Video
             </a>
         </li>
         <li class="personal-user-navigation-items">
-            <a href="/singer/<%= singer._id %>/ban-be" class=" <%= pageTitle.split('|')[1] === ' Bạn Bè' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
-                Bạn Bè
+            <a href="/nghe-si/<%= singer._id %>/karaoke" class=" <%= pageTitle.search('Karaoke') === 0 ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Karaoke
+            </a>
+        </li>
+        <li class="personal-user-navigation-items">
+            <a href="/nghe-si/<%= singer._id %>/beat" class=" <%= pageTitle.search('Beat') === 0 ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
+                Beat
             </a>
         </li>
     </ul>
