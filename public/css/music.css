@@ -857,9 +857,20 @@
   font-size: 15px;
   display: block;
   text-decoration: none;
+  max-height: 45px;
+  width: 100%;
+  overflow: hidden;
 }
-.music-content-left__newMusic-list--playlist-items-singer {
+.music-content-left__newMusic-list--playlist-items-singers {
   color: rgba(0, 0, 0, 0.5) !important;
   font-size: 12px;
+  height: 48px;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.music-content-left__newMusic-list--playlist-items-singer {
+  color: rgba(0, 0, 0, 0.5) !important;
   text-decoration: none;
 }

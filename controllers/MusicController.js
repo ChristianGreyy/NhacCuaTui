@@ -53,12 +53,6 @@ exports.getNewPlaylist = async (req, res, next) => {
                 ids.push(id)
             }
 
-            // <% names.[i].split(',').forEach(singer => { %>
-            //     <a href="/nghe-si/<%= ids[i] %>" class="music-content-left__newMusic-list--playlist-items-singer">
-            //         <%= singer %>
-            //     </a>
-            // <% }) %>
-
             // const music = playlists[0].musics[0].populate('singers');
             // console.log(playlists)
             res.render('playlist/newPlaylist', {
@@ -144,15 +138,39 @@ exports.getYoungMusic = async (req, res, next) => {
         console.log(err);
     })
     } else if(url === 'playlist') {
-        Playlist.find({kind: 'young'})
-        .populate('singers')
-        .then(musics => {
+        try {
+            // let music;
+            const playlists = await Playlist.find({kind: 'young'})
+            .populate('musics')
+            const names = [];
+            const ids = [];
+            for(let i = 0; i<playlists.length; i++) {
+                let name = '';
+                let id = '';
+                for(let j = 0; j<playlists[i].musics.length; j++) {
+                    const musicsDoc = await playlists[i].musics[j].populate('singers');
+                    musicsDoc.singers.forEach(singer => {
+                        if(name.indexOf(singer.fullname) == -1) {
+                            name += singer.fullname + ',';
+                            id += singer._id + ',';
+                        }
+                    })
+                }
+                names.push(name)
+                ids.push(id)
+            }
+        
             res.render('playlist/generalPlaylist.ejs', {
                 pageTitle: 'Playlist Nhạc Trẻ mới',
                 errorMessage: false,
-                musics,
-            });
-        })
+                playlists: playlists,
+                names: names,
+                ids,
+            })
+        } catch(err) {
+            console.log(err);
+        }
+       
     } else {
         res.render('error/404', {
             pageTitle: 'Không tìm thấy trang', 

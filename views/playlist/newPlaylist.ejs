@@ -26,7 +26,7 @@
                                                     <img src="<%= playlists[i].background %>" alt="" class="music-content-left__newMusic-list--playlist-items-image__img">
                                                 </a>
                                                 <a href="/" class="music-content-left__newMusic-list--playlist-items-title">
-                                                    <%= playlists[i].title %>
+                                                    <%= playlists[i].title %> 
                                                 </a>
                                                 <div class="music-content-left__newMusic-list--playlist-items-singers">
                                                     <% for(let j in names[i].split(',')) { if( j != names[i].split(',').length -2 ) { %>
@@ -43,6 +43,7 @@
                                                 </div>
                                             </li>
                                         <% } %>
+                                        
                                     </ul>
                                 </div>
                             </div>

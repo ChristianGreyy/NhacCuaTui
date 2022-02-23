@@ -1,5 +1,6 @@
 let isAutomatically = true;
 
+
 const solveAutomatically = () => {
     let autoElement = document.querySelectorAll('.music-content-left__music-dashboard-controls__right-auto');
     if(autoElement) {
@@ -67,61 +68,71 @@ const music = function() {
         ,
         event() {
             // Turn On Music
-            this.element.playButton.onclick = (e) => {
-                if(!this.element.playButton.classList.contains('music-content-left__music-dashboard-controls__left-play--active')) {
-                    this.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
-                    this.element.musicAudio.play();
-                } else {
-                    this.element.playButton.classList.remove('music-content-left__music-dashboard-controls__left-play--active');
-                    this.element.musicAudio.pause();
+            if(this.element.playButton) {
+                this.element.playButton.onclick = (e) => {
+                    if(!this.element.playButton.classList.contains('music-content-left__music-dashboard-controls__left-play--active')) {
+                        this.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
+                        this.element.musicAudio.play();
+                    } else {
+                        this.element.playButton.classList.remove('music-content-left__music-dashboard-controls__left-play--active');
+                        this.element.musicAudio.pause();
+                    }
                 }
             }
             // Change music
-            music.element.range.onchange = (e) => {
-                let valueRange = e.target.value;
-                let durationTime = music.element.musicAudio.duration;
-                let currentTimeChange = music.helper.solveRangeChane(valueRange, durationTime);
-                music.element.musicAudio.currentTime = currentTimeChange;
+            if(music.element.range) {
+                music.element.range.onchange = (e) => {
+                    let valueRange = e.target.value;
+                    let durationTime = music.element.musicAudio.duration;
+                    let currentTimeChange = music.helper.solveRangeChane(valueRange, durationTime);
+                    music.element.musicAudio.currentTime = currentTimeChange;
+                }
             }
             // Turn On volume music
-            music.element.rangeVolume.onclick = (e) => {
-                e.stopPropagation();
-                let currentRangeVolume = music.element.rangeVolume.value;
-                let valueVolume = music.element.musicAudio.volume;
-                if(+currentRangeVolume === 0) {
-                    music.element.volumeMusic.classList.add('music-content-left__music-dashboard-controls__right-volume--active');
-                } else {
-                    music.element.volumeMusic.classList.remove('music-content-left__music-dashboard-controls__right-volume--active');
+            if(music.element.rangeVolume) {
+                music.element.rangeVolume.onclick = (e) => {
+                    e.stopPropagation();
+                    let currentRangeVolume = music.element.rangeVolume.value;
+                    let valueVolume = music.element.musicAudio.volume;
+                    if(+currentRangeVolume === 0) {
+                        music.element.volumeMusic.classList.add('music-content-left__music-dashboard-controls__right-volume--active');
+                    } else {
+                        music.element.volumeMusic.classList.remove('music-content-left__music-dashboard-controls__right-volume--active');
+                    }
+                    music.element.musicAudio.volume = (currentRangeVolume / 10);                
                 }
-                music.element.musicAudio.volume = (currentRangeVolume / 10);                
             }
             // Turn off volume music
-            music.element.volumeMusic.onclick = (e) => {
-                if(!music.element.volumeMusic.classList.contains('music-content-left__music-dashboard-controls__right-volume--active')) {
-                    music.element.volumeMusic.classList.add('music-content-left__music-dashboard-controls__right-volume--active');
-                    music.element.rangeVolume.value = 0;
-                    music.element.musicAudio.volume = 0;
-                } else {
-                    music.element.volumeMusic.classList.remove('music-content-left__music-dashboard-controls__right-volume--active');
-                    music.element.rangeVolume.value = 10;
-                    music.element.musicAudio.volume = 1;
+            if(music.element.volumeMusic) {
+                music.element.volumeMusic.onclick = (e) => {
+                    if(!music.element.volumeMusic.classList.contains('music-content-left__music-dashboard-controls__right-volume--active')) {
+                        music.element.volumeMusic.classList.add('music-content-left__music-dashboard-controls__right-volume--active');
+                        music.element.rangeVolume.value = 0;
+                        music.element.musicAudio.volume = 0;
+                    } else {
+                        music.element.volumeMusic.classList.remove('music-content-left__music-dashboard-controls__right-volume--active');
+                        music.element.rangeVolume.value = 10;
+                        music.element.musicAudio.volume = 1;
+                    }
+    
                 }
-
             }
         },
         run() {
             // Event
             this.event();
              // The music run
-            this.element.musicAudio.ontimeupdate = () => {
-                // component
-                let durationTime = this.element.musicAudio.duration;
-                let currentTime = this.element.musicAudio.currentTime;
-                
-                this.helper.validTime(currentTime, durationTime);
-                this.helper.solveRangeRunningAutomatically(currentTime, durationTime);
-                // this.helper.solveRangeChane(durationTime)
-                // console.log(this.helper.solveRangeChane(durationTime));
+            if(this.element.musicAudio) {
+                this.element.musicAudio.ontimeupdate = () => {
+                    // component
+                    let durationTime = this.element.musicAudio.duration;
+                    let currentTime = this.element.musicAudio.currentTime;
+                    
+                    this.helper.validTime(currentTime, durationTime);
+                    this.helper.solveRangeRunningAutomatically(currentTime, durationTime);
+                    // this.helper.solveRangeChane(durationTime)
+                    // console.log(this.helper.solveRangeChane(durationTime));
+                }
             }
         }
     }
@@ -155,3 +166,24 @@ if(document.querySelector('.music-content-left__music-subtitle__left-create-subt
         document.querySelector('.music-content-left__music-subtitle__left-create-subtitle-child').style.display = 'none';
     }
 }
+
+const setValidationTheLengthOfTitlePlaylist = (() => {
+    document.querySelectorAll('.music-content-left__newMusic-list--playlist-items-title').forEach(item => {
+        if(item.innerText.length > 32) {
+            console.log(item.innerText.length)
+            let value = item.innerText;
+            let validation = value.substr(0, 32);
+            validation += '...';
+            item.innerText = validation;
+        }
+    })
+    document.querySelectorAll('.music-content-left__newMusic-list--playlist-items-singers').forEach(item => {
+        if(item.innerText.length > 32) {
+            console.log(item.innerText.length)
+            let value = item.innerText;
+            let validation = value.substr(0, 42);
+            validation += '...';
+            item.innerText = validation;
+        }
+    })
+})();
