@@ -16,7 +16,7 @@
                                     <ul class="music-content-left__newMusic-list--playlist">
                                         <% for(let i in playlists) { %>
                                             <li class="music-content-left__newMusic-list--playlist-items">
-                                                <a href="/" class="music-content-left__newMusic-list--playlist-items-image">
+                                                <a href="/playlist/<%= playlists[i]._id %>" class="music-content-left__newMusic-list--playlist-items-image">
                                                     <div class="music-content-left__newMusic-list--playlist-items-image__alpha">
 
                                                     </div>
@@ -25,7 +25,7 @@
                                                     </div>
                                                     <img src="<%= playlists[i].background %>" alt="" class="music-content-left__newMusic-list--playlist-items-image__img">
                                                 </a>
-                                                <a href="/" class="music-content-left__newMusic-list--playlist-items-title">
+                                                <a href="/playlist/<%= playlists[i]._id %>" class="music-content-left__newMusic-list--playlist-items-title">
                                                     <%= playlists[i].title %> 
                                                 </a>
                                                 <div class="music-content-left__newMusic-list--playlist-items-singers">

@@ -9,11 +9,10 @@ const solveAutomatically = () => {
                 isAutomatically = !isAutomatically;
                 autoElement.forEach(itemChild => {
                     if(isAutomatically) {
-                        itemChild.querySelector('.music-content-left__music-dashboard-controls__right-auto-yes').style.display = 'flex';
-                        itemChild.querySelector('.music-content-left__music-dashboard-controls__right-auto-no').style.display = 'none';
+                        itemChild.classList.remove('music-content-left__music-dashboard-controls__right-auto--active')
+
                     } else {
-                        itemChild.querySelector('.music-content-left__music-dashboard-controls__right-auto-yes').style.display = 'none';
-                        itemChild.querySelector('.music-content-left__music-dashboard-controls__right-auto-no').style.display = 'flex';
+                        itemChild.classList.add('music-content-left__music-dashboard-controls__right-auto--active')
                     }
                 })
             } 
@@ -27,12 +26,14 @@ const music = function() {
     return {
         element: {
             musicAudio: document.querySelector('.music-content-left__music-audio'),
+            sourceAudio: document.querySelector('.music-content-left__music-audio-source'),
             playButton: document.querySelector('.music-content-left__music-dashboard-controls__left-play'),
             range: document.querySelector('.music-content-left__music-dashboard-range'),
             currentTime: document.querySelector('.music-content-left__music-dashboard-controls__left-time-current'),
             durationTime: document.querySelector('.music-content-left__music-dashboard-controls__left-time-long'),
             volumeMusic: document.querySelector('.music-content-left__music-dashboard-controls__right-volume'),
             rangeVolume: document.querySelector('.music-content-left__music-dashboard-controls__right-volume-child-range'),
+            playButtonPlaylist: document.querySelectorAll('.music-content-left__music-playlist__list-items-right-play'),
         },
         helper: {
             solveValidTime (time){
@@ -54,22 +55,96 @@ const music = function() {
             // Solve range running
             solveRangeRunningAutomatically(currentTime, durationTime) {
                 let currentRange = Math.floor((currentTime / durationTime) * 200); 
+                if(!currentRange) {
+                    currentRange = 0;
+                }
                 music.element.range.value = currentRange;
             },
             // Solve when currentTime equals duration
-            solveCurrentTimeEqualsDuration() {
+            solveCurrentTimeEqualsDuration(currentTime, durationTime) {
+                if(currentTime >= durationTime) {
+                    if(window.location.href.search('playlist') != -1) {
+                        let theMain = 0;
+                        let index = 0;
+                        document.querySelectorAll('.music-content-left__music-playlist__list-items').forEach(item => {
+                            if(item.classList.contains('music-content-left__music-playlist__list-items--active')) {
+                                theMain = index;
+                            }
+                            index ++;
+                        })
+                        music.helper.removeClasslist(document.querySelectorAll('.music-content-left__music-playlist__list-items'), 'music-content-left__music-playlist__list-items--active')
+                        if(theMain < document.querySelectorAll('.music-content-left__music-playlist__list-items').length -1) {
+                            console.log(document.querySelectorAll('.music-content-left__music-playlist__list-items-left-path')[theMain + 1])
+                            music.element.musicAudio.src = document.querySelectorAll('.music-content-left__music-playlist__list-items-left-path')[theMain+1].name;
+                            music.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
+                            music.element.musicAudio.play();
+                            document.querySelectorAll('.music-content-left__music-playlist__list-items')[theMain+1].classList.add('music-content-left__music-playlist__list-items--active');
+                        } else {
+                            if(document.querySelector('.music-content-left__music-dashboard-controls__right-auto').classList.contains('music-content-left__music-dashboard-controls__right-auto--active')) {
+                                music.helper.removeClasslist(document.querySelectorAll('.music-content-left__music-playlist__list-items'), 'music-content-left__music-playlist__list-items--active')
+                                document.querySelectorAll('.music-content-left__music-playlist__list-items')[0].classList.add('music-content-left__music-playlist__list-items--active')
+                                music.element.musicAudio.src = document.querySelectorAll('.music-content-left__music-playlist__list-items-left-path')[0].name;
+                                music.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
+                                music.element.musicAudio.play();
+                            } else {
 
+                            }
+                        }
+    
+                    } else {
+                        if(document.querySelector('.music-content-left__music-dashboard-controls__right-auto').classList.contains('music-content-left__music-dashboard-controls__right-auto--active')) {
+                            music.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
+                            music.element.musicAudio.play();
+                        } else {
+                            console.log()
+                            let list = document.querySelectorAll('.music-content-right-items');
+                          
+                            for(let i in list) {
+                                console.log(list[i])
+                                let idItem = list[i].querySelector('.music-content-right-items-link').href.split('/')[list[i].querySelector('.music-content-right-items-link').href.split('/').length - 1];
+                                
+                                if(window.location.href.search(idItem) == -1) {
+                                    window.location.href = list[i].querySelector('.music-content-right-items-link').href;
+                                    break;
+                                } else {
+
+                                }
+                            }
+                        }
+                        
+                    }
+                }
             },
             // Solve range change
             solveRangeChane(valueRange, durationTime) {
                 return (valueRange / 200) * durationTime;
+            },
+            // remove class active of classList
+            removeClasslist(list, className) {
+                list.forEach(item => {
+                    item.classList.remove(className);
+                })
+              
             }
         }
         ,
         event() {
             // Turn On Music
             if(this.element.playButton) {
-                this.element.playButton.onclick = (e) => {
+                this.element.playButton.onclick = (e) => {  
+                    let checkPlaylist = true;
+                    document.querySelectorAll('.music-content-left__music-playlist__list-items').forEach(item => {
+                        if(item.classList.contains('music-content-left__music-playlist__list-items--active')) {
+                            checkPlaylist = false;
+                        }
+                    })
+
+                    if(checkPlaylist) {
+                        if(document.querySelectorAll('.music-content-left__music-playlist__list-items')[0]) {
+                            document.querySelectorAll('.music-content-left__music-playlist__list-items')[0].classList.add('music-content-left__music-playlist__list-items--active')
+                        }
+                    }
+
                     if(!this.element.playButton.classList.contains('music-content-left__music-dashboard-controls__left-play--active')) {
                         this.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
                         this.element.musicAudio.play();
@@ -82,6 +157,7 @@ const music = function() {
             // Change music
             if(music.element.range) {
                 music.element.range.onchange = (e) => {
+                    // music.element.musicAudio.removeAttribute('autoplay');
                     let valueRange = e.target.value;
                     let durationTime = music.element.musicAudio.duration;
                     let currentTimeChange = music.helper.solveRangeChane(valueRange, durationTime);
@@ -117,23 +193,50 @@ const music = function() {
     
                 }
             }
+
+            if(this.element.playButtonPlaylist) {
+                for(let i in this.element.playButtonPlaylist) {
+                    this.element.playButtonPlaylist[i].onclick = (e) => {
+                        const grandParent = e.target.parentNode.parentNode.parentNode.parentNode;
+                        this.helper.removeClasslist(document.querySelectorAll('.music-content-left__music-playlist__list-items'), 'music-content-left__music-playlist__list-items--active')
+                        grandParent.classList.add('music-content-left__music-playlist__list-items--active');
+
+                        const path = document.querySelectorAll('.music-content-left__music-playlist__list-items-left-path')[i].name;
+                        this.element.musicAudio.src = path;
+                        this.element.sourceAudio.src = path;
+                        this.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
+                        this.element.musicAudio.play();
+                        this.element.range.value = 0;                    
+                    }
+                }
+            }
         },
         run() {
+            // music.element.musicAudio.play();
             // Event
+            // The music run
             this.event();
-             // The music run
+            this.element.playButton.classList.add('music-content-left__music-dashboard-controls__left-play--active');
             if(this.element.musicAudio) {
                 this.element.musicAudio.ontimeupdate = () => {
+
                     // component
                     let durationTime = this.element.musicAudio.duration;
                     let currentTime = this.element.musicAudio.currentTime;
+
+                    if(!durationTime) {
+                        durationTime = 1;
+                    }
+
+                    // console.log(durationTime, currentTime);
                     
                     this.helper.validTime(currentTime, durationTime);
                     this.helper.solveRangeRunningAutomatically(currentTime, durationTime);
+                    this.helper.solveCurrentTimeEqualsDuration(currentTime, durationTime);
                     // this.helper.solveRangeChane(durationTime)
                     // console.log(this.helper.solveRangeChane(durationTime));
                 }
-            }
+            } 
         }
     }
 }();

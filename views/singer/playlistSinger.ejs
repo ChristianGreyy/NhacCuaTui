@@ -19,103 +19,24 @@
                                         </div>
                                     </div>
                                     <div class="personal-user__component--singer__content personal-user__component--singer__album">
-                                        <li class="personal-user__component--singer__album-items">
-                                            <a href="" class="personal-user__component--singer__album-items-image">
-                                                <div class="personal-user__component--singer__album-items-image-icon">
-                                                    <i class="icofont-ui-play"></i>
+                                        <% playlists.forEach(playlist => { %>
+                                            <li class="personal-user__component--singer__album-items">
+                                                <a href="" class="personal-user__component--singer__album-items-image">
+                                                    <div class="personal-user__component--singer__album-items-image-icon">
+                                                        <i class="icofont-ui-play"></i>
+                                                    </div>
+                                                    <div class="personal-user__component--singer__album-items-image-alpha">
+                                                    </div>
+                                                    <img src="<%= playlist.background %>" alt="" class="personal-user__component--singer__album-items-background">
+                                                </a>
+                                                <div class="personal-user__component--singer__album-items-name">
+                                                    <%= playlist.title %>
                                                 </div>
-                                                <div class="personal-user__component--singer__album-items-image-alpha">
-                                                </div>
-                                                <img src="/img/img-home/theme-1-1.jpg" alt="" class="personal-user__component--singer__album-items-background">
-                                            </a>
-                                            <div class="personal-user__component--singer__album-items-name">
-                                                Đi để trở về
-                                            </div>
-                                            <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                <%= singer.fullname %>
-                                            </a>
-                                        </li>
-                                        <li class="personal-user__component--singer__album-items">
-                                            <a href="" class="personal-user__component--singer__album-items-image">
-                                                <div class="personal-user__component--singer__album-items-image-icon">
-                                                    <i class="icofont-ui-play"></i>
-                                                </div>
-                                                <div class="personal-user__component--singer__album-items-image-alpha">
-                                                </div>
-                                                <img src="/img/img-home/theme-1-1.jpg" alt="" class="personal-user__component--singer__album-items-background">
-                                            </a>
-                                            <div class="personal-user__component--singer__album-items-name">
-                                                Đi để trở về
-                                            </div>
-                                            <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                <%= singer.fullname %>
-                                            </a>
-                                        </li>
-                                        <li class="personal-user__component--singer__album-items">
-                                            <a href="" class="personal-user__component--singer__album-items-image">
-                                                <div class="personal-user__component--singer__album-items-image-icon">
-                                                    <i class="icofont-ui-play"></i>
-                                                </div>
-                                                <div class="personal-user__component--singer__album-items-image-alpha">
-                                                </div>
-                                                <img src="/img/img-home/theme-1-1.jpg" alt="" class="personal-user__component--singer__album-items-background">
-                                            </a>
-                                            <div class="personal-user__component--singer__album-items-name">
-                                                Đi để trở về
-                                            </div>
-                                            <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                <%= singer.fullname %>
-                                            </a>
-                                        </li>
-                                        <li class="personal-user__component--singer__album-items">
-                                            <a href="" class="personal-user__component--singer__album-items-image">
-                                                <div class="personal-user__component--singer__album-items-image-icon">
-                                                    <i class="icofont-ui-play"></i>
-                                                </div>
-                                                <div class="personal-user__component--singer__album-items-image-alpha">
-                                                </div>
-                                                <img src="/img/img-home/theme-1-1.jpg" alt="" class="personal-user__component--singer__album-items-background">
-                                            </a>
-                                            <div class="personal-user__component--singer__album-items-name">
-                                                Đi để trở về
-                                            </div>
-                                            <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                <%= singer.fullname %>
-                                            </a>
-                                        </li>
-                                        <li class="personal-user__component--singer__album-items">
-                                            <a href="" class="personal-user__component--singer__album-items-image">
-                                                <div class="personal-user__component--singer__album-items-image-icon">
-                                                    <i class="icofont-ui-play"></i>
-                                                </div>
-                                                <div class="personal-user__component--singer__album-items-image-alpha">
-                                                </div>
-                                                <img src="/img/img-home/theme-1-1.jpg" alt="" class="personal-user__component--singer__album-items-background">
-                                            </a>
-                                            <div class="personal-user__component--singer__album-items-name">
-                                                Đi để trở về
-                                            </div>
-                                            <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                <%= singer.fullname %>
-                                            </a>
-                                        </li>
-                                        <li class="personal-user__component--singer__album-items">
-                                            <a href="" class="personal-user__component--singer__album-items-image">
-                                                <div class="personal-user__component--singer__album-items-image-icon">
-                                                    <i class="icofont-ui-play"></i>
-                                                </div>
-                                                <div class="personal-user__component--singer__album-items-image-alpha">
-                                                </div>
-                                                <img src="/img/img-home/theme-1-1.jpg" alt="" class="personal-user__component--singer__album-items-background">
-                                            </a>
-                                            <div class="personal-user__component--singer__album-items-name">
-                                                Đi để trở về
-                                            </div>
-                                            <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                <%= singer.fullname %>
-                                            </a>
-                                        </li>
-                                      
+                                                <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
+                                                    <%= singer.fullname %>
+                                                </a>
+                                            </li>
+                                        <% }) %>
                                     </div>
                                 </div>
                             </div>

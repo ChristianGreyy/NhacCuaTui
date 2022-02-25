@@ -5,9 +5,25 @@ exports.getSinger = async (req, res, next) => {
     try {
         const singer = await Singer.findOne({_id: idSinger})
         .populate('musics')
+        // .populate('playlists')
+
+        const playlists = [];
+        const checkId = [];
+
+        for(let i in singer.musics) {
+            const musicDoc = await singer.musics[i].populate('playlists');
+            musicDoc.playlists.forEach(playlist => {
+                if(checkId.indexOf(playlist._id.toString()) == -1) {
+                    playlists.push(playlist);
+                    checkId.push(playlist._id.toString());
+                }
+            })
+        }
+
         res.render('singer/personalSinger', {
             pageTitle: 'Ca sĩ ' + singer.fullname,
             singer,
+            playlists,
             errorMessage: false,
         })
     } catch(err) {
@@ -20,6 +36,7 @@ exports.getMusicSinger = async (req, res, next) => {
     try {
         const singer = await Singer.findOne({_id: idSinger})
         .populate('musics')
+
         res.render('singer/musicSinger', {
             pageTitle: 'Bài hát của ' + singer.fullname,
             singer,
@@ -35,9 +52,24 @@ exports.getPlaylistSinger = async (req, res, next) => {
     try {
         const singer = await Singer.findOne({_id: idSinger})
         .populate('musics')
+
+        const playlists = [];
+        const checkId = [];
+
+        for(let i in singer.musics) {
+            const musicDoc = await singer.musics[i].populate('playlists');
+            musicDoc.playlists.forEach(playlist => {
+                if(checkId.indexOf(playlist._id.toString()) == -1) {
+                    playlists.push(playlist);
+                    checkId.push(playlist._id.toString());
+                }
+            })
+        }
+
         res.render('singer/playlistSinger', {
             pageTitle: 'Playlist của ' + singer.fullname,
             singer,
+            playlists,
             errorMessage: false,
         })
     } catch(err) {

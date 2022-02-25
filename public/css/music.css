@@ -407,6 +407,16 @@
   /* display: none; */
 }
 
+.music-content-left__music-dashboard-controls__right-auto--active
+  .music-content-left__music-dashboard-controls__right-auto-yes {
+  display: none;
+}
+
+.music-content-left__music-dashboard-controls__right-auto--active
+  .music-content-left__music-dashboard-controls__right-auto-no {
+  display: flex;
+}
+
 .music-content-left__music-dashboard-controls__right-auto-no {
   height: 100%;
   width: 100%;
@@ -555,6 +565,9 @@
   margin-top: 12px;
   align-items: center;
   font-size: 15px;
+}
+.music-content-left__music-settings--playlist {
+  justify-content: flex-start;
 }
 .music-content-left__music-settings-items {
   display: flex;
@@ -873,4 +886,149 @@
 .music-content-left__newMusic-list--playlist-items-singer {
   color: rgba(0, 0, 0, 0.5) !important;
   text-decoration: none;
+}
+
+/* Playlist */
+
+.music-content-left__music-playlist__list {
+  padding: 0;
+  list-style: none;
+  border-bottom-left-radius: 8px;
+  border-right: #dadada solid 1px;
+  border-left: #dadada solid 1px;
+  border-bottom-right-radius: 8px;
+  max-height: 208px;
+  overflow-y: scroll;
+}
+.music-content-left__music-playlist__list-items {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-top: #dadada solid 1px;
+  border-bottom: #dadada solid 1px;
+  position: relative;
+}
+.music-content-left__music-playlist__list-items:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.music-content-left__music-playlist__list-views {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 66%;
+  color: #999999;
+  font-size: 14px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.music-content-left__music-playlist__list-views-icon {
+}
+.music-content-left__music-playlist__list-views-number {
+  margin-left: 3px;
+}
+.music-content-left__music-playlist__list-items--active {
+  background-color: #e9f3f7;
+}
+.music-content-left__music-playlist__list-items:hover {
+  background-color: #e9f3f7;
+  cursor: pointer;
+}
+.music-content-left__music-playlist__list-items-left {
+  display: flex;
+  align-items: center;
+}
+.music-content-left__music-playlist__list-items--active
+  .music-content-left__music-playlist__list-items-left
+  .music-content-left__music-playlist__list-items-left-number {
+  display: none;
+}
+.music-content-left__music-playlist__list-items--active
+  .music-content-left__music-playlist__list-items-left
+  .music-content-left__music-playlist__list-items-left-running {
+  display: block;
+}
+.music-content-left__music-playlist__list-items-left-running {
+  display: none;
+}
+.music-content-left__music-playlist__list-items-left-number {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+}
+.music-content-left__music-playlist__list-items-left-name {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  text-transform: capitalize;
+  margin-left: 3px;
+  text-decoration: none;
+}
+.music-content-left__music-playlist__list-items-left-name:hover {
+  color: var(--main-color);
+}
+.music-content-left__music-playlist__list-items-left-singer {
+  font-size: 12px;
+  margin-left: 3px;
+}
+
+.music-content-left__music-playlist__list-items-left-singer-link {
+  color: #9a9a9a;
+  text-decoration: none;
+}
+
+.music-content-left__music-playlist__list-items-left-singer-link:hover {
+  color: var(--main-color);
+}
+
+.music-content-left__music-playlist__list-items-right {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.music-content-left__music-playlist__list-items-right-play {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.music-content-left__music-playlist__list-items-right-heart {
+  color: #999999;
+  margin-left: 8px;
+}
+.music-content-left__music-playlist__list-items-right-heart:hover {
+  color: var(--main-color);
+}
+.music-content-left__music-playlist__list-items-right-play--on {
+  color: #999999;
+}
+.music-content-left__music-playlist__list-items-right-play--on:hover {
+  color: var(--main-color);
+}
+.music-content-left__music-playlist__list-items-right-play--active
+  .music-content-left__music-playlist__list-items-right-play--off {
+  display: block;
+}
+.music-content-left__music-playlist__list-items-right-play--active
+  .music-content-left__music-playlist__list-items-right-play--on {
+  display: none;
+}
+.music-content-left__music-playlist__list-items-right-play--off {
+  display: none;
+  color: #999999;
+}
+.music-content-left__music-playlist__list-items-right-play--off:hover {
+  color: var(--main-color);
+}
+.music-content-left__music-playlist__list-items-right-downlaod {
+  margin: 0 8px;
+  color: #999999;
+}
+.music-content-left__music-playlist__list-items-right-downlaod:hover {
+  color: var(--main-color);
+}
+.music-content-left__music-playlist__list-items-right-window {
+  color: #999999;
+}
+.music-content-left__music-playlist__list-items-right-window:hover {
+  color: var(--main-color);
 }
