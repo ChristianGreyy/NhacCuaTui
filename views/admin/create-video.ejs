@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Đăng video
+            </div>
+            <form action="tao-video" method="POST" class="app-admin-right__form" enctype="multipart/form-data">
+                <div class="app-admin-right__form-group">
+                    <label for="title" class="app-admin-right__form-group-label">
+                        Tên Video
+                    </label>
+                    <input type="text" id="title" name="title" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="link" class="app-admin-right__form-group-label">
+                        Link Video
+                    </label>
+                    <input type="text" id="link" name="link" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group--singer">
+                    <div class="app-admin-right__form-group">
+                        <label for="singer" class="app-admin-right__form-group-label">
+                            Tên ca sĩ
+                        </label>
+                        <select name="singers[0]" id="singer" class="app-admin-right__form-group-input">
+                            <% singers.forEach((singer, z) => { %>
+                                <% if(z == 0) { %>
+                                    <option value=""></option>
+                                <% } %>
+                                <option value="<%= singer._id %>"><%= singer.fullname %></option>
+                            <% }) %>
+                        </select>
+                        <div class="app-admin-right__form-group-add">
+                            <i class="icofont-ui-add"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="background" class="app-admin-right__form-group-label">
+                        Ảnh
+                    </label>
+                    <input type="file" id="background" name="background" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="kind" class="app-admin-right__form-group-label">
+                        Thể loại
+                    </label>
+                    <select name="kind" id="kind" class="app-admin-right__form-group-input">
+                        <option value="young">Video nhạc trẻ</option>
+                        <option value="romantic">Video nhạc trữ tình</option>
+                        <option value="revolution">Video nhạc cách mạng</option>
+                        <option value="vietnameseRap">Video nhạc rap Việt</option>
+                        <option value="pop">Video nhạc pop</option>
+                        <option value="usUkRock">Video nhạc rock</option>
+                        <option value="electronica">Video nhạc Electronica/Dance</option>
+                        <option value="r&b">Video nhạc R&B/Hip Hop/Rap</option>
+                        <option value="blues">Video nhạc Blues/jazz</option>
+                        <option value="country">Video nhạc Country</option>
+                        <option value="latin">Video nhạc Latin</option>
+                        <option value="indie">Video nhạc Indie</option>
+                        <option value="korean">Video nhạc Hàn</option>
+                        <option value="chinese">Video nhạc Hoa</option>
+                        <option value="japanese">Video nhạc Nhật</option>
+                        <option value="thai">Video nhạc Thái</option>
+                        <option value="youngKaraoke">Video nhạc trẻ karaoke</option>
+                        <option value="romanticKaraoke">Video nhạc trữ tình karaoke</option>
+                        <option value="vietnameseRemixKaraoke">Video nhạc remix Việt karaoke</option>
+                        <option value="vietnameseRapKaraoke">Video nhạc rap Việt karaoke</option>
+                        <option value="revolutionKaraoke">Video nhạc cách mạng karaoke</option>
+                        <option value="childrenKaraoke">Video nhạc thiếu nhi karaoke</option>
+                        <option value="usaKaraoke">Video nhạc Âu Mỹ karaoke</option>
+                        <option value="funny">Video clip vui</option>
+                        <option value="children">Video nhạc thiếu nhi</option>
+                        <option value="comedy">Video nhạc hài kịch</option>
+                        <option value="film">Video phim Việt Nam</option>
+                    </select>
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="original" class="app-admin-right__form-group-label">
+                        Nguồn gốc
+                    </label>
+                    <select name="original" id="original" class="app-admin-right__form-group-input">
+                        <option value="VietNam">Việt Nam</option>
+                        <option value="Usa">Âu Mỹ</option>
+                        <option value="Korea">Hàn Quốc</option>
+                    </select>
+                </div>
+                <div class="app-admin-right-button">
+                    Tạo video
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>

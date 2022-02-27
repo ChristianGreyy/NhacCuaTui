@@ -11,12 +11,19 @@ const storageMusic = multerStorage.storageMusic;
 const storageSinger =  multerStorage.storageSinger;
 
 const storagePlaylist = multerStorage.storagePlaylist;
+
+const storageVideo = multerStorage.storageVideo;
   
 //   app.use();
 //   app.use();
 
-router.get('/fetch-singers', authAdmin, adminController.fetchSingersAdmin);
-router.get('/fetch-musics', authAdmin, adminController.fetchMusicsAdmin);
+router.get('/fetch-singers', adminController.fetchSingersAdmin);
+router.get('/fetch-musics', adminController.fetchMusicsAdmin);
+router.get('/fetch-musics-rank-vietnam', adminController.fetchVietnamMusicAdmin);
+router.get('/fetch-musics-rank-usa', adminController.fetchUsaMusicAdmin);
+router.get('/fetch-musics-rank-korea', adminController.fetchKoreaMusicAdmin);
+
+
 router.get('/tao-bai-hat', authAdmin, adminController.getCreateMusicAdmin);
 router.post('/tao-bai-hat', authAdmin, multer({storage: storageMusic}).fields([{name: 'background'}, {name: 'music'}]),  adminController.postCreateMusicAdmin);
 router.get('/tao-loi-bai-hat', authAdmin, adminController.getCreateSubtitleMusicsAdmin);
@@ -27,6 +34,11 @@ router.get('/danh-sach-bai-hat', authAdmin, adminController.getListMusicAdmin);
 router.get('/danh-sach-bai-hat/:idMusic', authAdmin, adminController.getEditMusicAdmin);
 router.post('/danh-sach-bai-hat/:idMusic', authAdmin, adminController.postEditMusicAdmin);
 router.delete('/danh-sach-bai-hat', authAdmin, adminController.deleteListMusicAdmin);
+router.get('/tao-video', authAdmin, adminController.getcreateVideocAdmin);
+router.post('/tao-video', multer({storage: storageVideo}).single('background'), adminController.postcreateVideocAdmin);
+
+router.get('/danh-sach-video/:idMusic', authAdmin, adminController.getListVideocAdmin);
+
 
 router.get('/tao-playlist', authAdmin, adminController.getCreatePlaylistMusicAdmin);
 router.post('/tao-playlist', authAdmin, multer({storage: storagePlaylist}).single('background'), adminController.postCreatePlaylistMusicAdmin);

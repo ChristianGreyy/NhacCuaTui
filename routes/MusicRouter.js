@@ -28,6 +28,23 @@ router.get('/nhac-Indie-moi', musicController.getIndieMusic);
 router.get('/nhac-phim-moi', musicController.getFilmMusic);
 router.get('/bai-hat-moi', musicController.getNewMusic);
 router.get('/playlist-moi', musicController.getNewPlaylist);
+router.get('/video-moi', musicController.getNewVideolist);
+
+router.get('/karaoke-nhac-tre-moi', musicController.getYoungKaraokeMusic);
+router.get('/karaoke-nhac-tru-tinh-moi', musicController.getRomanticKaraokeMusic);
+router.get('/karaoke-nhac-remix-moi', musicController.getRemixKaraokeMusic);
+router.get('/karaoke-nhac-rap-viet-moi', musicController.getVietnameseRapKaraokeMusic);
+router.get('/karaoke-nhac-cach-mang-moi', musicController.getRevolutionKaraokeMusic);
+router.get('/karaoke-nhac-thieu-nhi-moi', musicController.getChildrenKaraokeMusic);
+router.get('/karaoke-nhac-au-my-moi', musicController.getUsaKaraokeMusic);
+
+router.get('/clip-vui-moi', musicController.getFunnyVideo);
+router.get('/hai-kich-moi', musicController.getComedyVideo);
+router.get('/phim-viet-nam-moi', musicController.getFilmVideo);
+
+router.get('/bang-xep-hang-viet', musicController.getVietnameseMusicRank);
+router.get('/bang-xep-hang-usa', musicController.getUsaMusicRank);
+router.get('/bang-xep-hang-korea', musicController.getKoreaMusicRank);
 router.post('/tao-loi-bai-hat/:musicId', musicController.createSubtitleMusic);
 router.get('/:musicId', musicController.getMusic);
 

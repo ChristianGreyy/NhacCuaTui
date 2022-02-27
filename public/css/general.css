@@ -17,3 +17,32 @@ div.app {
 :root {
   --main-color: #00aeef;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0092c7;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--main-color);
+}

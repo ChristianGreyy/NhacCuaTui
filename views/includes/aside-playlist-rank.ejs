@@ -1,0 +1,24 @@
+
+
+<li class="aside-item">
+    <div class="aside-item-header">
+        <h2 class="aside-item__heading">
+            <div class="aside-item__heading-text">
+                Playlist HOT
+            </div>
+            <div class="aside-item__heading-icon--singer">
+                <i class="icofont-rounded-right"></i>
+            </div>
+        </h2>
+
+    </div>
+    <ul class="aside-item__list__singer">
+        <% playlists.forEach(playlist => { %>
+            <li class="aside-item__list__singer-items">
+                <a href="/playlist/<%= playlist._id %>" class="aside-item__list__singer-items-link">
+                    <img src="<%= playlist.background %>" alt="" class="aside-item__list__singer-avatar">
+                </a>
+            </li>
+        <% }) %>
+    </ul>
+</li>

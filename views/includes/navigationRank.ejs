@@ -1,0 +1,35 @@
+<div class="music-content-left__rank">
+    <div class="music-content-left__rank-navigation">
+        <ul class="music-content-left__rank-navigation-list">
+            <li class="music-content-left__rank-navigation-items <%= pageTitle == 'Bảng xếp hạng nhạc Việt' ? 'music-content-left__rank-navigation-items--active': '' %>">
+                <a href="/bai-hat/bang-xep-hang-viet" class="music-content-left__rank-navigation-link">
+                    Việt Nam
+                </a>
+                <div class="music-content-left__rank-navigation-items-underline">
+
+                </div>
+            </li>
+            <li class="music-content-left__rank-navigation-items <%= pageTitle == 'Bảng xếp hạng nhạc Âu Mỹ' ? 'music-content-left__rank-navigation-items--active': '' %>">
+                <a href="/bai-hat/bang-xep-hang-usa" class="music-content-left__rank-navigation-link">
+                    Âu Mỹ
+                </a>
+                <div class="music-content-left__rank-navigation-items-underline">
+
+                </div>
+            </li>
+            <li class="music-content-left__rank-navigation-items <%= pageTitle == 'Bảng xếp hạng nhạc Hàn' ? 'music-content-left__rank-navigation-items--active': '' %>">
+                <a href="/bai-hat/bang-xep-hang-korea" class="music-content-left__rank-navigation-link">
+                    Hàn Quốc
+                </a>
+                <div class="music-content-left__rank-navigation-items-underline">
+
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+    <h1 class="music-content-left__newMusic-title">
+        <%= pageTitle %>
+    </h1>
+</div>
+<canvas id="myChart" style="width:100%;max-width:100%"></canvas>

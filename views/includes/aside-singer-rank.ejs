@@ -1,0 +1,29 @@
+
+
+<li class="aside-item">
+    <div class="aside-item-header">
+        <h2 class="aside-item__heading">
+            <div class="aside-item__heading-text">
+                Ca sĩ | Nghệ sĩ
+            </div>
+            <div class="aside-item__heading-icon--singer">
+                <i class="icofont-rounded-right"></i>
+            </div>
+        </h2>
+
+    </div>
+    <ul class="aside-item__list__singer">
+        <% singers.forEach(singer => { %>
+            <li class="aside-item__list__singer-items">
+                <a href="/nghe-si/<%= singer._id %>" class="aside-item__list__singer-items-link">
+                    <img src="<%= singer.avatar %>" alt="" class="aside-item__list__singer-avatar">
+                    <div class="aside-item__list__singer-items-child">
+                        <div class="aside-item__list__singer-items-title">
+                            <%= singer.fullname %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        <% }) %>
+    </ul>
+</li>

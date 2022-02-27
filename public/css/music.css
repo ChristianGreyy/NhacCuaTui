@@ -1032,3 +1032,209 @@
 .music-content-left__music-playlist__list-items-right-window:hover {
   color: var(--main-color);
 }
+
+.music-content-right-items-link-left__img {
+  width: 60px;
+  height: 60px;
+}
+
+.music-content-left__rank-navigation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+.music-content-left__rank-navigation-items {
+  margin-left: 14px;
+  position: relative;
+}
+.music-content-left__rank-navigation-items--active
+  .music-content-left__rank-navigation-link {
+  color: var(--main-color);
+}
+.music-content-left__rank-navigation-link:hover {
+  color: var(--main-color);
+}
+.music-content-left__rank-navigation-items--active
+  .music-content-left__rank-navigation-items-underline {
+  display: block;
+}
+.music-content-left__rank-navigation-items-underline {
+  position: absolute;
+  background-color: var(--main-color);
+  width: 100%;
+  height: 3px;
+  bottom: -8px;
+  display: none;
+}
+.music-content-left__rank-navigation-link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+}
+
+/* Video */
+.music-content-left__newMusic-list--video {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+.music-content-left__newMusic-list--video-items {
+  width: 23.4%;
+  /* margin */
+}
+.music-content-left__newMusic-list--video-items-video {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.music-content-left__newMusic-list--video-items-video:hover
+  .music-content-left__newMusic-list--video-items-video__icon {
+  opacity: 1;
+}
+.music-content-left__newMusic-list--video-items-video:hover
+  .music-content-left__newMusic-list--video-items-video__alpha {
+  opacity: 1;
+}
+.music-content-right-items-video__left-image-alpha,
+.music-content-left__newMusic-list--video-items-video__alpha {
+  background-color: rgba(0, 0, 0, 0.24);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.4s opacity linear;
+}
+.music-content-right-items-video__left-image-icon,
+.music-content-left__newMusic-list--video-items-video__icon {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+.music-content-right-items-video__left-image-icon {
+  height: 32px;
+  width: 32px;
+}
+.music-content-right-items-video__left-image-icon {
+  font-size: 12px;
+}
+.music-content-left__newMusic-list--video-items-video__img {
+  width: 100%;
+}
+.music-content-left__newMusic-list--video-items-name {
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.88);
+  margin-top: 6px;
+}
+.music-content-left__newMusic-list--video-items-singer {
+  text-decoration: none;
+  display: block;
+  color: #9a9a9a;
+  font-size: 12px;
+}
+
+.music-content-left__newMusic-list--video-items-singers {
+  display: flex;
+  align-items: center;
+  color: #9a9a9a;
+  font-size: 12px;
+}
+
+.music-content-right-items-video__left-image:hover
+  .music-content-right-items-video__left-image-icon {
+  opacity: 1;
+}
+
+.music-content-right-items-video__left-image:hover
+  .music-content-right-items-video__left-image-alpha {
+  opacity: 1;
+}
+
+.music-content-right-items-video {
+  display: flex;
+  align-items: center;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+.music--video {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}
+
+.music-content-right-list-video {
+  margin-top: 0;
+}
+
+.music-content-right--video {
+  overflow-y: scroll;
+  /* height: 90vh; */
+  height: calc(100vh - 64px);
+}
+
+.music-content-right-items-video__right {
+  /* height: 100vh; */
+  /* overflow-y: scroll-y; */
+  margin-left: 8px;
+}
+.music-content-right-items-video__right-name {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  display: block;
+}
+
+.music-content-right-items-video__right-singer {
+  font-size: 12px;
+  color: #a2a2a2;
+  display: block;
+}
+.music-content-right-items-video__left-image {
+  width: 100px;
+  height: 56px;
+  position: relative;
+  display: block;
+}
+.music-content-right-items-video__left-image-background {
+  width: 100%;
+  height: 100%;
+}
+
+.music-content-left__video-des {
+  display: flex;
+  margin-top: 6px;
+  align-items: center;
+}
+.music-content-left__video-des__name {
+  font-size: 22px;
+  color: #000;
+}
+.music-content-left__video-des-singer {
+  color: #000;
+  margin-left: 4px;
+  font-size: 20px;
+}

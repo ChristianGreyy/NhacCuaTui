@@ -219,7 +219,7 @@ const solveAddNameSinger = (() => {
             subUrl = 'fetch-musics';
         } else {
             subUrl = 'fetch-singers';
-        }
+        } 
         // console.log();
         // if(window.location.href === '')
         fetch(`/admin/${subUrl}`, {
@@ -229,10 +229,10 @@ const solveAddNameSinger = (() => {
         .then(data => {
             const div = document.createElement("div");
             div.className = 'app-admin-right__form-group';
-            const num = document.querySelectorAll('.app-admin-right__form-group').length - 3;
             let optionString = '';
             let html = '';
             if(window.location.href.split('/')[window.location.href.split('/').length - 1] === 'tao-playlist') {
+                const num = document.querySelectorAll('.app-admin-right__form-group').length - 3;
                 data.musics.forEach(music => {
                     optionString += `
                         <option value="${music._id}">${music.name}</option>
@@ -246,7 +246,23 @@ const solveAddNameSinger = (() => {
                     ${optionString}
                 </select>
             `
+            } else if(window.location.href.split('/')[window.location.href.split('/').length - 1] === 'tao-bai-hat') {
+                const num = document.querySelectorAll('.app-admin-right__form-group').length - 7;
+                data.singers.forEach(singer => {
+                    optionString += `
+                        <option value="${singer._id}">${singer.fullname}</option>
+                    `
+                })
+                html = `
+                    <label for="singers" class="app-admin-right__form-group-label">
+                        Tên ca sĩ
+                    </label>
+                    <select name="singers[${num}]" id="singers" class="app-admin-right__form-group-input">
+                        ${optionString}
+                    </select>
+                `
             } else {
+                const num = document.querySelectorAll('.app-admin-right__form-group').length - 5;
                 data.singers.forEach(singer => {
                     optionString += `
                         <option value="${singer._id}">${singer.fullname}</option>

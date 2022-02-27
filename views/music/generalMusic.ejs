@@ -28,11 +28,11 @@
                                                         </div>
                                                         <div class="music-content-left__newMusic-list__items-left-des-singer">
                                                             <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
-                                                                <a href="" class="music-content-left__newMusic-list__items-left-des-singer-link">
+                                                                <a href="/nghe-si/<%= music.singers[i]._id %>" class="music-content-left__newMusic-list__items-left-des-singer-link">
                                                                     <%= music.singers[i].fullname %>
                                                                 </a>
                                                                 <% } else { %>
-                                                                    <a href="" class="music-content-left__newMusic-list__items-left-des-singer-link">
+                                                                    <a href="/nghe-si/<%= music.singers[i]._id %>" class="music-content-left__newMusic-list__items-left-des-singer-link">
                                                                         <%= music.singers[i].fullname %>, 
                                                                     </a>
                                                                 <% } %>
@@ -77,11 +77,14 @@
                                                 </div>
                                             </li>
                                         <% }) %>
-                                </ul>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="col-3 music-content-right">
-                                <%- include('../includes/aside.ejs') %>
+                                <ul class="aside-list">
+                                    <%- include('../includes/aside-music-rank.ejs') %>
+                                    <%- include('../includes/aside-singer-rank.ejs') %>
+                                </ul>
                             </div>
                         </div>
                     </div>

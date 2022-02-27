@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-9 music-content-left">
                                 <div class="music-content-left__music">
-                                    <audio class="music-content-left__music-audio">
+                                    <audio autoplay class="music-content-left__music-audio">
                                         <source class="music-content-left__music-audio-source" src="<%= playlist.musics[0].path %>" type="audio/ogg">
                                     </audio>
                                     <div class="music-content-left__music-des">
@@ -163,7 +163,7 @@
                                                 <a href="/" class="music-content-left__music-playlist__list-items-right-downlaod">
                                                     <i class="icofont-download"></i>
                                                 </a>
-                                                <a href="/" class="music-content-left__music-playlist__list-items-right-window">
+                                                <a href="/bai-hat/<%= playlist.musics[i]._id %>" target="__blank" class="music-content-left__music-playlist__list-items-right-window">
                                                     <i class="fas fa-window-restore"></i>
                                                 </a>
                                             </div>
@@ -230,7 +230,24 @@
                                     </div>
                                 </div>
                                 <ul class="music-content-right-list">
-                                   
+                                    <% playlists.forEach(item => { %>
+                                        <li class="music-content-right-items">
+                                            <a href="/playlist/<%= item._id %>" class="music-content-right-items-link">
+                                                <div class="music-content-right-items-link-left">
+                                                    <img src="<%= item.background %>" alt="" class="music-content-right-items-link-left__img">
+                                                    <div class="music-content-right-items-link-left__des">
+                                                        <div class="music-content-right-items-link-left__des-name">
+                                                            <%= item.title %>
+                                                        </div>
+                                                        <div class="music-content-right-items-link-left__des-singer">
+                                                            <%= item.singer %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </a>
+                                        </li>
+                                    <% }) %>
                                 </ul>
                             </div>
                         </div>

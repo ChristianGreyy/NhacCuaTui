@@ -20,6 +20,9 @@ const musicSchema = new Schema({
     subtitle: {
         type: String,
     },
+    original: {
+        type: String,
+    },
     subtitlePoster: [
         {
             idPoster: {

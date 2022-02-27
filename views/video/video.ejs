@@ -1,0 +1,206 @@
+<%- include('../includes/head.ejs') %>
+    <body>
+        <div class="container-fluid app">
+            <%- include('../includes/navigation.ejs') %>
+            <div class="music music--video">
+                <% if (errorNotFound) { %>
+                    <div class="music__notFound-user">
+                        <div class="music__notFound-user-icon">
+                            <i class="icofont-exclamation-tringle"></i>
+                        </div>
+                        <div class="music__notFound-user-text">
+                            Bạn chưa đăng nhập, hãy đăng nhập để đăng tải lời bài hát bạn nhé !
+                        </div>
+                    </div>
+                <% } %>
+                <div class="music-content music-content--video">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-9 music-content-left">
+                                <div class="music-content-left__video">
+                                    <iframe width="100%" height="470px" src="https://www.youtube.com/embed/<%= video.link %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <div class="music-content-left__video-des">
+                                        <div class="music-content-left__video-des__name">
+                                            <%= video.title %> - 
+                                        </div>
+                                        <div class="music-content-left__video-des-singers">
+                                            <% singersArray.forEach((singer, i) => { %>
+                                                <% if(i != singersArray.length - 1) { %>
+                                                    <a href="/nghe-si/<%= singer._id %>" class="music-content-left__video-des-singer">
+                                                        <%= singer.fullname %>
+                                                    </a>,
+                                                <% } else { %>
+                                                    <a href="/nghe-si/<%= singer._id %>" class="music-content-left__video-des-singer">
+                                                        <%= singer.fullname %>
+                                                    </a>
+                                                <% } %>
+                                            <% }) %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 music-content-right music-content-right--video">
+                                <div class="music-content-right-heading">
+                                    <div class="music-content-right-heading__titles">
+                                        Xem Tiếp
+                                    </div>
+                                  
+                                </div>
+                                <ul class="music-content-right-list music-content-right-list-video">
+                                    <li class="music-content-right-items music-content-right-items-video">
+                                        <div class="music-content-right-items-video__left">
+                                            <a href="" class="music-content-right-items-video__left-image">
+                                                <div class="music-content-right-items-video__left-image-alpha">
+
+                                                </div>
+                                                <div class="music-content-right-items-video__left-image-icon">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                                <img src="https://i.ytimg.com/vi/n6Pnzi6r9NU/maxresdefault.jpg" alt="" class="music-content-right-items-video__left-image-background">
+                                            </a>
+                                        </div>
+                                        <div class="music-content-right-items-video__right">
+                                            <a href="/" class="music-content-right-items-video__right-name">
+                                                Bước qua mùa cô đơn
+                                            </a>
+                                            <a href="/" class="music-content-right-items-video__right-singer">
+                                                Vũ
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="music-content-right-items music-content-right-items-video">
+                                        <div class="music-content-right-items-video__left">
+                                            <a href="" class="music-content-right-items-video__left-image">
+                                                <div class="music-content-right-items-video__left-image-alpha">
+
+                                                </div>
+                                                <div class="music-content-right-items-video__left-image-icon">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                                <img src="https://i.ytimg.com/vi/n6Pnzi6r9NU/maxresdefault.jpg" alt="" class="music-content-right-items-video__left-image-background">
+                                            </a>
+                                        </div>
+                                        <div class="music-content-right-items-video__right">
+                                            <a href="/" class="music-content-right-items-video__right-name">
+                                                Bước qua mùa cô đơn
+                                            </a>
+                                            <a href="/" class="music-content-right-items-video__right-singer">
+                                                Vũ
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="music-content-right-items music-content-right-items-video">
+                                        <div class="music-content-right-items-video__left">
+                                            <a href="" class="music-content-right-items-video__left-image">
+                                                <div class="music-content-right-items-video__left-image-alpha">
+
+                                                </div>
+                                                <div class="music-content-right-items-video__left-image-icon">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                                <img src="https://i.ytimg.com/vi/n6Pnzi6r9NU/maxresdefault.jpg" alt="" class="music-content-right-items-video__left-image-background">
+                                            </a>
+                                        </div>
+                                        <div class="music-content-right-items-video__right">
+                                            <a href="/" class="music-content-right-items-video__right-name">
+                                                Bước qua mùa cô đơn
+                                            </a>
+                                            <a href="/" class="music-content-right-items-video__right-singer">
+                                                Vũ
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="music-content-right-items music-content-right-items-video">
+                                        <div class="music-content-right-items-video__left">
+                                            <a href="" class="music-content-right-items-video__left-image">
+                                                <div class="music-content-right-items-video__left-image-alpha">
+
+                                                </div>
+                                                <div class="music-content-right-items-video__left-image-icon">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                                <img src="https://i.ytimg.com/vi/n6Pnzi6r9NU/maxresdefault.jpg" alt="" class="music-content-right-items-video__left-image-background">
+                                            </a>
+                                        </div>
+                                        <div class="music-content-right-items-video__right">
+                                            <a href="/" class="music-content-right-items-video__right-name">
+                                                Bước qua mùa cô đơn
+                                            </a>
+                                            <a href="/" class="music-content-right-items-video__right-singer">
+                                                Vũ
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="music-content-right-items music-content-right-items-video">
+                                        <div class="music-content-right-items-video__left">
+                                            <a href="" class="music-content-right-items-video__left-image">
+                                                <div class="music-content-right-items-video__left-image-alpha">
+
+                                                </div>
+                                                <div class="music-content-right-items-video__left-image-icon">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                                <img src="https://i.ytimg.com/vi/n6Pnzi6r9NU/maxresdefault.jpg" alt="" class="music-content-right-items-video__left-image-background">
+                                            </a>
+                                        </div>
+                                        <div class="music-content-right-items-video__right">
+                                            <a href="/" class="music-content-right-items-video__right-name">
+                                                Bước qua mùa cô đơn
+                                            </a>
+                                            <a href="/" class="music-content-right-items-video__right-singer">
+                                                Vũ
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="music-content-right-items music-content-right-items-video">
+                                        <div class="music-content-right-items-video__left">
+                                            <a href="" class="music-content-right-items-video__left-image">
+                                                <div class="music-content-right-items-video__left-image-alpha">
+
+                                                </div>
+                                                <div class="music-content-right-items-video__left-image-icon">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                                <img src="https://i.ytimg.com/vi/n6Pnzi6r9NU/maxresdefault.jpg" alt="" class="music-content-right-items-video__left-image-background">
+                                            </a>
+                                        </div>
+                                        <div class="music-content-right-items-video__right">
+                                            <a href="/" class="music-content-right-items-video__right-name">
+                                                Bước qua mùa cô đơn
+                                            </a>
+                                            <a href="/" class="music-content-right-items-video__right-singer">
+                                                Vũ
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="music-content-right-items music-content-right-items-video">
+                                        <div class="music-content-right-items-video__left">
+                                            <a href="" class="music-content-right-items-video__left-image">
+                                                <div class="music-content-right-items-video__left-image-alpha">
+
+                                                </div>
+                                                <div class="music-content-right-items-video__left-image-icon">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                                <img src="https://i.ytimg.com/vi/n6Pnzi6r9NU/maxresdefault.jpg" alt="" class="music-content-right-items-video__left-image-background">
+                                            </a>
+                                        </div>
+                                        <div class="music-content-right-items-video__right">
+                                            <a href="/" class="music-content-right-items-video__right-name">
+                                                Bước qua mùa cô đơn
+                                            </a>
+                                            <a href="/" class="music-content-right-items-video__right-singer">
+                                                Vũ
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<%- include('../includes/end.ejs') %>

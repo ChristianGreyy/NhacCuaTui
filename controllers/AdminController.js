@@ -3,6 +3,7 @@ const Music = require('../models/MusicModel');
 const Singer = require('../models/SingerModel');
 const Playlist = require('../models/PlaylistModel')
 const User = require('../models/UserModel');
+const Video = require('../models/VideoModel');
 const fs = require('fs');
 const path = require('path');
 
@@ -20,6 +21,65 @@ exports.fetchSingersAdmin = async (req, res, next) => {
 exports.fetchMusicsAdmin = async (req, res, next) => {
     try {
         const musics = await Music.find({});
+        res.json({
+            musics,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.fetchVietnamMusicAdmin = async (req, res, next) => {
+    try {
+        const musics = await Music.find({original: 'VietNam'})
+        .sort({
+            views: -1,
+        })
+        .limit('3');
+        res.json({
+            musics,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.fetchUsaMusicAdmin = async (req, res, next) => {
+    try {
+        const musics = await Music.find({original: 'Usa'})
+        .sort({
+            views: -1,
+        })
+        .limit('3');
+        console.log(musics)
+        res.json({
+            musics,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+exports.fetchKoreaMusicAdmin = async (req, res, next) => {
+    try {
+        const musics = await Music.find({original: 'Korea'})
+        .sort({
+            views: -1,
+        })
+        .limit('3');
+        res.json({
+            musics,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+exports.fetchVietnamMusicAdmin = async (req, res, next) => {
+    try {
+        const musics = await Music.find({original: 'VietNam'})
+        .sort({
+            views: -1,
+        })
+        .limit('3');
         res.json({
             musics,
         })
@@ -66,7 +126,7 @@ exports.getCreateMusicAdmin = async (req, res, next) => {
 }
 
 exports.postCreateMusicAdmin = async (req, res, next) => {
-    const {name, author, singers, kind, subtitle} = req.body;
+    const {name, author, singers, kind, subtitle, original} = req.body;
 
     try {
         
@@ -76,6 +136,7 @@ exports.postCreateMusicAdmin = async (req, res, next) => {
             singers,
             kind,
             subtitle,
+            original,
             // idSinger: singerDoc._id,
             background: '/background/' + req.files['background'][0].filename,
             path: '/music/' + req.files['music'][0].filename,
@@ -416,6 +477,50 @@ exports.postCreatePlaylistMusicAdmin = async (req, res, next) => {
         console.log(err);
     }
     
+}
+
+exports.getcreateVideocAdmin = async (req, res, next) => {
+    const singers = await Singer.find({});
+    res.render('admin/create-video', {
+        pageTitle: 'Tạo video',
+        singers,
+
+    })
+}
+
+exports.postcreateVideocAdmin = async (req, res, next) => {
+    try {
+        const {title, singers, kind, link} = req.body;
+        if(singers == '') {
+            const video = new Video({
+                title, kind, link,
+                background: '/backgroundVideo/' + req.file.filename,
+            })
+            const result = await video.save();
+            return res.redirect('/admin/tao-video');
+        }
+        const video = new Video({
+            title, singers, kind, link,
+            background: '/backgroundVideo/' + req.file.filename,
+        })
+        const result = await video.save();
+        for(let i in video.singers) {
+            const singer = await Singer.findOne({_id: video.singers[i]._id});
+            singer.videos.push(video._id);
+            const answer = await singer.save();
+
+            if(i == video.singers.length - 1) {
+                res.redirect('/admin/tao-video');
+            }
+        }
+    } catch(err) {
+        console.log(err);
+    }
+    
+}
+
+exports.getListVideocAdmin = (req, res, next) => {
+    res.send('ok')
 }
 
 const solveUnlinkPath = (path) => {

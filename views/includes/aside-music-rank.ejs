@@ -1,0 +1,246 @@
+
+<li class="aside-item">
+    <div class="aside-item-header">
+        <h2 class="aside-item__heading">
+            <div class="aside-item__heading-text">
+                BXH BÀI HÁT
+            </div>
+            <div class="aside-item__heading-icon">
+                <i class="fas fa-play"></i>
+            </div>
+        </h2>
+        <ul class="aside-item__choose">
+            <li class="aside-item__choose-item aside-item__choose-item--music aside-item__choose-item--active aside-item__choose-item--vietnam">
+                Việt Nam
+            </li>
+            <li class="aside-item__choose-item aside-item__choose-item--music side-item__choose-item--usa">
+                Âu Mỹ
+            </li>
+            <li class="aside-item__choose-item aside-item__choose-item--music aside-item__choose-item--korea">
+                Hàn Quốc
+            </li>
+        </ul>
+    </div>
+    <ul class="aside-item__list aside-item__list--music aside-item__list--vietnam">
+        <% for(let i in musicsVietnam) { %>
+            <% if( i == 0 || i == 1 || i == 2) { %>
+                <% if(i == 0) { %>
+                    <li class="aside-item__list-item">
+                        <div class="aside-item__list-item-image">
+                            <img src="<%= musicsVietnam[i].background %>" alt="" class="aside-item__list-item-image-img">
+                            <div class="aside-item__list-item-rank aside-item__list-item-rank--<%= +i+1 %>">
+                                <%= +i+1 %>
+                            </div>
+                        </div>
+                        <div class="aside-item__list-item-des">
+                            <a href="/bai-hat/<%= musicsVietnam[i]._id %>" class="aside-item__list-item-des-nameMusic">
+                                <%= musicsVietnam[i].name%>
+                            </a>
+                            <h4 class="aside-item__list-item-des-singer">
+                                <% musicsVietnam[i].singers.forEach((singer, i) => { %>
+                                    <% if(i != musicsVietnam[i].singers.length - 1) { %>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>,
+                                    <% } else {%>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>
+                                    <% } %>
+                                <% }) %>
+                            </h4>
+                        </div>
+                    </li>
+                <% } else { %>
+                    <li class="aside-item__list-item">
+                        <div class="aside-item__list-item-rank aside-item__list-item-rank--<%= +i+1 %>">
+                            <%= +i+1 %>
+                        </div>
+                        <div class="aside-item__list-item-des">
+                            <a href="/bai-hat/<%= musicsVietnam[i]._id %>" class="aside-item__list-item-des-nameMusic">
+                                <%= musicsVietnam[i].name%>
+                            </a>
+                            <h4 class="aside-item__list-item-des-singer">
+                                <% musicsVietnam[i].singers.forEach((singer, i) => { %>
+                                    <% if(i != musicsVietnam[i].singers.length - 1) { %>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>,
+                                    <% } else {%>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>
+                                    <% } %>
+                                <% }) %>
+                            </h4>
+                        </div>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li class="aside-item__list-item">
+                    <div class="aside-item__list-item-rank">
+                        <%= +i+1 %>
+                    </div>
+                    <div class="aside-item__list-item-des">
+                        <a href="/bai-hat/<%= musicsVietnam[i]._id %>" class="aside-item__list-item-des-nameMusic">
+                            <%= musicsVietnam[i].name%>
+                        </a>
+                        <h4 class="aside-item__list-item-des-singer">
+                            <% for (let j in musicsVietnam[i].singers) { %>
+                                <% if ( j != musicsVietnam[i].singers.length - 1) { %>
+                                    <a href="/nghe-si/<%= musicsVietnam[i].singers[j]._id %>" class="aside-item__list-item-des-singer-link">
+                                        <%= musicsVietnam[i].singers[j].fullname %>
+                                    </a>,
+                                <% } else { %>
+                                    <a href="/nghe-si/<%= musicsVietnam[i].singers[j]._id %>" class="aside-item__list-item-des-singer-link">
+                                        <%= musicsVietnam[i].singers[j].fullname %>
+                                    </a>
+                                <% } %>
+                            <% } %>
+                        </h4>
+                    </div>
+                </li>
+            <% } %>
+        <% } %>
+    </ul>
+    <ul class="aside-item__list aside-item__list--music aside-item__list--usa">
+        <% for(let i in musicsUsa) { %>
+            <% if( i == 0 || i == 1 || i == 2) { %>
+                <% if(i == 0) { %>
+                    <li class="aside-item__list-item">
+                        <div class="aside-item__list-item-image">
+                            <img src="https://i1.sndcdn.com/artworks-vjfASjlxOE1AKd9y-OGrz1Q-t500x500.jpg" alt="" class="aside-item__list-item-image-img">
+                            <div class="aside-item__list-item-rank aside-item__list-item-rank--<%= +i+1 %>">
+                                <%= +i+1 %>
+                            </div>
+                        </div>
+                        <div class="aside-item__list-item-des">
+                            <div class="aside-item__list-item-des-nameMusic">
+                                <%= musicsUsa[i].name%>
+                            </div>
+                            <h4 class="aside-item__list-item-des-singer">
+                                <% musicsUsa[i].singers.forEach((singer, i) => { %>
+                                    <% if(i != musicsUsa[i].singers.length - 1) { %>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>,
+                                    <% } else {%>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>
+                                    <% } %>
+                                <% }) %>
+                            </h4>
+                        </div>
+                    </li>
+                <% } else { %>
+                    <li class="aside-item__list-item">
+                        <div class="aside-item__list-item-rank aside-item__list-item-rank--<%= +i+1 %>">
+                            <%= +i+1 %>
+                        </div>
+                        <div class="aside-item__list-item-des">
+                            <div class="aside-item__list-item-des-nameMusic">
+                                <%= musicsUsa[i].name%>
+                            </div>
+                            <h4 class="aside-item__list-item-des-singer">
+                                <% musicsUsa[i].singers.forEach((singer, i) => { %>
+                                    <% if(i != musicsVietnam[i].singers.length - 1) { %>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>,
+                                    <% } else {%>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>
+                                    <% } %>
+                                <% }) %>
+                            </h4>
+                        </div>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li class="aside-item__list-item">
+                    <div class="aside-item__list-item-rank">
+                        <%= +i+1 %>
+                    </div>
+                    <div class="aside-item__list-item-des">
+                        <a href="/bai-hat/<%= musicsVietnam[i]._id %>" class="aside-item__list-item-des-nameMusic">
+                            <%= musicsVietnam[i].name%>
+                        </a>
+                        <h4 class="aside-item__list-item-des-singer">
+                            <% for (let j in musicsVietnam[i].singers) { %>
+                                <% if ( j != musicsVietnam[i].singers.length - 1) { %>
+                                    <a href="/nghe-si/<%= musicsVietnam[i].singers[j]._id %>" class="aside-item__list-item-des-singer-link">
+                                        <%= musicsVietnam[i].singers[j].fullname %>
+                                    </a>,
+                                <% } else { %>
+                                    <a href="/nghe-si/<%= musicsVietnam[i].singers[j]._id %>" class="aside-item__list-item-des-singer-link">
+                                        <%= musicsVietnam[i].singers[j].fullname %>
+                                    </a>
+                                <% } %>
+                            <% } %>
+                        </h4>
+                    </div>
+                </li>
+            <% } %>
+        <% } %>
+    </ul>
+    <ul class="aside-item__list aside-item__list--music aside-item__list--korea">
+         <% for(let i in musicsKorea) { %>
+            <% if( i == 0 || i == 1 || i == 2) { %>
+                <% if(i == 0) { %>
+                    <li class="aside-item__list-item">
+                        <div class="aside-item__list-item-image">
+                            <img src="https://i1.sndcdn.com/artworks-vjfASjlxOE1AKd9y-OGrz1Q-t500x500.jpg" alt="" class="aside-item__list-item-image-img">
+                            <div class="aside-item__list-item-rank aside-item__list-item-rank--<%= +i+1 %>">
+                                <%= +i+1 %>
+                            </div>
+                        </div>
+                        <div class="aside-item__list-item-des">
+                            <div class="aside-item__list-item-des-nameMusic">
+                                <%= musicsKorea[i].name%>
+                            </div>
+                            <h4 class="aside-item__list-item-des-singer">
+                                <% musicsKorea[i].singers.forEach((singer, i) => { %>
+                                    <% if(i != musicsKorea[i].singers.length - 1) { %>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>,
+                                    <% } else {%>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>
+                                    <% } %>
+                                <% }) %>
+                            </h4>
+                        </div>
+                    </li>
+                <% } else { %>
+                    <li class="aside-item__list-item">
+                        <div class="aside-item__list-item-rank aside-item__list-item-rank--<%= +i+1 %>">
+                            <%= +i+1 %>
+                        </div>
+                        <div class="aside-item__list-item-des">
+                            <div class="aside-item__list-item-des-nameMusic">
+                                <%= musicsKorea[i].name%>
+                            </div>
+                            <h4 class="aside-item__list-item-des-singer">
+                                <% musicsKorea[i].singers.forEach((singer, i) => { %>
+                                    <% if(i != musicsVietnam[i].singers.length - 1) { %>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>,
+                                    <% } else {%>
+                                        <a href="/nghe-si/<%= singer._id %>" class="aside-item__list-item-des-singer-link"><%= singer.fullname %> </a>
+                                    <% } %>
+                                <% }) %>
+                            </h4>
+                        </div>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li class="aside-item__list-item">
+                    <div class="aside-item__list-item-rank">
+                        <%= +i+1 %>
+                    </div>
+                    <div class="aside-item__list-item-des">
+                        <a href="/bai-hat/<%= musicsVietnam[i]._id %>" class="aside-item__list-item-des-nameMusic">
+                            <%= musicsVietnam[i].name%>
+                        </a>
+                        <h4 class="aside-item__list-item-des-singer">
+                            <% for (let j in musicsVietnam[i].singers) { %>
+                                <% if ( j != musicsVietnam[i].singers.length - 1) { %>
+                                    <a href="/nghe-si/<%= musicsVietnam[i].singers[j]._id %>" class="aside-item__list-item-des-singer-link">
+                                        <%= musicsVietnam[i].singers[j].fullname %>
+                                    </a>,
+                                <% } else { %>
+                                    <a href="/nghe-si/<%= musicsVietnam[i].singers[j]._id %>" class="aside-item__list-item-des-singer-link">
+                                        <%= musicsVietnam[i].singers[j].fullname %>
+                                    </a>
+                                <% } %>
+                            <% } %>
+                        </h4>
+                    </div>
+                </li>
+            <% } %>
+        <% } %>
+    </ul>
+</li>

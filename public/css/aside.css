@@ -5,6 +5,7 @@
   padding-left: 0;
 }
 .aside-item {
+  list-style: none;
 }
 .aside-item__heading {
   color: var(--main-color);
@@ -45,6 +46,10 @@
   flex: 1;
   text-align: center;
 }
+.aside-item__choose-item--active {
+  background-color: #e74c3c;
+  color: white;
+}
 .aside-item__choose-item--vietnam {
   border-bottom-left-radius: 24px;
   border-top-left-radius: 24px;
@@ -58,6 +63,12 @@
   background-color: #e74c3c;
   color: white;
 }
+.aside-item__list--usa {
+  display: none;
+}
+.aside-item__list--korea {
+  display: none;
+}
 
 .aside-item__list {
   list-style: none;
@@ -68,6 +79,15 @@
   margin: 0px 0 10px 0;
   padding: 0 0 10px 0;
   border-bottom: #f3f3f3 solid 1px;
+  display: flex;
+  align-items: center;
+}
+.aside-item__list-item-des-singer-link {
+  text-decoration: none;
+  color: #acacac;
+}
+.aside-item__list-item-des-singer-link:hover {
+  color: var(--main-color);
 }
 .aside-item__list-item-link {
   text-decoration: none;
@@ -114,6 +134,13 @@
   justify-content: center;
   margin-left: 12px;
 }
+.aside-item--mv
+  .aside-item__list
+  .aside-item__list-item
+  .aside-item__list-item-link
+  .aside-item__list-item-des.aside-item__list-item-des--mv {
+  margin-left: 6px;
+}
 .aside-item__list-item-des-nameMusic {
   font-size: 14px;
   margin: 0 0 4px 0;
@@ -124,6 +151,11 @@
   text-overflow: ellipsis;
   line-height: 1.3;
   width: 190px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.88);
+}
+.aside-item__list-item-des-nameMusic:hover {
+  color: var(--main-color);
 }
 .aside-item__list-item-des-singer {
   color: #acacac;
@@ -261,6 +293,46 @@
 .aside-item__list-item-rank-mv:hover .aside-item__list-item-rank-mv-icon {
   display: flex;
 }
+.aside-item__list__singer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 12px;
+}
 
-.aside-item__list-item-rank.aside-item__list-item-rank--2 {
+.aside-item__list__singer-items {
+  position: relative;
+  width: 46%;
+  height: calc(width);
+  margin: 8px 8px 0 0;
+}
+.aside-item__list__singer-items:hover .aside-item__list__singer-items-child {
+  opacity: 1;
+}
+.aside-item__list__singer-items-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+.aside-item__list__singer-avatar {
+  width: 100%;
+  height: 100%;
+}
+.aside-item__list__singer-items-child {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  opacity: 0;
+  transition: 0.4s opacity linear;
+  text-align: center;
+  line-height: 140px;
+}
+.aside-item__list__singer-items-title {
 }

@@ -305,7 +305,14 @@
                   </div>
                 </div>
                 <div class="col-3 home-content-right">
-                  <%- include('./includes/aside.ejs') %>
+                  <div class="aside">
+                    <ul class="aside-list">
+                        <%- include('./includes/aside-singer-rank.ejs') %>
+                        <%- include('./includes/aside-music-rank.ejs') %>
+                        <%- include('./includes/aside-playlist-rank.ejs') %>
+                        <%- include('./includes/aside-mv-rank.ejs') %>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

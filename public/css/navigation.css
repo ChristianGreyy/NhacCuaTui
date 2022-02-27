@@ -10,6 +10,8 @@
   border-bottom: #dadada solid 1px;
   position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: 2;
   background-color: white;
 }
@@ -94,6 +96,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 .header-right-search {
   height: 32px;
