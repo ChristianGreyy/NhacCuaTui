@@ -2,6 +2,7 @@ const express = require('express');
 const singerController = require('../controllers/SingerController');
 const router = express.Router();
 
+router.get('/',singerController.getSingers);
 router.get('/:idSinger/bai-hat', singerController.getMusicSinger);
 router.get('/:idSinger/playlist', singerController.getPlaylistSinger);
 router.get('/:idSinger/video', singerController.getVideoSinger);

@@ -23,7 +23,7 @@ const userChema = new Schema({
         type: String,
         required: true,
     },
-    coin: {
+    coins: {
         type: Number,
         required: true,
     },

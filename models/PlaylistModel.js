@@ -20,6 +20,12 @@ const playlistSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Music',
         }        
+    ],
+    events: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Events',
+        }  
     ]
 })
 

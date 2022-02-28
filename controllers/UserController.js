@@ -1,10 +1,33 @@
 const User = require('../models/UserModel');
 
+exports.getUsers = async (req, res, next) => {
+    const users = await User.find({}).sort({
+        coin: -1,
+    }).limit(10)
+    res.render('user/users', {
+        pageTitle: 'Top người dùng',
+        errorMessage: false,
+        users,
+    })
+}
+
 exports.getPersonalUser = (req, res, next) => {
 
     let idUser = req.params.id;
+    if(idUser.length !=24) {
+        return res.render('error/404', {
+            pageTitle: 'Không tìm thấy trang', 
+            errorMessage: false,
+        });
+    }
     User.findOne({_id: idUser})
     .then(user => {
+        if(!user) {
+            return res.render('error/404', {
+                pageTitle: 'Không tìm thấy trang', 
+                errorMessage: false,
+            });
+        }
         let username = req.user ? req.user.username : ' ';
         res.render('user/personal-user/personalUser', {
             errorMessage: false,

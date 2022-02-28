@@ -6,6 +6,7 @@ const userRouter = require('./UserRouter');
 const playlistRouter = require('./PlaylistRouter');
 const adminRouter = require('./AdminRouter');
 const singerRouter = require('./SingerRouter');
+const newRouter = require('./NewRouter');
 const errorController = require('../controllers/ErrorController');
 const User = require('../models/UserModel');
 const Music = require('../models/MusicModel');
@@ -15,6 +16,7 @@ const Playlist = require('../models/PlaylistModel');
 const routes = (app) => {
     app.use('/admin', adminRouter);
     app.use(authRouter);
+    app.use('/tin-tuc-am-nhac', newRouter);
     app.use('/nghe-si', singerRouter);
     app.use('/user', userRouter);
     app.use('/:baihat', musicRouter);

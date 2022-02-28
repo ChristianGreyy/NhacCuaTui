@@ -35,7 +35,7 @@
     <li class="app-admin-left__items <%= pageTitle === 'Tạo playlist' ? 'app-admin-left__items--active' : '' %>">
         <a href="/admin/tao-playlist" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
-                <i class="fas fa-music"></i>
+                <i class="icofont-book"></i>
             </div>
             <div class="app-admin-left__items-des">
                 Tạo playlist
@@ -45,7 +45,7 @@
     <li class="app-admin-left__items <%= pageTitle === 'Danh sách playlist' ? 'app-admin-left__items--active' : '' %>">
         <a href="/admin/danh-sach-playlist" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
-                <i class="fas fa-music"></i>
+                <i class="icofont-book"></i>
             </div>
             <div class="app-admin-left__items-des">
                 Danh sách playlist
@@ -55,7 +55,7 @@
     <li class="app-admin-left__items <%= pageTitle === 'Tạo video' ? 'app-admin-left__items--active' : '' %>">
         <a href="/admin/tao-video" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
-                <i class="fas fa-music"></i>
+                <i class="icofont-video-alt"></i>
             </div>
             <div class="app-admin-left__items-des">
                 Tạo video 
@@ -65,7 +65,7 @@
     <li class="app-admin-left__items <%= pageTitle === 'Tạo ca sĩ' ? 'app-admin-left__items--active' : '' %>">
         <a href="/admin/tao-ca-si" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
-                <i class="icofont-ui-music"></i>
+                <i class="icofont-music-disk"></i>
             </div>
             <div class="app-admin-left__items-des">
                 Tạo ca sĩ
@@ -92,13 +92,23 @@
             </div>
         </a>
     </li>
-    <li class="app-admin-left__items">
-        <a href="" class="app-admin-left__items-link">
+    <li class="app-admin-left__items  <%= pageTitle === 'Tạo sự kiện' ? 'app-admin-left__items--active' : '' %>">
+        <a href="/admin/tao-su-kien" class="app-admin-left__items-link">
             <div class="app-admin-left__items-icon">
                 <i class="far fa-calendar"></i>
             </div>
             <div class="app-admin-left__items-des">
-                Sự kiện
+                Tạo sự kiện
+            </div>
+        </a>
+    </li>
+    <li class="app-admin-left__items  <%= pageTitle === 'Danh sách sự kiện' ? 'app-admin-left__items--active' : '' %>">
+        <a href="/admin/danh-sach-su-kien" class="app-admin-left__items-link">
+            <div class="app-admin-left__items-icon">
+                <i class="far fa-calendar"></i>
+            </div>
+            <div class="app-admin-left__items-des">
+                Danh sách sự kiện
             </div>
         </a>
     </li>

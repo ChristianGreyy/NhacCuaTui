@@ -1,0 +1,47 @@
+<%- include('../includes/head.ejs') %>
+    <body>
+        <div class="app">
+            <%- include('../includes/navigation.ejs') %>
+            <div class="users">
+               <div class="users-rank">
+                   <div class="users-rank__left">
+                        <a href="/user/<%= users[0]._id %>" class="users-rank__left-link">
+                            <img src="<%= users[0].avatar %>" alt="" class="users-rank__left-link-img">
+                        </a>
+                   </div>
+                   <div class="users-rank__right">
+                       <div class="users-rank__right-title">
+                           Top người dùng nhiều coins
+                       </div>
+                       <ul class="users-rank__right-list">
+                           <% users.forEach((user, i) => { %>
+                                <li class="users-rank__right-items">
+                                    <div class="users-rank__right-items-rank">
+                                        <%= i+1 %>
+                                    </div>
+                                    <a href="/user/<%= user._id %>" class="users-rank__right-items-link">
+                                        <img src="<%= user.avatar %>" alt="" class="users-rank__right-items-link-img">
+                                            <div class="users-rank__right-items-link-name">
+                                                <%= user.fullname %>
+                                            </div>
+                                        </a>
+                                        <div class="users-rank__right-items-coins">
+                                            <div class="users-rank__right-items-coins-number">
+                                                <%= user.coins %>
+                                            </div>
+                                            <div class="users-rank__right-items-coins-icon">
+                                                <i class="fab fa-bitcoin"></i>
+                                            </div>
+                                        </div>
+                                </li>
+                            <% }) %>
+                       </ul>
+                   </div>
+               </div>
+                
+            </div>
+        </div>
+    </body>
+
+</html>
+<%- include('../includes/end.ejs') %>

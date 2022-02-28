@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li class="header__left-item">
-                <a href="/bai-hat/bai-hat-moi" class=" <%= pageTitle === 'Bài hát mới' ? ' header__left-item-link--highlight' : ' ' %> header__left-item-link">
+                <a href="/bai-hat/bai-hat-moi" class=" <%= pageTitle === 'Bài hát mới' || pageTitle.search('Nhạc') == '0' ? ' header__left-item-link--highlight' : ' ' %> header__left-item-link">
                     Bài hát
                 </a>
                 <div class="header__left-item-child">
@@ -20,47 +20,47 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="/" class="header__left-item-link">
                                             Việt Nam
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-tre-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-tre-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc trẻ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-tru-tinh-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-tru-tinh-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Trữ Tình mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Trữ Tình
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-remix-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-remix-viet-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Remix Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Remix Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-rap-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-rap-viet-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Rap Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rap Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-tien-chien-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-tien-chien-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Tiền Chiến mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Tiền Chiến
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-trinh-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-trinh-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Trịnh mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Trịnh
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-rock-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-rock-viet-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Rock Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rock Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-cach-mang-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-cach-mang-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Cách Mạng mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Cách Mạng
                                         </a>
                                     </li>
@@ -69,47 +69,47 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/bai-hat/nhac-pop-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-pop-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Âu Mỹ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Âu Mỹ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-pop-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-pop-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Pop mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Pop
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-rock-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-rock-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Rock mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rock
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Electronica-Dance-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Electronica-Dance-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Electronica/Dance mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Electronica/Dance
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-hip-hop-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-hip-hop-moi" class="header__left-item-link <%= pageTitle === 'Nhạc R&B/Hip Hop/Rap mới' ? 'header__left-item-link--highlight' : '' %>">
                                             R&B/HipHop/Rap
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Blues-Jazz-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Blues-Jazz-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Blues/Jazz mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Blues/Jazz
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Country-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Country-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Country mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Country
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Latin-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Latin-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Latin mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Latin
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Indie-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Indie-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Indie mới' ? 'header__left-item-link--highlight' : '' %>">
                                             India
                                         </a>
                                     </li>
@@ -118,27 +118,27 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/bai-hat/nhac-Han-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Han-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             CHÂU Á
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Han-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Han-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Hàn mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hàn
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Hoa-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Hoa-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Hoa mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hoa
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Nhat-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Nhat-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Nhật mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Nhật
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-Thai-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-Thai-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Thái mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Thái
                                         </a>
                                     </li>
@@ -147,28 +147,23 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list header__left-item-child-list--final">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/bai-hat/nhac-thieu-nhi-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-thieu-nhi-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Khác
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-thieu-nhi-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-thieu-nhi-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Thiếu Nhi mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Thiếu Nhi
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-khong-loi-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-khong-loi-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Không Lời mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Không Lời
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/nhac-beat-moi" class="header__left-item-child-item-link">
+                                        <a href="/bai-hat/nhac-beat-moi" class="header__left-item-link <%= pageTitle === 'Nhạc Beat mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Beat
-                                        </a>
-                                    </li>
-                                    <li class="header__left-item-child-item">
-                                        <a href="/bai-hat/" class="header__left-item-child-item-link">
-                                            Tui Hát
                                         </a>
                                     </li>
                                 </ul>
@@ -187,47 +182,47 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/playlist/nhac-tre-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-tre-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Việt Nam
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-tre-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-tre-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc trẻ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-tru-tinh-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-tru-tinh-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Trữ Tình mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Trữ Tình
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-remix-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-remix-viet-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Remix Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Remix Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-rap-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-rap-viet-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Rap Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rap Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-tien-chien-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-tien-chien-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Tiền Chiến mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Tiền Chiến
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-trinh-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-trinh-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Trịnh mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Trịnh
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-rock-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-rock-viet-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Rock Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rock Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-cach-mang-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-cach-mang-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Cách Mạng mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Cách Mạng
                                         </a>
                                     </li>
@@ -236,47 +231,47 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/playlist/nhac-pop-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-pop-moi" class="header__left-item-link">
                                             Âu Mỹ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-pop-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-pop-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Pop mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Pop
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-rock-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-rock-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Rock mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rock
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Electronica-Dance-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Electronica-Dance-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Electronica/Dance mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Electronica/Dance
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-hip-hop-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-hip-hop-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc R&B/Hip Hop/Rap mới' ? 'header__left-item-link--highlight' : '' %>">
                                             R&B/HipHop/Rap
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Blues-Jazz-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Blues-Jazz-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Blues/Jazz mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Blues/Jazz
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Country-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Country-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Country mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Country
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Latin-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Latin-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Latin mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Latin
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Indie-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Indie-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Indie mới' ? 'header__left-item-link--highlight' : '' %>">
                                             India
                                         </a>
                                     </li>
@@ -285,27 +280,27 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/playlist/nhac-Han-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Han-moi" class="header__left-item-link">
                                             CHÂU Á
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Han-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Han-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Hàn mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hàn
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Hoa-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Hoa-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Hoa mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hoa
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Nhat-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Nhat-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Nhật mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Nhật
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-Thai-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-Thai-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Thái mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Thái
                                         </a>
                                     </li>
@@ -314,31 +309,25 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list header__left-item-child-list--final">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/playlist/nhac-thieu-nhi-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-thieu-nhi-moi" class="header__left-item-link">
                                             Khác
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-thieu-nhi-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-thieu-nhi-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Thiếu Nhi mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Thiếu Nhi
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-khong-loi-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-khong-loi-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Không Lời mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Không Lời
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/playlist/nhac-phim-moi" class="header__left-item-child-item-link">
+                                        <a href="/playlist/nhac-phim-moi" class="header__left-item-link <%= pageTitle === 'Playlist Nhạc Phim mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Phim
                                         </a>
                                     </li>
-                                    <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
-                                            Thể Loại Khác
-                                        </a>
-                                    </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -355,42 +344,42 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Thể loại
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc trẻ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Trữ Tình
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Pop
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hàn
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hoa
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             SoundTrack
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Không lời
                                         </a>
                                     </li>
@@ -399,42 +388,42 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Tâm Trạng
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Buồn
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Hưng Phấn
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạy Cảm
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhớ Nhung
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Thất Tình
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Thư Giãn
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Vui Vẻ
                                         </a>
                                     </li>
@@ -443,42 +432,42 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Khung Cảnh
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Cà Phê  
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Bar - Club
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Phòng Trà
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Tắm - Bơi Lội
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Tập Gym
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Lãng Mạng
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Mưa
                                         </a>
                                     </li>
@@ -487,42 +476,42 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list header__left-item-child-list--final">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Chủ Đề
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Tình Yêu
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Top 100
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Weekend
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Chill Out
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Bất Hủ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Song Ca
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Mashup
                                         </a>
                                     </li>
@@ -543,27 +532,27 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/video/nhac-tre-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-tre-moi" class="header__left-item-link">
                                             Việt Nam
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-tre-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-tre-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc trẻ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-tru-tinh-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-tru-tinh-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Trữ Tình mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Trữ Tình
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-cach-mang-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-cach-mang-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Cách Mạng mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Cách Mạng
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-rap-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-rap-viet-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Rap Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rap Việt
                                         </a>
                                     </li>
@@ -572,47 +561,47 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/video/nhac-pop-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-pop-moi" class="header__left-item-link">
                                             Âu Mỹ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-pop-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-pop-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Pop mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Pop
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-rock-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-rock-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Rock mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rock
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Electronica-Dance-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Electronica-Dance-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Electronica/Dance mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Electronica/Dance
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-hip-hop-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-hip-hop-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc R&B/Hip Hop/Rap mới' ? 'header__left-item-link--highlight' : '' %>">
                                             R&B/HipHop/Rap
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Blues-Jazz-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Blues-Jazz-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Blues/Jazz mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Blues/Jazz
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Country-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Country-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Country mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Country
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Latin-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Latin-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Latin mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Latin
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Indie-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Indie-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Indie mới' ? 'header__left-item-link--highlight' : '' %>">
                                             India
                                         </a>
                                     </li>
@@ -621,27 +610,27 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/video/nhac-Han-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Han-moi" class="header__left-item-link">
                                             CHÂU Á
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Han-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Han-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Hàn mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hàn
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Hoa-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Hoa-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Hoa mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hoa
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Nhat-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Nhat-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Nhật mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Nhật
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-Thai-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-Thai-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Thái mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Thái
                                         </a>
                                     </li>
@@ -650,42 +639,42 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/video/karaoke-nhac-tre-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-tre-moi" class="header__left-item-link">
                                             Karaoke
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/karaoke-nhac-tre-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-tre-moi" class="header__left-item-link <%= pageTitle === 'Video Karaoke Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Trẻ
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/karaoke-nhac-tru-tinh-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-tru-tinh-moi" class="header__left-item-link <%= pageTitle === 'Video Karaoke Nhạc Trữ Tình mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Trữ Tình
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/karaoke-nhac-remix-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-remix-moi" class="header__left-item-link <%= pageTitle === 'Video Karaoke Nhạc Remix Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Remix Việt  
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/karaoke-nhac-rap-viet-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-rap-viet-moi" class="header__left-item-link <%= pageTitle === 'Video Karaoke Nhạc Rap Việt mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Rap Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/karaoke-nhac-cach-mang-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-cach-mang-moi" class="header__left-item-link <%= pageTitle === 'Video Karaoke Nhạc Cách Mạng mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Cách Mạng
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/karaoke-nhac-thieu-nhi-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-thieu-nhi-moi" class="header__left-item-link <%= pageTitle === 'Video Karaoke Nhạc Thiếu Nhi mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Thiếu Nhi
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/karaoke-nhac-au-my-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/karaoke-nhac-au-my-moi" class="header__left-item-link <%= pageTitle === 'Video Karaoke Nhạc Âu Mỹ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Âu Mỹ
                                         </a>
                                     </li>
@@ -694,27 +683,27 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list header__left-item-child-list--final">
                                     <li class="header__left-item-child-item header__left-item-child-item--header">
-                                        <a href="/video/clip-vui-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/clip-vui-moi" class="header__left-item-link">
                                             Khác
                                         </a>    
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/clip-vui-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/clip-vui-moi" class="header__left-item-link <%= pageTitle === 'Video Clip Vui mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Clip Vui    
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/hai-kich-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/hai-kich-moi" class="header__left-item-link <%= pageTitle === 'Video Hài Kịch mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Hài Kịch
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/nhac-thieu-nhi-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/nhac-thieu-nhi-moi" class="header__left-item-link <%= pageTitle === 'Video Nhạc Thiếu Nhi mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Thiếu Nhi 
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="/video/phim-viet-nam-moi" class="header__left-item-child-item-link">
+                                        <a href="/video/phim-viet-nam-moi" class="header__left-item-link <%= pageTitle === 'Video Phim Việt Nam mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Phim Việt Nam
                                         </a>
                                     </li>
@@ -731,24 +720,24 @@
                 <div class="header__left-item-child">
                     <ul class="header__left-item-child-list header__left-item-child-list--final">
                         <li class="header__left-item-child-item">
-                            <a href="/bai-hat/bang-xep-hang-viet" class="header__left-item-child-item-link">
+                            <a href="/bai-hat/bang-xep-hang-viet" class="<%= pageTitle === 'Bảng xếp hạng nhạc Việt' ? ' header__left-item-link--highlight' : ' ' %> header__left-item-link">
                                 Việt Nam      
                             </a>    
                         </li>
                         <li class="header__left-item-child-item">
-                            <a href="/bai-hat/bang-xep-hang-usa" class="header__left-item-child-item-link">
+                            <a href="/bai-hat/bang-xep-hang-usa" class="<%= pageTitle === 'Bảng xếp hạng nhạc Âu Mỹ' ? ' header__left-item-link--highlight' : ' ' %> header__left-item-link">
                                 Âu Mỹ  
                             </a>    
                         </li>
                         <li class="header__left-item-child-item">
-                            <a href="/bai-hat/bang-xep-hang-korea" class="header__left-item-child-item-link">
+                            <a href="/bai-hat/bang-xep-hang-korea" class="<%= pageTitle === 'Bảng xếp hạng nhạc Hàn' ? ' header__left-item-link--highlight' : ' ' %> header__left-item-link">
                                 Hàn Quốc    
                             </a>    
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="header__left-item">
+            <!-- <li class="header__left-item">
                 <a href="/bai-hat/bai-hat-moi" class=" <%= pageTitle === 'Chủ đề' ? ' header__left-item-link--highlight' : ' ' %> header__left-item-link">
                     Chủ đề
                 </a>
@@ -758,37 +747,37 @@
                             <div class="col">
                                 <ul class="header__left-item-child-list header__left-item-child-list--final">
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             The Best Of 2021   
                                         </a>    
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Hôm Nay Nghe Gì 
                                         </a>    
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Indie   
                                         </a>    
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Bất Hủ Âu Mỹ
                                         </a>    
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Cover & Mashup      
                                         </a>    
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Lofi    
                                         </a>    
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Thiếu Nhi    
                                         </a>    
                                     </li>
@@ -797,37 +786,37 @@
                             <div class="col">   
                                 <ul class="header__left-item-child-list">
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Chill Out
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             EDM
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hot                
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Hoa Lời Việt
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Coffee Time
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Phim   
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Nhạc Buồn
                                         </a>
                                     </li>
@@ -836,37 +825,37 @@
                             <div class="col">   
                                 <ul class="header__left-item-child-list header__left-item-child-list--final">
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Acoustic 
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Hải Ngoại
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Remix Việt             
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Bài Hát Yêu Thich
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Gym
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Bolero 
                                         </a>
                                     </li>
                                     <li class="header__left-item-child-item">
-                                        <a href="" class="header__left-item-child-item-link">
+                                        <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                             Piano
                                         </a>
                                     </li>
@@ -875,36 +864,36 @@
                         </div>
                     </div>
                 </div>
-            </li>
-            <li class="header__left-item">
+            </li> -->
+            <!-- <li class="header__left-item">
                 <a href="/bai-hat/bai-hat-moi" class=" <%= pageTitle === 'Top 100' ? ' header__left-item-link--highlight' : ' ' %> header__left-item-link">
                     Top 100
                 </a>
                 <div class="header__left-item-child">
                     <ul class="header__left-item-child-list header__left-item-child-list--final">
                         <li class="header__left-item-child-item">
-                            <a href="" class="header__left-item-child-item-link">
+                            <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                 Việt Nam      
                             </a>    
                         </li>
                         <li class="header__left-item-child-item">
-                            <a href="" class="header__left-item-child-item-link">
+                            <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                 Âu Mỹ  
                             </a>    
                         </li>
                         <li class="header__left-item-child-item">
-                            <a href="" class="header__left-item-child-item-link">
+                            <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                 Hàn Quốc    
                             </a>    
                         </li>
                         <li class="header__left-item-child-item">
-                            <a href="" class="header__left-item-child-item-link">
+                            <a href="" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %>">
                                 Khác
                             </a>    
                         </li>
                     </ul>   
                 </div>
-            </li>
+            </li> -->
             <li class="header__left-item">
                 <a href="/bai-hat/bai-hat-moi" class="header__left-item-link">
                     <i class="fas fa-ellipsis-h"></i>
@@ -912,17 +901,17 @@
                 <div class="header__left-item-child">
                     <ul class="header__left-item-child-list header__left-item-child-list--final">
                         <li class="header__left-item-child-item">
-                            <a href="" class="header__left-item-child-item-link">
-                                Khám Phá    
-                            </a>    
-                        </li>
-                        <li class="header__left-item-child-item">
-                            <a href="" class="header__left-item-child-item-link">
+                            <a href="/nghe-si/" class="header__left-item-link <%= pageTitle === 'Nghệ sĩ' ? 'header__left-item-link--highlight' : '' %>">
                                 Nghệ Sĩ
                             </a>    
                         </li>
                         <li class="header__left-item-child-item">
-                            <a href="" class="header__left-item-child-item-link">
+                            <a href="/user/" class="header__left-item-link <%= pageTitle === 'Top người dùng' ? 'header__left-item-link--highlight' : '' %>">
+                                Người dùng
+                            </a>    
+                        </li>
+                        <li class="header__left-item-child-item">
+                            <a href="/tin-tuc-am-nhac/?page=1" class="header__left-item-link <%= pageTitle === 'Nhạc Trẻ mới' ? 'header__left-item-link--highlight' : '' %> <%= pageTitle === 'Tin tức âm nhạc' ? 'header__left-item-link--highlight' : '' %>"">
                                 Tin Tức Âm Nhạc 
                             </a>    
                         </li>

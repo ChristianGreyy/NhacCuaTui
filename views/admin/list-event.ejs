@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">`
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Danh sách sự kiện
+            </div>
+            <div class="app-admin-right-delete">
+                <div class="app-admin-right-delete__icon">
+                    <i class="far fa-trash-alt"></i>
+                </div>
+                <div class="app-admin-right-delete__des">
+                    Xóa
+                </div>
+            </div>
+            <table class="app-admin-right-table">
+                <tr>
+                    <th class="app-admin-right-table__heading">Id</th>
+                    <th class="app-admin-right-table__heading">Sự kiện</th>
+                    <th class="app-admin-right-table__heading">Playlist</th>
+                </tr>
+                <% events.forEach(event => { %>
+                    <tr class="app-admin-right-table__row"> <!--app-admin-right-table__row--active-->
+                        <td class="app-admin-right-table__content">
+                            <input type="checkbox" class="app-admin-right-table__checkbox">
+                            <a href="danh-sach-nguoi-dung/<%= event._id %>" class="app-admin-right-table__edit">
+                                <i class="fas fa-singer-plus"></i>
+                            </a>
+                            <%= event._id %></td>
+                        <td class="app-admin-right-table__content"><%= event.title %></td>
+                        <td class="app-admin-right-table__content"><%= event.playlists %></td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>

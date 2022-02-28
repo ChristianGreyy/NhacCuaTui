@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="app-admin">
+        <div class="app-admin-left">
+            <%- include('../includes/aside-admin.ejs') %>
+        </div>
+        <div class="app-admin-right">
+            <div class="app-admin-right-heading">
+                Tạo sự kiện
+            </div>
+            <form action="tao-su-kien" method="POST" class="app-admin-right__form" enctype="multipart/form-data">
+                <div class="app-admin-right__form-group">
+                    <label for="name" class="app-admin-right__form-group-label">
+                        Tên sự kiện
+                    </label>
+                    <input type="text" id="name" name="title" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group">
+                    <label for="background" class="app-admin-right__form-group-label">
+                        Background
+                    </label>
+                    <input type="file" id="background" name="background" autocomplete="off" class="app-admin-right__form-group-input">
+                </div>
+                <div class="app-admin-right__form-group--singer">
+                    <div class="app-admin-right__form-group">
+                        <label for="playlists" class="app-admin-right__form-group-label">
+                            Tên playlist
+                        </label>
+                        <select name="playlists[0]" id="playlists" class="app-admin-right__form-group-input">
+                            <% playlists.forEach(playlist => { %>
+                                <option value="<%= playlist._id %>"><%= playlist.title %></option>
+                            <% }) %>
+                        </select>
+                        <div class="app-admin-right__form-group-add">
+                            <i class="icofont-ui-add"></i>
+                        </div>
+                        <!-- <label for="singer" class="app-admin-right__form-group-label">
+                            Tên ca sĩ
+                        </label>
+                        <input type="text" id="singer" name="singer" autocomplete="off" class="app-admin-right__form-group-input"> -->
+                    </div>
+                </div>
+                <div class="app-admin-right-button">
+                    Tạo sự kiện
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/js/admin.js"></script>

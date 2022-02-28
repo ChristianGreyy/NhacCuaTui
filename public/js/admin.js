@@ -109,8 +109,12 @@ const deleteMusic = () => {
             const locationHref = window.location.href.split('/')[4]
             if(locationHref === 'danh-sach-nguoi-dung') {
                 URL = '/admin/danh-sach-nguoi-dung';
-            } else {
+            } else if(locationHref === 'danh-sach-bai-hat') {
                 URL = '/admin/danh-sach-bai-hat';
+            } else if(locationHref === 'danh-sach-playlist'){
+                URL = '/admin/danh-sach-playlist';
+            } else {
+                URL = '/admin//danh-sach-su-kien';
             }
             fetch(URL, {
                 method: 'DELETE',
@@ -217,6 +221,8 @@ const solveAddNameSinger = (() => {
         let subUrl = "";
         if(window.location.href.split('/')[window.location.href.split('/').length - 1] === 'tao-playlist') {
             subUrl = 'fetch-musics';
+        } else if(window.location.href.split('/')[window.location.href.split('/').length - 1] === 'tao-su-kien') {
+            subUrl = 'fetch-playlists';
         } else {
             subUrl = 'fetch-singers';
         } 
@@ -261,7 +267,7 @@ const solveAddNameSinger = (() => {
                         ${optionString}
                     </select>
                 `
-            } else {
+            } else if(window.location.href.split('/')[window.location.href.split('/').length - 1] === 'tao-video'){
                 const num = document.querySelectorAll('.app-admin-right__form-group').length - 5;
                 data.singers.forEach(singer => {
                     optionString += `
@@ -273,6 +279,21 @@ const solveAddNameSinger = (() => {
                         Tên ca sĩ
                     </label>
                     <select name="singers[${num}]" id="singers" class="app-admin-right__form-group-input">
+                        ${optionString}
+                    </select>
+                `
+            } else {
+                const num = document.querySelectorAll('.app-admin-right__form-group').length - 2;
+                data.playlists.forEach(playlist => {
+                    optionString += `
+                        <option value="${playlist._id}">${playlist.title}</option>
+                    `
+                })
+                html = `
+                    <label for="playlists" class="app-admin-right__form-group-label">
+                        Tên playlist
+                    </label>
+                    <select name="playlists[${num}]" id="playlists" class="app-admin-right__form-group-input">
                         ${optionString}
                     </select>
                 `

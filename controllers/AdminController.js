@@ -4,6 +4,7 @@ const Singer = require('../models/SingerModel');
 const Playlist = require('../models/PlaylistModel')
 const User = require('../models/UserModel');
 const Video = require('../models/VideoModel');
+const Event = require('../models/EventModel');
 const fs = require('fs');
 const path = require('path');
 
@@ -88,6 +89,28 @@ exports.fetchVietnamMusicAdmin = async (req, res, next) => {
     }
 }
 
+exports.fetchPlaylistAdmin = async (req, res, next) => {
+    try {
+        const playlists = await Playlist.find({})
+        res.json({
+            playlists,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.fetchEventAdmin = async (req, res, next) => {
+    try {
+        const events = await Event.find({})
+        res.json({
+            events,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 exports.getAdminLogin = (req, res, next) => {
     res.render('admin/adminLogin.ejs')
 }
@@ -112,6 +135,99 @@ exports.postAdminLogin = (req, res, next) => {
         console.log(err);
     })
 }
+
+exports.getCreateEventAdmin = async (req, res, next) => {
+    try {
+        const playlists = await Playlist.find({});
+        res.render('admin/create-event', {
+            pageTitle: 'Tạo sự kiện',
+            playlists: playlists
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.postCreateEventAdmin = async (req, res, next) => {
+    try {
+        const { title, playlists } = req.body;
+        console.log(req.file);
+        const event = new Event({
+            title,
+            playlists, 
+            background: '/backgroundEvent/' + req.file.filename,
+        })
+
+        const result = await event.save();  
+
+        for(let i in playlists) {
+            const playlist = await Playlist.findOne({_id: playlists[i]});
+            playlist.events.push(event._id);
+            const ans = await playlist.save();
+        }
+        res.redirect('/admin/danh-sach-su-kien');
+
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.getListEventMusicAdmin =  async (req, res, next) => {
+    try {
+        const events = await Event.find({});
+        res.render('admin/list-event', {
+            pageTitle: 'Danh sách sự kiện',
+            errorMessage: false,
+            events,
+        })
+
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.deleteListEventMusicAdmin = (req, res, next) => {
+    const {_idArray} = req.body;
+    
+    _idArray.forEach(id => {
+        Event.findOne({_id: id})
+        .then(event => {
+            if(!event) {
+                return res.statusCode(404).json('Not found event');
+            }
+            for(let i in event.playlists) {
+                Playlist.findOne({_id: event.playlists[i]})
+                .then(playlist => {
+                    // console.log(singer);
+                    playlist.events.pull(id);
+                    return playlist.save();
+                })
+                .then(result => {
+                    console.log('delete event in array of playlist');
+                })
+                .catch(err => {
+                    console.log(err);
+                    const error = new Error('error server');
+                    error.statusCode = 500;
+                    throw error;
+                })
+            }
+            let backgroundEvent = path.join(__dirname, '../public', event.background);
+            solveUnlinkPath(backgroundEvent);
+            return Event.deleteOne({_id: id});
+        })
+        .then(result => {
+            res.json({
+                message: 'Deleted event',
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    })
+}
+
+
 
 exports.getCreateMusicAdmin = async (req, res, next) => {
     try {
@@ -466,7 +582,7 @@ exports.postCreatePlaylistMusicAdmin = async (req, res, next) => {
             const answer = await music.save();
 
             if(i == musics.length - 1) {
-                res.redirect('/admin/tao-playlist');
+                res.redirect('/admin/danh-sach-playlist');
             }
         }
         // res.render('admin/create-playlist', {
@@ -477,6 +593,60 @@ exports.postCreatePlaylistMusicAdmin = async (req, res, next) => {
         console.log(err);
     }
     
+}
+
+exports.getListPlaylistMusicAdmin = async (req, res, next) => {
+    try {
+        const playlists = await Playlist.find({})
+        .populate('musics')
+        res.render('admin/list-playlist', {
+            pageTitle: 'Danh sách playlist',
+            playlists: playlists,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+exports.deleteListPlaylistMusicAdmin = async (req, res, next) => {
+    const {_idArray} = req.body;
+    
+    _idArray.forEach(id => {
+        Playlist.findOne({_id: id})
+        .then(playlist => {
+            if(!playlist) {
+                return res.statusCode(404).json('Not found playlist');
+            }
+            for(let i in playlist.musics) {
+                Music.findOne({_id: playlist.musics[i]})
+                .then(music => {
+                    // console.log(music);
+                    music.playlists.pull(id);
+                    return music.save();
+                })
+                .then(result => {
+                    console.log('delete playlists in array of musics');
+                })
+                .catch(err => {
+                    console.log(err);
+                    const error = new Error('error server');
+                    error.statusCode = 500;
+                    throw error;
+                })
+            }
+            let playlistBackground = path.join(__dirname, '../public', playlist.background);
+            solveUnlinkPath(playlistBackground);
+            return Playlist.deleteOne({_id: id});
+        })
+        .then(result => {
+            res.json({
+                message: 'Deleted playlist',
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    })
 }
 
 exports.getcreateVideocAdmin = async (req, res, next) => {
@@ -522,6 +692,8 @@ exports.postcreateVideocAdmin = async (req, res, next) => {
 exports.getListVideocAdmin = (req, res, next) => {
     res.send('ok')
 }
+
+
 
 const solveUnlinkPath = (path) => {
     fs.unlink(path, (err) => {

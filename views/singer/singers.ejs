@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+    <body>
+        <div class="app">
+            <%- include('../includes/navigation.ejs') %>
+            <div class="singers">
+                <div class="singers-navigation">
+                    <div class="singers-navigation__left">
+                        <div class="singers-navigation__left-text">
+                            Nghệ sĩ
+                        </div>
+                        <div class="singers-navigation__left-icon">
+                            <i class="icofont-rounded-right"></i>
+                        </div>
+                    </div>
+                    <ul class="singers-navigation__right">
+                       <!-- Inner HTMl -->
+                    </ul>
+                </div>
+                <ul class="singers-list">
+                    <% singers.forEach(singer => { %>
+                        <li class="singers-list__items">
+                            <a href="/nghe-si/<%= singer._id %>" class="singers-list__items-avatar__link">
+                                <img src="<%= singer.avatar %>" alt="" class="singers-list__items-avatar">
+                            </a>
+                            <a href="/nghe-si/<%= singer._id %>" class="singers-list__items-name">
+                                <%= singer.fullname %>
+                            </a>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+</html>
+<%- include('../includes/end.ejs') %>

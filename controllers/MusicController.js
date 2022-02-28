@@ -127,7 +127,7 @@ exports.getMusic = async (req, res, next) => {
     if(url === 'bai-hat') {
         let musicId = req.params.musicId;
         if(musicId.length != 24) {
-            res.render('error/404', {
+            return res.render('error/404', {
                 pageTitle: 'Không tìm thấy trang', 
                 errorMessage: false,
             });
@@ -141,7 +141,7 @@ exports.getMusic = async (req, res, next) => {
         .populate('poster')
         .then(music => {
             if(!music) {
-                res.render('error/404', {
+                return res.render('error/404', {
                     pageTitle: 'Không tìm thấy trang', 
                     errorMessage: false,
                 });
@@ -182,14 +182,14 @@ exports.getMusic = async (req, res, next) => {
         try {
             const idPlaylist = req.params.musicId;
             if(idPlaylist.length != 24) {
-                res.render('error/404', {
+                return res.render('error/404', {
                     pageTitle: 'Không tìm thấy trang', 
                     errorMessage: false,
                 });
             }
             const playlist = await Playlist.findOne({_id: idPlaylist}).populate('musics');
             if(!playlist) {
-                res.render('error/404', {
+                return res.render('error/404', {
                     pageTitle: 'Không tìm thấy trang', 
                     errorMessage: false,
                 });
@@ -215,7 +215,7 @@ exports.getMusic = async (req, res, next) => {
                 idArray.push(idString);
             }
 
-            res.render('playlist/playlist', {
+            return res.render('playlist/playlist', {
                 playlist,
                 pageTitle: playlist.title,
                 singers,
@@ -233,14 +233,14 @@ exports.getMusic = async (req, res, next) => {
     } else if(url === 'video') {
         const idVideo = req.params.musicId;
         if(idVideo.length != 24) {
-            res.render('error/404', {
+            return res.render('error/404', {
                 pageTitle: 'Không tìm thấy trang', 
                 errorMessage: false,
             });
         }
         const video = await Video.findOne({_id: idVideo}).populate('singers');
         if(!video) {
-            res.render('error/404', {
+            return res.render('error/404', {
                 pageTitle: 'Không tìm thấy trang', 
                 errorMessage: false,
             });
@@ -249,7 +249,7 @@ exports.getMusic = async (req, res, next) => {
         for(let i in video.singers) {
             singersArray.push(video.singers[i]);
         }
-        res.render('video/video.ejs', {
+        return res.render('video/video.ejs', {
             pageTitle: 'Video',
             errorMessage: false,
             errorNotFound: req.flash('notFoundUser')[0],
@@ -257,7 +257,7 @@ exports.getMusic = async (req, res, next) => {
             singersArray
         })
     } else {
-        res.render('error/404', {
+        return res.render('error/404', {
             pageTitle: 'Không tìm thấy trang', 
             errorMessage: false,
         });

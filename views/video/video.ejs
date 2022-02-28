@@ -16,12 +16,12 @@
                 <div class="music-content music-content--video">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-9 music-content-left">
+                            <div style="width: 72%" class="col-9 music-content-left">
                                 <div class="music-content-left__video">
                                     <iframe width="100%" height="470px" src="https://www.youtube.com/embed/<%= video.link %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     <div class="music-content-left__video-des">
                                         <div class="music-content-left__video-des__name">
-                                            <%= video.title %> - 
+                                            <%= video.title %> <%= singersArray.length > 0 ? '-' : '' %>
                                         </div>
                                         <div class="music-content-left__video-des-singers">
                                             <% singersArray.forEach((singer, i) => { %>
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 music-content-right music-content-right--video">
+                            <div style="width: 28%" class="col-3 music-content-right music-content-right--video">
                                 <div class="music-content-right-heading">
                                     <div class="music-content-right-heading__titles">
                                         Xem Tiếp

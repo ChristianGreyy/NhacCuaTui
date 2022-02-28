@@ -5,7 +5,7 @@ const userController = require('../controllers/UserController');
 const identiyMiddleware = require('../middlewares/identity');
 const authMiddleware = require('../middlewares/auth');
 
-
+router.get('/', userController.getUsers);
 router.get('/:id/ban-be', identiyMiddleware.check, userController.getPersonalFriendUser);
 router.get('/:id/bai-hat-tui-upload', identiyMiddleware.check, userController.getPersonalUploadUser);
 router.get('/:id/video', identiyMiddleware.check, userController.getPersonalVideoUser);

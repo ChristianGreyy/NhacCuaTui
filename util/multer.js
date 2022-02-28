@@ -107,3 +107,22 @@ exports.storageVideo = multer.diskStorage({
     cb(null, nameVideo);
   }
 })
+
+exports.storageEvent = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const pathAvatar = path.join(__dirname, '../public', 'backgroundEvent');
+    cb(null, pathAvatar)
+  },
+  filename: function (req, file, cb) {
+    const { title } = req.body;
+    let nameEvent = 'Event-'.concat(title);
+    if(file.mimetype === 'image/png') {
+      nameEvent += '.png';
+    } else if(file.mimetype === 'image/jpeg') {
+      nameEvent += '.jpg';
+    } else if(file.mimetype === 'image/jpg') {
+      nameEvent += '.jpg';
+    }
+    cb(null, nameEvent);
+  }
+})

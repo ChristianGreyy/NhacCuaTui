@@ -22,7 +22,7 @@ exports.postSignUp = (req, res, next) => {
             password: passwordHash,
             email,
             avatar: '/img/avatar.png',
-            coin: 0,
+            coins: 0,
             fullname: username,
             description: 'ordinary', 
             background: '',
