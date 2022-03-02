@@ -48,16 +48,17 @@
                             <% } %>
                         </div>
                     </div>
+                    <div class="personal-user__content-left-des-wrapper">
+                        <div class="personal-user__content-left-des-wrapper-text">
+                            Số người theo dõi: 
+                        </div>
+                        <div class="personal-user__content-left-des-wrapper-value">
+                            <%= user.followers.length %>
+                        </div>
+                    </div>
                     <% if (!identity) { %>
                         <div class="personal-user__content-left-des-wrapper">
-                            <div class="personal-user__content-left-des-wrapper-button">
-                                <div class="personal-user__content-left-des-wrapper-button-icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <div class="personal-user__content-left-des-wrapper-button-des">
-                                    Kết bạn
-                                </div>
-                            </div>
+                           
                         </div>
                     <% } %>
                     <div
@@ -75,7 +76,7 @@
             <div class="personal-user__content-right col-8">
                 <img src="/img/img-user/personal-user-1.png" alt=""
                     class="personal-user__content-right-img">
-                <ul class="personal-user__content-right__theme personal-user__content-right__theme--singer">
+                <ul class="personal-user__content-right__theme">
                     <li
                         class="personal-user__content-right__theme-item personal-user__content-right__theme-item--vietnam">
                         <a href="" class="personal-user__content-right__theme-item-link">
@@ -135,11 +136,6 @@
         <li class="personal-user-navigation-items">
             <a href="/user/<%= user._id %>/playlist" class=" <%= pageTitle.split('|')[1] === ' Playlist' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
                 Playlist  
-            </a>
-        </li>
-        <li class="personal-user-navigation-items">
-            <a href="/user/<%= user._id %>/video" class=" <%= pageTitle.split('|')[1] === ' Video' ? 'personal-user-navigation-items__link--hightlight' : '' %> personal-user-navigation-items__link">
-                Video   
             </a>
         </li>
         <li class="personal-user-navigation-items">

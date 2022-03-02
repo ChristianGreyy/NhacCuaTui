@@ -11,6 +11,7 @@ const errorController = require('../controllers/ErrorController');
 const User = require('../models/UserModel');
 const Music = require('../models/MusicModel');
 const Singer = require('../models/SingerModel');
+const Video  = require('../models/VideoModel');
 const Playlist = require('../models/PlaylistModel');
 
 const routes = (app) => {
@@ -27,6 +28,9 @@ const routes = (app) => {
         const musicsKorea = await Music.find({original: 'Korea'}).populate('singers').limit(10);
         const playlists = await Playlist.find({}).limit(6);
         const singers = await Singer.find({}).limit(6);
+        const videosVietNam = await Video.find({original: 'Vietnam'}).populate('singers').limit(6);
+        const videosUsa = await Video.find({original: 'Usa'}).populate('singers').limit(6);
+        const videosKorea = await Video.find({original: 'Korea'}).populate('singers').limit(6);
         User.findOne({_id: req.session.user})
         .then(user => {
             res.render('home', {
@@ -38,6 +42,9 @@ const routes = (app) => {
                 musicsKorea,
                 singers,
                 playlists,
+                videosVietNam,
+                videosUsa,
+                videosKorea
             });
         })
         .catch(err => {

@@ -6,10 +6,6 @@ const musicSchema = new Schema({
         type: String,
         required: true,
     },
-    author: {
-        type: String,
-        required: true,
-    },
     singers: [
         {
             type: Schema.Types.ObjectId,

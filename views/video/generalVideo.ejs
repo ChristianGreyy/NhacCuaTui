@@ -1,61 +1,57 @@
 <%- include('../includes/head.ejs') %>
-</html>
-    <body>
-        <div class="container-fluid app">
-            <%- include('../includes/navigation.ejs') %>
-            <div class="music">
-                <div class="music-content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-9 music-content-left">
-                                <%- include('../includes/kind-of-video.ejs') %>
-                                <div class="music-content-left__newMusic">
-                                    <h1 class="music-content-left__newMusic-title">
-                                        Video hot nhất
-                                    </h1>
-                                    <ul class="music-content-left__newMusic-list--video">
-                                        <% for(let i in videos) { %>
-                                            <li class="music-content-left__newMusic-list--video-items">
-                                                <a href="/video/<%= videos[i]._id %>" class="music-content-left__newMusic-list--video-items-video">
-                                                    <div class="music-content-left__newMusic-list--video-items-video__alpha">
+<div class="container-fluid app">
+    <%- include('../includes/navigation.ejs') %>
+    <div class="music">
+        <div class="music-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9 music-content-left">
+                        <%- include('../includes/kind-of-video.ejs') %>
+                        <div class="music-content-left__newMusic">
+                            <h1 class="music-content-left__newMusic-title">
+                                Video hot nhất
+                            </h1>
+                            <ul class="music-content-left__newMusic-list--video">
+                                <% for(let i in videos) { %>
+                                    <li class="music-content-left__newMusic-list--video-items">
+                                        <a href="/video/<%= videos[i]._id %>" class="music-content-left__newMusic-list--video-items-video">
+                                            <div class="music-content-left__newMusic-list--video-items-video__alpha">
 
-                                                    </div>
-                                                    <div class="music-content-left__newMusic-list--video-items-video__icon">
-                                                        <i class="icofont-ui-play"></i>
-                                                    </div>
-                                                    <img src="<%= videos[i].background %>" alt="" class="music-content-left__newMusic-list--video-items-video__img">
-                                                </a>
-                                                <a href="/video/<%= videos[i]._id %>" class="music-content-left__newMusic-list--video-items-name">
-                                                    <%= videos[i].title %>
-                                                </a>
-                                                <div class="music-content-left__newMusic-list--video-items-singers">
-                                                    <% nameSingersArray[i].split(',').forEach((singer, j) => { %>
-                                                        <% if(j != nameSingersArray[i].split(',').length - 2 && singer != '') { %>
-                                                            <a href="/nghe-si/<%= idSingersArray[i].split(',')[j] %>" class="music-content-left__newMusic-list--video-items-singer">
-                                                                <%= singer %> 
-                                                            </a>,
-                                                        <% } else { %>
-                                                            <a href="/nghe-si/<%= idSingersArray[i].split(',')[j] %>" class="music-content-left__newMusic-list--video-items-singer">
-                                                                <%= singer %>
-                                                            </a>
-                                                        <% } %>
-                                                    <% }) %>
-                                                </div>
-                                            </li>
-                                        <% } %>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-3 music-content-right">
-                                <ul class="aside-list">
-                                    <%- include('../includes/aside-singer-rank.ejs') %>
-                                </ul>
-                            </div>
+                                            </div>
+                                            <div class="music-content-left__newMusic-list--video-items-video__icon">
+                                                <i class="icofont-ui-play"></i>
+                                            </div>
+                                            <img src="<%= videos[i].background %>" alt="" class="music-content-left__newMusic-list--video-items-video__img">
+                                        </a>
+                                        <a href="/video/<%= videos[i]._id %>" class="music-content-left__newMusic-list--video-items-name">
+                                            <%= videos[i].title %>
+                                        </a>
+                                        <div class="music-content-left__newMusic-list--video-items-singers">
+                                            <% nameSingersArray[i].split(',').forEach((singer, j) => { %>
+                                                <% if(j != nameSingersArray[i].split(',').length - 2 && singer != '') { %>
+                                                    <a href="/nghe-si/<%= idSingersArray[i].split(',')[j] %>" class="music-content-left__newMusic-list--video-items-singer">
+                                                        <%= singer %> 
+                                                    </a>,
+                                                <% } else { %>
+                                                    <a href="/nghe-si/<%= idSingersArray[i].split(',')[j] %>" class="music-content-left__newMusic-list--video-items-singer">
+                                                        <%= singer %>
+                                                    </a>
+                                                <% } %>
+                                            <% }) %>
+                                        </div>
+                                    </li>
+                                <% } %>
+                            </ul>
                         </div>
+                    </div>
+                    <div class="col-3 music-content-right">
+                        <ul class="aside-list">
+                            <%- include('../includes/aside-singer-rank.ejs') %>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
 <%- include('../includes/end.ejs') %>

@@ -61,7 +61,7 @@
 }
 
 .personal-user__content-left-des-wrapper-createdAt {
-  margin-top: 30px;
+  margin-top: 18px;
 }
 
 .personal-user__content-right {
@@ -750,4 +750,59 @@
 .fa-bitcoin {
 }
 .fab.fa-bitcoin {
+}
+
+.admin-user-component__adminUser-right-item__playlist {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.admin-user-component__adminUser-right-item__playlist-items {
+  width: 30%;
+  margin-bottom: 18px;
+}
+.admin-user-component__adminUser-right-item__playlist-link {
+  display: block;
+  height: 124px;
+  width: 124px;
+}
+.admin-user-component__adminUser-right-item__playlist-link:hover
+  .admin-user-component__adminUser-right-item__playlist-image {
+  opacity: 0.8;
+}
+.admin-user-component__adminUser-right-item__playlist-image {
+  width: 100%;
+}
+.admin-user-component__adminUser-right-item__playlist-link-title {
+  display: block;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.admin-user-component__playlist-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin-user-component__playlist-items {
+  margin-bottom: 16px;
+  width: 20%;
+}
+.admin-user-component__playlist-items-image {
+  width: 164px;
+  height: 164px;
+  display: block;
+}
+.admin-user-component__playlist-items-img {
+  width: 100%;
+  height: 100%;
+}
+.admin-user-component__playlist-items-title {
+  color: rgba(0, 0, 0, 0.88);
 }

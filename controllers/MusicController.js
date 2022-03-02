@@ -249,12 +249,14 @@ exports.getMusic = async (req, res, next) => {
         for(let i in video.singers) {
             singersArray.push(video.singers[i]);
         }
+        const videos = await Video.find({}).populate('singers');
         return res.render('video/video.ejs', {
             pageTitle: 'Video',
             errorMessage: false,
             errorNotFound: req.flash('notFoundUser')[0],
             video,
-            singersArray
+            singersArray,
+            videos,
         })
     } else {
         return res.render('error/404', {

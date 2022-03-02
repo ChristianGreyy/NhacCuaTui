@@ -8,6 +8,22 @@ const Event = require('../models/EventModel');
 const fs = require('fs');
 const path = require('path');
 
+exports.fetchPersonalityAdmin = async (req, res, next) => {
+    try {
+        if(!req.user) {
+            return res.json({
+                message: 'Chưa đăng nhập'
+            })
+        }
+        const user = await User.findOne({_id: req.user._id});
+        res.json({
+            user,
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 exports.fetchSingersAdmin = async (req, res, next) => {
     try {
         const singers = await Singer.find({});
@@ -112,7 +128,9 @@ exports.fetchEventAdmin = async (req, res, next) => {
 }
 
 exports.getAdminLogin = (req, res, next) => {
-    res.render('admin/adminLogin.ejs')
+    res.render('admin/adminLogin.ejs', {
+        pageTitle: 'Đăng nhập admin'
+    })
 }
 
 exports.postAdminLogin = (req, res, next) => {
@@ -660,17 +678,17 @@ exports.getcreateVideocAdmin = async (req, res, next) => {
 
 exports.postcreateVideocAdmin = async (req, res, next) => {
     try {
-        const {title, singers, kind, link} = req.body;
+        const {title, singers, kind, link, original} = req.body;
         if(singers == '') {
             const video = new Video({
-                title, kind, link,
+                title, kind, link, original,
                 background: '/backgroundVideo/' + req.file.filename,
             })
             const result = await video.save();
             return res.redirect('/admin/tao-video');
         }
         const video = new Video({
-            title, singers, kind, link,
+            title, singers, kind, link, original,
             background: '/backgroundVideo/' + req.file.filename,
         })
         const result = await video.save();

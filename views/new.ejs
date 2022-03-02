@@ -1,49 +1,45 @@
 <%- include('./includes/head.ejs') %>
-</html>
-    <body>
-        <div class="container-fluid app">
-            <%- include('./includes/navigation.ejs') %>
-            <div class="music">
-                <div class="music-content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-9 music-content-left">
-                                <div class="music-content-left__newMusic">
-                                    <h1 class="music-content-left__newMusic-title">
-                                        Tin tức mới nhất
-                                    </h1>
-                                    <ul class="music-content-left__news">
-                                        <!-- Inner HTML here -->
-                                    </ul>
-                                </div>
-                                <div class="music-content-left__pagination">
-                                    <!-- <a href="" class="music-content-left__pagination-link music-content-left__pagination-link--active">
-                                        Trang đầu
-                                    </a>
-                                    <a href="" class="music-content-left__pagination-link">
-                                        1
-                                    </a>
-                                    <a href="" class="music-content-left__pagination-link">
-                                        ...
-                                    </a>
-                                    <a href="" class="music-content-left__pagination-link">
-                                        3
-                                    </a>
-                                    <a href="" class="music-content-left__pagination-link">
-                                        Trang cuối
-                                    </a> -->
-                                </div>
-                            </div>
-                            <div class="col-3 music-content-right">
-                                <ul class="aside-list">
-                                    <%- include('./includes/aside-music-rank.ejs') %>
-                                </ul>
-                            </div>
+<div class="container-fluid app">
+    <%- include('./includes/navigation.ejs') %>
+    <div class="music">
+        <div class="music-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9 music-content-left">
+                        <div class="music-content-left__newMusic">
+                            <h1 class="music-content-left__newMusic-title">
+                                Tin tức mới nhất
+                            </h1>
+                            <ul class="music-content-left__news">
+                                <!-- Inner HTML here -->
+                            </ul>
                         </div>
+                        <div class="music-content-left__pagination">
+                            <!-- <a href="" class="music-content-left__pagination-link music-content-left__pagination-link--active">
+                                Trang đầu
+                            </a>
+                            <a href="" class="music-content-left__pagination-link">
+                                1
+                            </a>
+                            <a href="" class="music-content-left__pagination-link">
+                                ...
+                            </a>
+                            <a href="" class="music-content-left__pagination-link">
+                                3
+                            </a>
+                            <a href="" class="music-content-left__pagination-link">
+                                Trang cuối
+                            </a> -->
+                        </div>
+                    </div>
+                    <div class="col-3 music-content-right">
+                        <ul class="aside-list">
+                            <%- include('./includes/aside-music-rank.ejs') %>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
 <%- include('./includes/end.ejs') %>

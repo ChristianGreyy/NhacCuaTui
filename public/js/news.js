@@ -26,6 +26,8 @@ const fetchTheNews = (async () => {
         let the1, the2, the3, the4, the5, the6, the7 = 0;
         if(page <= 4) {
             the1 = 1, the2=2, the3=3, the4=4, the5=5, the6=6, the7=7;
+        } else if(page >= pageNum - 3) {
+            the1 = pageNum-6, the2=pageNum-5, the3=pageNum-4, the4=pageNum-3, the5=pageNum-2, the6=pageNum-1, the7=pageNum;
         } else {
             the1 = page - 3;
             the2 = page - 2;

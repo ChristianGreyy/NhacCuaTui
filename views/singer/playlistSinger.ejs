@@ -1,54 +1,51 @@
 <%- include('../includes/head.ejs') %>
-    <body>
-        <div class="app">
-            <%- include('../includes/navigation.ejs') %>
-            <div class="personal-user">
-                <%- include('../includes/personal-singer.ejs') %>
-                
-                <div class="personal-user__component personal-user__component--singer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-9">
-                                <div class="personal-user__component--singer-list">
-                                    <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
-                                        <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
-                                            Album <%= singer.fullname %>
-                                        </div>
-                                        <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
-                                            <i class="icofont-rounded-double-right"></i>
-                                        </div>
-                                    </div>
-                                    <div class="personal-user__component--singer__content personal-user__component--singer__album">
-                                        <% playlists.forEach(playlist => { %>
-                                            <li class="personal-user__component--singer__album-items">
-                                                <a href="" class="personal-user__component--singer__album-items-image">
-                                                    <div class="personal-user__component--singer__album-items-image-icon">
-                                                        <i class="icofont-ui-play"></i>
-                                                    </div>
-                                                    <div class="personal-user__component--singer__album-items-image-alpha">
-                                                    </div>
-                                                    <img src="<%= playlist.background %>" alt="" class="personal-user__component--singer__album-items-background">
-                                                </a>
-                                                <div class="personal-user__component--singer__album-items-name">
-                                                    <%= playlist.title %>
-                                                </div>
-                                                <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                    <%= singer.fullname %>
-                                                </a>
-                                            </li>
-                                        <% }) %>
-                                    </div>
+<div class="app">
+    <%- include('../includes/navigation.ejs') %>
+    <div class="personal-user">
+        <%- include('../includes/personal-singer.ejs') %>
+        
+        <div class="personal-user__component personal-user__component--singer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="personal-user__component--singer-list">
+                            <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
+                                <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
+                                    Album <%= singer.fullname %>
+                                </div>
+                                <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
+                                    <i class="icofont-rounded-double-right"></i>
                                 </div>
                             </div>
-                            <div class="col-3">
-                               <%- include('../includes/personalSinger-aside.ejs') %>
+                            <div class="personal-user__component--singer__content personal-user__component--singer__album">
+                                <% playlists.forEach(playlist => { %>
+                                    <li class="personal-user__component--singer__album-items">
+                                        <a href="" class="personal-user__component--singer__album-items-image">
+                                            <div class="personal-user__component--singer__album-items-image-icon">
+                                                <i class="icofont-ui-play"></i>
+                                            </div>
+                                            <div class="personal-user__component--singer__album-items-image-alpha">
+                                            </div>
+                                            <img src="<%= playlist.background %>" alt="" class="personal-user__component--singer__album-items-background">
+                                        </a>
+                                        <div class="personal-user__component--singer__album-items-name">
+                                            <%= playlist.title %>
+                                        </div>
+                                        <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
+                                            <%= singer.fullname %>
+                                        </a>
+                                    </li>
+                                <% }) %>
                             </div>
-                        </div>    
+                        </div>
                     </div>
-                </div>
+                    <div class="col-3">
+                        <%- include('../includes/personalSinger-aside.ejs') %>
+                    </div>
+                </div>    
             </div>
         </div>
-    </body>
+    </div>
+</div>
 
-</html>
 <%- include('../includes/end.ejs') %>

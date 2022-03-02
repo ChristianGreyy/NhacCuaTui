@@ -54,7 +54,31 @@ const userChema = new Schema({
     description: {
         type: String,
         required: true,
-    }
+    },
+    playlists: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Playlist'
+        }
+    ],
+    videos: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Video',
+        }
+    ],
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        }
+    ],
+    followers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 }, {
     timestamps: true
 });

@@ -1,293 +1,291 @@
 <%- include('../includes/head.ejs') %>
-    <body>
-        <div class="container-fluid app">
-            <%- include('../includes/navigation.ejs') %>
-            <div class="music">
-                <% if (errorNotFound) { %>
-                    <div class="music__notFound-user">
-                        <div class="music__notFound-user-icon">
-                            <i class="icofont-exclamation-tringle"></i>
+<div class="container-fluid app">
+    <%- include('../includes/navigation.ejs') %>
+    <div class="music">
+        <% if (errorNotFound) { %>
+            <div class="music__notFound-user">
+                <div class="music__notFound-user-icon">
+                    <i class="icofont-exclamation-tringle"></i>
+                </div>
+                <div class="music__notFound-user-text">
+                    Bạn chưa đăng nhập, hãy đăng nhập để đăng tải lời bài hát bạn nhé !
+                </div>
+            </div>
+        <% } %>
+        <div class="music-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9 music-content-left">
+                        <div class="music-content-left__music">
+                            <!-- <iframe src="<%= music.path %>" allow="autoplay" style="display:none" id="iframeAudio">
+                            </iframe>  -->
+                            <audio autoplay class="music-content-left__music-audio">
+                                <source class="music-content-left__music-audio-source" src="<%= music.path %>" type="audio/ogg">
+                            </audio>
+                            <div class="music-content-left__music-des">
+                                <div class="music-content-left__music-name">
+                                    <%= music.name %> -   <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
+                                        <a href="" class="music-content-left__music-name-link">
+                                            <%= music.singers[i].fullname %>
+                                        </a>
+                                        <% } else { %>
+                                            <a href="" class="music-content-left__music-name-link">
+                                                <%= music.singers[i].fullname %>, 
+                                            </a>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                                <div class="music-content-left__music-views">
+                                    <div class="music-content-left__music-views-icon">
+                                        <i class="fas fa-headphones"></i>
+                                    </div>
+                                    <div class="music-content-left__music-views-number">
+                                        <%= music.views %>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="music__notFound-user-text">
-                            Bạn chưa đăng nhập, hãy đăng nhập để đăng tải lời bài hát bạn nhé !
+                        <div class="music-content-left__music-dashboard">
+                            <div class="music-content-left__music-dashboard-des">
+                                <img src="<%= music.background %>" alt="" class="music-content-left__music-dashboard-des-avatar">
+                                <div class="music-content-left__music-dashboar-des-subtitle">
+                                    <%= music.name %> -  <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
+                                        <%= music.singers[i].fullname %>
+                                        <% } else { %>
+                                            <%= music.singers[i].fullname %>, 
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <input type="range" min="0" max="200" value="0" class="music-content-left__music-dashboard-range">
+                            <div class="music-content-left__music-dashboard-controls">
+                                <div class="music-content-left__music-dashboard-controls__left">
+                                    <div class="music-content-left__music-dashboard-controls__left-play">
+                                        <i class="fas fa-play"></i>
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="music-content-left__music-dashboard-controls__left-next">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                    <div class="music-content-left__music-dashboard-controls__left-time">
+                                        <div class="music-content-left__music-dashboard-controls__left-time-current">
+                                            00:00
+                                        </div>
+                                        <div class="music-content-left__music-dashboard-controls__left-time-space">
+                                            /
+                                        </div>
+                                        <div class="music-content-left__music-dashboard-controls__left-time-long">
+                                            <!-- 04:18 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="music-content-left__music-dashboard-controls__right">
+                                    <div class="music-content-left__music-dashboard-controls__right-auto">
+                                        <div class="music-content-left__music-dashboard-controls__right-auto-yes">
+                                            <div class="music-content-left__music-dashboard-controls__right-auto-check">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                            <div class="music-content-left__music-dashboard-controls__right-auto-circle">
+
+                                            </div>
+                                        </div>
+                                        <div class="music-content-left__music-dashboard-controls__right-auto-no">
+                                            <div class="music-content-left__music-dashboard-controls__right-auto-circle">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="music-content-left__music-dashboard-controls__right-quality">
+                                        <div class="music-content-left__music-dashboard-controls__right-quality-current">
+                                            128kbps
+                                        </div>
+                                        <ul class="music-content-left__music-dashboard-controls__right-quality-list">
+                                            <div class="music-content-left__music-dashboard-controls__right-quality-list-heading">
+                                                Chất lượng
+                                            </div>
+                                            <li class="music-content-left__music-dashboard-controls__right-quality-list-items music-content-left__music-dashboard-controls__right-quality-list-items--first">
+                                                320kbps
+                                            </li>
+                                            <li class="music-content-left__music-dashboard-controls__right-quality-list-items">
+                                                160kbps
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="music-content-left__music-dashboard-controls__right-volume">
+                                        <div class="music-content-left__music-dashboard-controls__right-volume-icon music-content-left__music-dashboard-controls__right-volume-icon--play">
+                                            <i class="fas fa-volume-up"></i>
+                                        </div>
+                                        <div class="music-content-left__music-dashboard-controls__right-volume-icon music-content-left__music-dashboard-controls__right-volume-icon--pause">
+                                            <i class="fas fa-volume-mute"></i>
+                                        </div>
+                                        <div class="music-content-left__music-dashboard-controls__right-volume-child">
+                                            <input type="range" value="10" max="10" class="music-content-left__music-dashboard-controls__right-volume-child-range">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="music-content-left__music-settings">
+                            <li class="music-content-left__music-settings-items">
+                                <div class="music-content-left__music-settings-items-icon">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <div class="music-content-left__music-settings-items-text">
+                                    Thêm vào
+                                </div>
+                            </li>
+                            <li class="music-content-left__music-settings-items">
+                                <div class="music-content-left__music-settings-items-icon">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <div class="music-content-left__music-settings-items-text">
+                                    Chia sẻ
+                                </div>
+                            </li>
+                            <li class="music-content-left__music-settings-items">
+                                <div class="music-content-left__music-settings-items-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="music-content-left__music-settings-items-text">
+                                    Nhạc chờ
+                                </div>
+                            </li>
+                            <li class="music-content-left__music-settings-items">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </li>
+                        </ul>
+                        <div class="music-content-left__music-subtitle">
+                            <div class="music-content-left__music-subtitle-heading">
+                                <div class="music-content-left__music-subtitle__left">
+                                    <h1 class="music-content-left__music-subtitle__left-titles">
+                                        Lời bài hát: <%= music.name %>
+                                    </h1>
+                                    <div class="music-content-left__music-subtitle__left-author">
+                                        Nhạc sĩ: Vũ
+                                    </div>
+                                    <div class="music-content-left__music-subtitle__left-post">
+                                        <% if (poster.id) { %>
+                                            <div class="music-content-left__music-subtitle__left-post-text">
+                                                Được đăng bởi
+                                            </div>
+                                            <a href="/user/<%= poster.id %>" class="music-content-left__music-subtitle__left-post-person">
+                                                <%= poster.username %>
+                                            </a>
+                                        <% } else { %>
+                                            <form action="/bai-hat/tao-loi-bai-hat/<%= music._id %>" method="POST" class="music-content-left__music-subtitle__left-create-form">
+                                                <div class="music-content-left__music-subtitle__left-create-subtitle">
+                                                
+                                                    <div class="music-content-left__music-subtitle__left-create-subtitle-des">
+                                                        Lời bài hát: Hiện chưa có
+                                                    </div>
+                                                    <div class="music-content-left__music-subtitle__left-create-subtitle-button">
+                                                        Tạo lời bài hát
+                                                    </div>
+                                                    <div class="music-content-left__music-subtitle__left-create-subtitle-child">
+                                                        <div class="music-content-left__music-subtitle__left-create-subtitle-close">
+                                                            <i class="icofont-close-circled"></i>
+                                                        </div>
+                                                        <div class="music-content-left__music-subtitle__left-create-subtitle-child__titles">
+                                                            Tạo lời bài hát: <%= music.name %>
+                                                        </div>
+                                                        <textarea name="content" id="" cols="90" rows="16" class="music-content-left__music-subtitle__left-create-subtitle-child__input"></textarea>
+                                                        <input type="hidden" name="idPoster" value="<%= User._id %>">
+                                                        <div class="music-content-left__music-subtitle__left-create-subtitle-child__button">
+                                                            Gửi
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="music-content-left__music-subtitle__right">
+                                    <div class="music-content-left__music-subtitle__right-icon">
+                                        <i class="far fa-copy"></i>
+                                    </div>
+                                    <div class="music-content-left__music-subtitle__right-text">
+                                        Sao chép
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="music-content-left__music-subtitle-list">
+                                <% music.subtitle.split('\n').forEach(item => { %>
+                                    <% if (item !== '') { %>
+                                    <li class="music-content-left__music-subtitle-list-items">
+                                        <%= item %>
+                                    </li>
+                                    <% } %>
+                                <% }) %>
+                            </ul>
                         </div>
                     </div>
-                <% } %>
-                <div class="music-content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-9 music-content-left">
-                                <div class="music-content-left__music">
-                                    <!-- <iframe src="<%= music.path %>" allow="autoplay" style="display:none" id="iframeAudio">
-                                    </iframe>  -->
-                                    <audio autoplay class="music-content-left__music-audio">
-                                        <source class="music-content-left__music-audio-source" src="<%= music.path %>" type="audio/ogg">
-                                    </audio>
-                                    <div class="music-content-left__music-des">
-                                        <div class="music-content-left__music-name">
-                                            <%= music.name %> -   <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
-                                                <a href="" class="music-content-left__music-name-link">
-                                                    <%= music.singers[i].fullname %>
-                                                </a>
-                                                <% } else { %>
-                                                    <a href="" class="music-content-left__music-name-link">
-                                                        <%= music.singers[i].fullname %>, 
-                                                    </a>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                        <div class="music-content-left__music-views">
-                                            <div class="music-content-left__music-views-icon">
-                                                <i class="fas fa-headphones"></i>
-                                            </div>
-                                            <div class="music-content-left__music-views-number">
-                                                <%= music.views %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="music-content-left__music-dashboard">
-                                    <div class="music-content-left__music-dashboard-des">
-                                        <img src="<%= music.background %>" alt="" class="music-content-left__music-dashboard-des-avatar">
-                                        <div class="music-content-left__music-dashboar-des-subtitle">
-                                            <%= music.name %> -  <% for (let i in music.singers) { if ( i == music.singers.length - 1) { %>   
-                                                <%= music.singers[i].fullname %>
-                                                <% } else { %>
-                                                    <%= music.singers[i].fullname %>, 
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                    <input type="range" min="0" max="200" value="0" class="music-content-left__music-dashboard-range">
-                                    <div class="music-content-left__music-dashboard-controls">
-                                        <div class="music-content-left__music-dashboard-controls__left">
-                                            <div class="music-content-left__music-dashboard-controls__left-play">
-                                                <i class="fas fa-play"></i>
-                                                <i class="fas fa-pause"></i>
-                                            </div>
-                                            <div class="music-content-left__music-dashboard-controls__left-next">
-                                                <i class="fas fa-forward"></i>
-                                            </div>
-                                            <div class="music-content-left__music-dashboard-controls__left-time">
-                                                <div class="music-content-left__music-dashboard-controls__left-time-current">
-                                                    00:00
-                                                </div>
-                                                <div class="music-content-left__music-dashboard-controls__left-time-space">
-                                                    /
-                                                </div>
-                                                <div class="music-content-left__music-dashboard-controls__left-time-long">
-                                                    <!-- 04:18 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="music-content-left__music-dashboard-controls__right">
-                                            <div class="music-content-left__music-dashboard-controls__right-auto">
-                                                <div class="music-content-left__music-dashboard-controls__right-auto-yes">
-                                                    <div class="music-content-left__music-dashboard-controls__right-auto-check">
-                                                        <i class="fas fa-check"></i>
-                                                    </div>
-                                                    <div class="music-content-left__music-dashboard-controls__right-auto-circle">
-
-                                                    </div>
-                                                </div>
-                                                <div class="music-content-left__music-dashboard-controls__right-auto-no">
-                                                    <div class="music-content-left__music-dashboard-controls__right-auto-circle">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="music-content-left__music-dashboard-controls__right-quality">
-                                                <div class="music-content-left__music-dashboard-controls__right-quality-current">
-                                                    128kbps
-                                                </div>
-                                                <ul class="music-content-left__music-dashboard-controls__right-quality-list">
-                                                    <div class="music-content-left__music-dashboard-controls__right-quality-list-heading">
-                                                        Chất lượng
-                                                    </div>
-                                                    <li class="music-content-left__music-dashboard-controls__right-quality-list-items music-content-left__music-dashboard-controls__right-quality-list-items--first">
-                                                        320kbps
-                                                    </li>
-                                                    <li class="music-content-left__music-dashboard-controls__right-quality-list-items">
-                                                        160kbps
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="music-content-left__music-dashboard-controls__right-volume">
-                                                <div class="music-content-left__music-dashboard-controls__right-volume-icon music-content-left__music-dashboard-controls__right-volume-icon--play">
-                                                    <i class="fas fa-volume-up"></i>
-                                                </div>
-                                                <div class="music-content-left__music-dashboard-controls__right-volume-icon music-content-left__music-dashboard-controls__right-volume-icon--pause">
-                                                    <i class="fas fa-volume-mute"></i>
-                                                </div>
-                                                <div class="music-content-left__music-dashboard-controls__right-volume-child">
-                                                    <input type="range" value="10" max="10" class="music-content-left__music-dashboard-controls__right-volume-child-range">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="music-content-left__music-settings">
-                                    <li class="music-content-left__music-settings-items">
-                                        <div class="music-content-left__music-settings-items-icon">
-                                            <i class="far fa-heart"></i>
-                                        </div>
-                                        <div class="music-content-left__music-settings-items-text">
-                                            Thêm vào
-                                        </div>
-                                    </li>
-                                    <li class="music-content-left__music-settings-items">
-                                        <div class="music-content-left__music-settings-items-icon">
-                                            <i class="fas fa-share-alt"></i>
-                                        </div>
-                                        <div class="music-content-left__music-settings-items-text">
-                                            Chia sẻ
-                                        </div>
-                                    </li>
-                                    <li class="music-content-left__music-settings-items">
-                                        <div class="music-content-left__music-settings-items-icon">
-                                            <i class="fas fa-mobile-alt"></i>
-                                        </div>
-                                        <div class="music-content-left__music-settings-items-text">
-                                            Nhạc chờ
-                                        </div>
-                                    </li>
-                                    <li class="music-content-left__music-settings-items">
-                                        <i class="fas fa-ellipsis-h"></i>
-                                    </li>
-                                </ul>
-                                <div class="music-content-left__music-subtitle">
-                                    <div class="music-content-left__music-subtitle-heading">
-                                        <div class="music-content-left__music-subtitle__left">
-                                            <h1 class="music-content-left__music-subtitle__left-titles">
-                                                Lời bài hát: <%= music.name %>
-                                            </h1>
-                                            <div class="music-content-left__music-subtitle__left-author">
-                                                Nhạc sĩ: Vũ
-                                            </div>
-                                            <div class="music-content-left__music-subtitle__left-post">
-                                                <% if (poster.id) { %>
-                                                    <div class="music-content-left__music-subtitle__left-post-text">
-                                                        Được đăng bởi
-                                                    </div>
-                                                    <a href="/user/<%= poster.id %>" class="music-content-left__music-subtitle__left-post-person">
-                                                        <%= poster.username %>
-                                                    </a>
-                                                <% } else { %>
-                                                    <form action="/bai-hat/tao-loi-bai-hat/<%= music._id %>" method="POST" class="music-content-left__music-subtitle__left-create-form">
-                                                        <div class="music-content-left__music-subtitle__left-create-subtitle">
-                                                       
-                                                            <div class="music-content-left__music-subtitle__left-create-subtitle-des">
-                                                                Lời bài hát: Hiện chưa có
-                                                            </div>
-                                                            <div class="music-content-left__music-subtitle__left-create-subtitle-button">
-                                                                Tạo lời bài hát
-                                                            </div>
-                                                            <div class="music-content-left__music-subtitle__left-create-subtitle-child">
-                                                                <div class="music-content-left__music-subtitle__left-create-subtitle-close">
-                                                                    <i class="icofont-close-circled"></i>
-                                                                </div>
-                                                                <div class="music-content-left__music-subtitle__left-create-subtitle-child__titles">
-                                                                    Tạo lời bài hát: <%= music.name %>
-                                                                </div>
-                                                                <textarea name="content" id="" cols="90" rows="16" class="music-content-left__music-subtitle__left-create-subtitle-child__input"></textarea>
-                                                                <input type="hidden" name="idPoster" value="<%= User._id %>">
-                                                                <div class="music-content-left__music-subtitle__left-create-subtitle-child__button">
-                                                                    Gửi
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                <% } %>
-                                            </div>
-                                        </div>
-                                        <div class="music-content-left__music-subtitle__right">
-                                            <div class="music-content-left__music-subtitle__right-icon">
-                                                <i class="far fa-copy"></i>
-                                            </div>
-                                            <div class="music-content-left__music-subtitle__right-text">
-                                                Sao chép
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ul class="music-content-left__music-subtitle-list">
-                                        <% music.subtitle.split('\n').forEach(item => { %>
-                                            <% if (item !== '') { %>
-                                            <li class="music-content-left__music-subtitle-list-items">
-                                                <%= item %>
-                                            </li>
-                                            <% } %>
-                                        <% }) %>
-                                    </ul>
-                                </div>
+                    <div class="col-3 music-content-right">
+                        <div class="music-content-right-heading">
+                            <div class="music-content-right-heading__titles">
+                                Nghe Tiếp
                             </div>
-                            <div class="col-3 music-content-right">
-                                <div class="music-content-right-heading">
-                                    <div class="music-content-right-heading__titles">
-                                        Nghe Tiếp
+                            <div class="music-content-right-heading__des">
+                                <div class="music-content-right-heading__des-text">
+                                    Autoplay
+                                </div>
+                                <div class="music-content-right-heading__des-note">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="music-content-left__music-dashboard-controls__right-auto">
+                                    <div class="music-content-left__music-dashboard-controls__right-auto-yes">
+                                        <div class="music-content-left__music-dashboard-controls__right-auto-check">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="music-content-left__music-dashboard-controls__right-auto-circle">
+
+                                        </div>
                                     </div>
-                                    <div class="music-content-right-heading__des">
-                                        <div class="music-content-right-heading__des-text">
-                                            Autoplay
-                                        </div>
-                                        <div class="music-content-right-heading__des-note">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                        </div>
-                                        <div class="music-content-left__music-dashboard-controls__right-auto">
-                                            <div class="music-content-left__music-dashboard-controls__right-auto-yes">
-                                                <div class="music-content-left__music-dashboard-controls__right-auto-check">
-                                                    <i class="fas fa-check"></i>
-                                                </div>
-                                                <div class="music-content-left__music-dashboard-controls__right-auto-circle">
+                                    <div class="music-content-left__music-dashboard-controls__right-auto-no">
+                                        <div class="music-content-left__music-dashboard-controls__right-auto-circle">
 
-                                                </div>
-                                            </div>
-                                            <div class="music-content-left__music-dashboard-controls__right-auto-no">
-                                                <div class="music-content-left__music-dashboard-controls__right-auto-circle">
-
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="music-content-right-list">
-                                    <% musics.forEach(item => { %>
-                                        <li class="music-content-right-items">
-                                            <a href="/bai-hat/<%= item._id %>" class="music-content-right-items-link">
-                                                <div class="music-content-right-items-link-left">
-                                                    <div class="music-content-right-items-link-left__icon">
-                                                        <i class="fas fa-music music-content-right-items-link-left__icon--music"></i>
-                                                        <i class="fas fa-play music-content-right-items-link-left__icon--play"></i>
-                                                    </div>
-                                                    <div class="music-content-right-items-link-left__des">
-                                                        <div class="music-content-right-items-link-left__des-name">
-                                                            <%= item.name %>
-                                                        </div>
-                                                        <div class="music-content-right-items-link-left__des-singer">
-                                                            <%= item.singer %>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="music-content-right-items-link-right">
-                                                    <div class="music-content-right-items-link-right-views">
-                                                        <div class="music-content-right-items-link-right-views__icon">
-                                                            <i class="fas fa-headphones"></i>
-                                                        </div>
-                                                        <div class="music-content-right-items-link-right-views__number">
-                                                            <%= item.views %>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    <% }) %>
-                                </ul>
                             </div>
                         </div>
+                        <ul class="music-content-right-list">
+                            <% musics.forEach(item => { %>
+                                <li class="music-content-right-items">
+                                    <a href="/bai-hat/<%= item._id %>" class="music-content-right-items-link">
+                                        <div class="music-content-right-items-link-left">
+                                            <div class="music-content-right-items-link-left__icon">
+                                                <i class="fas fa-music music-content-right-items-link-left__icon--music"></i>
+                                                <i class="fas fa-play music-content-right-items-link-left__icon--play"></i>
+                                            </div>
+                                            <div class="music-content-right-items-link-left__des">
+                                                <div class="music-content-right-items-link-left__des-name">
+                                                    <%= item.name %>
+                                                </div>
+                                                <div class="music-content-right-items-link-left__des-singer">
+                                                    <%= item.singer %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="music-content-right-items-link-right">
+                                            <div class="music-content-right-items-link-right-views">
+                                                <div class="music-content-right-items-link-right-views__icon">
+                                                    <i class="fas fa-headphones"></i>
+                                                </div>
+                                                <div class="music-content-right-items-link-right-views__number">
+                                                    <%= item.views %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            <% }) %>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+
 <%- include('../includes/end.ejs') %>

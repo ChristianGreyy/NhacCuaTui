@@ -70,7 +70,7 @@ exports.postLogin = (req, res, next) => {
             }
             console.log('login successful')
             req.session.user = user._id;
-            res.redirect('/');
+            res.redirect('/trang-chu');
         })
         .catch(err => {
             console.log(err)

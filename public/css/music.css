@@ -819,7 +819,9 @@
   text-decoration: none;
   /* width: 152px;
   height: 152px; */
-  width: 100%;
+  /* width: 100%; */
+  width: 155.25px;
+  height: 155.25px;
   /* height: */
   display: block;
 }
@@ -1237,4 +1239,9 @@
   color: #000;
   margin-left: 4px;
   font-size: 20px;
+}
+
+.music-content-left__music-heart {
+  font-size: 15px;
+  cursor: pointer;
 }

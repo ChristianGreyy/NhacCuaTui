@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 
 router(app);
 
-mongoose.connect('mongodb://localhost:27017/NhacCuaTui_dev')
+mongoose.connect('mongodb+srv://ChristianGrey:hungtruong2k2@cluster0.2oakb.mongodb.net/musics?retryWrites=true&w=majority')
 .then(result => {
   console.log('Connect successfully')
   app.listen(port, () => {

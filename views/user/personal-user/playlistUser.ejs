@@ -1,31 +1,61 @@
 <%- include('../../includes/head.ejs') %>
-    <body>
-        <div class="app">
-            <%- include('../../includes/navigation.ejs') %>
-            <div class="personal-user">
-                <%- include('../../includes/personal-user.ejs') %>
-                <div class="personal-user__component">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="personal-user__nothing">   
-                                    <div class="personal-user__nothing-icon">
-                                        <i class="fas fa-check-circle"></i> 
-                                    </div> 
-                                    <div class="personal-user__nothing-des">
-                                        <%= user.username %> hiện chưa có playlist gì.
-                                    </div>
+<div class="app">
+    <%- include('../../includes/navigation.ejs') %>
+    <div class="personal-user">
+        <%- include('../../includes/personal-user.ejs') %>
+        <div class="personal-user__component">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8">
+                        <% if(user.playlists.length == 0) { %>
+                            <div class="personal-user__nothing">   
+                                <div class="personal-user__nothing-icon">
+                                    <i class="fas fa-check-circle"></i> 
+                                </div> 
+                                <div class="personal-user__nothing-des">
+                                    <%= user.username %> hiện chưa có playlist gì.
                                 </div>
                             </div>
-                            <div class="col-4">
-                                hi
+                        <% } else { %>
+                            <div class="personal-user__component--singer-list">
+                                <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
+                                    <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
+                                        Playlist yêu thích của <%= user.fullname %>
+                                    </div>
+                                    <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
+                                        <i class="icofont-rounded-double-right"></i>
+                                    </div>
+                                </div>
+                                <div class="personal-user__component--singer__content personal-user__component--singer__album">
+                                    <% user.playlists.forEach(playlist => { %>
+                                        <li class="personal-user__component--singer__album-items">
+                                            <a href="/playlist/<%= playlist._id%>" class="personal-user__component--singer__album-items-image">
+                                                <div class="personal-user__component--singer__album-items-image-icon">
+                                                    <i class="icofont-ui-play"></i>
+                                                </div>
+                                                <div class="personal-user__component--singer__album-items-image-alpha">
+                                                </div>
+                                                <img src="<%= playlist.background %>" alt="" class="personal-user__component--singer__album-items-background">
+                                            </a>
+                                            <a style="display: block" href="/playlist/<%= playlist._id%>" class="personal-user__component--singer__album-items-name">
+                                                <%= playlist.title %>
+                                            </a>
+                                        </li>
+                                    <% }) %>
+                                </div>
                             </div>
-                        </div>    
+                        <% } %>
                     </div>
-                </div>
+                    <div class="col-4">
+                        <div class="aside">
+                            <ul class="aside-list">
+                                <%- include('../../includes/aside-music-rank.ejs') %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
             </div>
         </div>
-    </body>
-
-</html>
+    </div>
+</div>
 <%- include('../../includes/end.ejs') %>

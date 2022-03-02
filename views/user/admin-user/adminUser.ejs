@@ -1,434 +1,446 @@
 <%- include('../../includes/head.ejs') %>
 
-    <body>
-        <div class="app">
-            <%- include('../../includes/navigation.ejs') %>
-                <div class="admin-user">
-                    <div class="container">
-                        <div class="row">
-                            <%- include('../../includes/admin-user.ejs') %>
-                                <div style="width: 79.1667%" class="admin-user-component col-9">
-                                    <div class="admin-user__informations">
-                                        <div class="admin-user-component__adminUser">
-                                            <div class="container">
-                                                <h3 class="admin-user-component__adminUser-title">
-                                                    Quản lý tài khoản
-                                                </h3>
-                                                <div class="row">
-                                                    <div class="admin-user-component__adminUser-left col-5">
-                                                        <ul class="admin-user-component__adminUser-left-list">
-                                                            <li class="admin-user-component__adminUser-left-list-item">
+<div class="app">
+    <%- include('../../includes/navigation.ejs') %>
+        <div class="admin-user">
+            <div class="container">
+                <div class="row">
+                    <%- include('../../includes/admin-user.ejs') %>
+                        <div style="width: 79.1667%" class="admin-user-component col-9">
+                            <div class="admin-user__informations">
+                                <div class="admin-user-component__adminUser">
+                                    <div class="container">
+                                        <h3 class="admin-user-component__adminUser-title">
+                                            Quản lý tài khoản
+                                        </h3>
+                                        <div class="row">
+                                            <div class="admin-user-component__adminUser-left col-5">
+                                                <ul class="admin-user-component__adminUser-left-list">
+                                                    <li class="admin-user-component__adminUser-left-list-item">
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-heading">
+                                                            <h6
+                                                                class="admin-user-component__adminUser-left-list-item-title">
+                                                                Giới thiệu
+                                                            </h6>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-edit">
                                                                 <div
-                                                                    class="admin-user-component__adminUser-left-list-item-heading">
-                                                                    <h6
-                                                                        class="admin-user-component__adminUser-left-list-item-title">
-                                                                        Giới thiệu
-                                                                    </h6>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-edit">
-                                                                        <div
-                                                                            class="admin-user-component__adminUser-left-list-item-edit__icon">
-                                                                            <i class="fas fa-edit"></i>
-                                                                        </div>
-                                                                        <div
-                                                                            class="admin-user-component__adminUser-left-list-item-edit__text">
-                                                                            Chỉnh sửa
-                                                                        </div>
-                                                                    </div>
+                                                                    class="admin-user-component__adminUser-left-list-item-edit__icon">
+                                                                    <i class="fas fa-edit"></i>
                                                                 </div>
                                                                 <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        ID:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value">
-                                                                        <%= User._id %>
-                                                                    </div>
+                                                                    class="admin-user-component__adminUser-left-list-item-edit__text">
+                                                                    Chỉnh sửa
                                                                 </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Họ và tên:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value">
-                                                                        <%= User.username %>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Ngày sinh:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        <% if(!(User.day && User.month && User.year)) {
-                                                                            %>
-                                                                            <%= User.createdAt %>
-                                                                                <% } else {%>
-                                                                                    <%= User.day + '/' + User.month
-                                                                                        + '/' + User.year %>
-                                                                                        <% } %>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Giới tính:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        <% if(!User.gender) { %>
-                                                                            Khác
-                                                                            <% } else { %>
-                                                                                <%= User.gender %>
-                                                                                    <% } %>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Điện thoại:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        <% if(!User.phoneNumber) { %>
-                                                                            ' '
-                                                                            <% } else { %>
-                                                                                <%= User.phoneNumber %>
-                                                                                    <% } %>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Tỉnh thành:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        <% if(!User.address) { %>
-                                                                            ' '
-                                                                            <% } else { %>
-                                                                                <%= User.address %>
-                                                                                    <% } %>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Số CMND
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        <% if(!User.identityCard) { %>
-                                                                            ' '
-                                                                            <% } else { %>
-                                                                                <%= User.identityCard %>
-                                                                                    <% } %>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Giới thiệu
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        <% if(!User.introduce) { %>
-                                                                            ' '
-                                                                            <% } else { %>
-                                                                                <%= User.introduce %>
-                                                                                    <% } %>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="admin-user-component__adminUser-left-list-item">
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-heading">
-                                                                    <h6
-                                                                        class="admin-user-component__adminUser-left-list-item-title">
-                                                                        Tài khoản
-                                                                    </h6>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                ID:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value">
+                                                                <%= User._id %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Họ và tên:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value">
+                                                                <%= User.username %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Ngày sinh:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                <% if(!(User.day && User.month && User.year)) {
+                                                                    %>
+                                                                    <%= User.createdAt %>
+                                                                        <% } else {%>
+                                                                            <%= User.day + '/' + User.month
+                                                                                + '/' + User.year %>
+                                                                                <% } %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Giới tính:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                <% if(!User.gender) { %>
+                                                                    Khác
+                                                                    <% } else { %>
+                                                                        <%= User.gender %>
+                                                                            <% } %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Điện thoại:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                <% if(!User.phoneNumber) { %>
+                                                                    ' '
+                                                                    <% } else { %>
+                                                                        <%= User.phoneNumber %>
+                                                                            <% } %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Tỉnh thành:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                <% if(!User.address) { %>
+                                                                    ' '
+                                                                    <% } else { %>
+                                                                        <%= User.address %>
+                                                                            <% } %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Số CMND
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                <% if(!User.identityCard) { %>
+                                                                    ' '
+                                                                    <% } else { %>
+                                                                        <%= User.identityCard %>
+                                                                            <% } %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Giới thiệu
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                <% if(!User.introduce) { %>
+                                                                    ' '
+                                                                    <% } else { %>
+                                                                        <%= User.introduce %>
+                                                                            <% } %>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="admin-user-component__adminUser-left-list-item">
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-heading">
+                                                            <h6
+                                                                class="admin-user-component__adminUser-left-list-item-title">
+                                                                Tài khoản
+                                                            </h6>
 
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Tên tài khoản:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value">
-                                                                        <%= user.username %>
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Mật khẩu:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value">
-                                                                        <a href="/user/<%= User._id %>/doi-mat-khau"
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Tên tài khoản:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value">
+                                                                <%= user.username %>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Mật khẩu:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value">
+                                                                <a href="/user/<%= User._id %>/doi-mat-khau"
+                                                                    class="admin-user-component__adminUser-left-list-item-des__value-link">
+                                                                    Đổi mật khẩu
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Email:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                <%= user.email %> (
+                                                                    <span>
+                                                                        <a href=""
                                                                             class="admin-user-component__adminUser-left-list-item-des__value-link">
-                                                                            Đổi mật khẩu
+                                                                            Kích hoạt tài khoản
+                                                                        </a>
+                                                                    </span>)
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="admin-user-component__adminUser-left-list-item-des">
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__key">
+                                                                Ngày hết hạn:
+                                                            </div>
+                                                            <div
+                                                                class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
+                                                                Bạn chưa có (
+                                                                <span>
+                                                                    <a href=""
+                                                                        class="admin-user-component__adminUser-left-list-item-des__value-link">
+                                                                        Tài khoản VIP
+                                                                    </a>
+                                                                </span>)
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="admin-user-component__adminUser-right col-7">
+                                                <ul class="admin-user-component__adminUser-right-list">
+                                                    <li class="admin-user-component__adminUser-right-item">
+                                                        <h6
+                                                            class="admin-user-component__adminUser-right-item-title">
+                                                            Playlist yêu thích
+                                                        </h6>
+                                                        <% if(user.playlists.length == 0 ) { %>
+                                                            <div
+                                                                class="admin-user-component__adminUser-right-item-des">
+                                                                <a href=""
+                                                                    class="admin-user-component__adminUser-right-item-des__link">
+                                                                    <div
+                                                                        class="admin-user-component__adminUser-right-item-des__number">
+                                                                        0
+                                                                    </div>
+                                                                    <div
+                                                                        class="admin-user-component__adminUser-right-item-des__text">
+                                                                        playlist
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        <% } else { %>
+                                                            <div class="admin-user-component__adminUser-right-item__playlist">
+                                                                <% user.playlists.forEach(playlist => { %>
+                                                                    <div class="admin-user-component__adminUser-right-item__playlist-items">
+                                                                        <a href="/playlist/<%= playlist._id %>" class="admin-user-component__adminUser-right-item__playlist-link">
+                                                                            <img src="<%= playlist.background %>" alt="" class="admin-user-component__adminUser-right-item__playlist-image">
+                                                                        </a>
+                                                                        <a href="/playlist/<%= playlist._id %>" class="admin-user-component__adminUser-right-item__playlist-link-title">
+                                                                            <%= playlist.title %>
                                                                         </a>
                                                                     </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Email:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        <%= user.email %> (
-                                                                            <span>
-                                                                                <a href=""
-                                                                                    class="admin-user-component__adminUser-left-list-item-des__value-link">
-                                                                                    Kích hoạt tài khoản
-                                                                                </a>
-                                                                            </span>)
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-left-list-item-des">
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__key">
-                                                                        Ngày hết hạn:
-                                                                    </div>
-                                                                    <div
-                                                                        class="admin-user-component__adminUser-left-list-item-des__value admin-user-component__adminUser-left-list-item-des__value--date">
-                                                                        Bạn chưa có (
-                                                                        <span>
-                                                                            <a href=""
-                                                                                class="admin-user-component__adminUser-left-list-item-des__value-link">
-                                                                                Tài khoản VIP
-                                                                            </a>
-                                                                        </span>)
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="admin-user-component__adminUser-right col-7">
-                                                        <ul class="admin-user-component__adminUser-right-list">
-                                                            <li class="admin-user-component__adminUser-right-item">
-                                                                <h6
-                                                                    class="admin-user-component__adminUser-right-item-title">
-                                                                    Playlist
-                                                                </h6>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-right-item-des">
-                                                                    <a href=""
-                                                                        class="admin-user-component__adminUser-right-item-des__link">
-                                                                        <div
-                                                                            class="admin-user-component__adminUser-right-item-des__number">
-                                                                            0
-                                                                        </div>
-                                                                        <div
-                                                                            class="admin-user-component__adminUser-right-item-des__text">
-                                                                            playlist
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="admin-user-component__adminUser-right-item">
-                                                                <h6
-                                                                    class="admin-user-component__adminUser-right-item-title">
-                                                                    Video
-                                                                </h6>
-                                                                <div
-                                                                    class="admin-user-component__adminUser-right-item-des">
-                                                                    <a href=""
-                                                                        class="admin-user-component__adminUser-right-item-des__link">
-                                                                        <div
-                                                                            class="admin-user-component__adminUser-right-item-des__number">
-                                                                            0
-                                                                        </div>
-                                                                        <div
-                                                                            class="admin-user-component__adminUser-right-item-des__text">
-                                                                            video
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="admin-user__edit">
-                                        <div class="container">
-                                            <div class="admin-user__edit-heading">
-                                                CẬP NHẬT TÀI KHOẢN
-                                            </div>
-                                            <div class="admin-user__edit-editing">
-                                                <form action="/user/<%=User._id%>/quan-ly" method="POST"
-                                                    class="admin-user__edit-form">
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <div class="admin-user__edit-form-form-group-key">
-                                                            Ảnh đại diện
-                                                        </div>
-                                                        <div class="admin-user__edit-form-form-group-value">
-                                                            <img src="<%= user.avatar%>" alt=""
-                                                                class="admin-user__edit-form-form-group-value-img">
-                                                        </div>
-                                                        <label for="admin-user__edit-form-form-group-input"
-                                                            class="admin-user__edit-form-form-group-label">
-                                                            Thay avatar
-                                                        </label>
-                                                        <input type="file" id="admin-user__edit-form-form-group-input"
-                                                            class="admin-user__edit-form-form-group-input admin-user__edit-form-form-group-input--file">
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label for="admin-user__edit-form-form-group-input--username"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Tên đăng nhập
-                                                        </label>
-                                                        <input type="text"
-                                                            id="admin-user__edit-form-form-group-input--username"
-                                                            class="admin-user__edit-form-form-group-input"
-                                                            value="<%= user.username %>" disabled>
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label for="admin-user__edit-form-form-group-input--fullname"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Tên hiển thị
-                                                        </label>
-                                                        <input type="text"
-                                                            id="admin-user__edit-form-form-group-input--fullname"
-                                                            class="admin-user__edit-form-form-group-input"
-                                                            value="<%= user.fullname %>" name="fullname">
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label for="admin-user__edit-form-form-group-input--date"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Ngày sinh
-                                                        </label>
-                                                        <select name="day" id=""
-                                                            class="admin-user__edit-form-form-group-select">
-                                                            <% for(let i=1; i<=31; i++) { %>
-                                                                <option value="<%= i%>"
-                                                                    class="admin-user__edit-form-form-group-select__option">
-                                                                    <%=i%>
-                                                                </option>
-                                                                <% } %>
-                                                        </select>
-                                                        <select name="month" id=""
-                                                            class="admin-user__edit-form-form-group-select">
-                                                            <% for(let i=1; i<=12; i++) { %>
-                                                                <option value="<%= i%>"
-                                                                    class="admin-user__edit-form-form-group-select__option">
-                                                                    <%=i%>
-                                                                </option>
-                                                                <% } %>
-                                                        </select>
-                                                        <select name="year" id=""
-                                                            class="admin-user__edit-form-form-group-select">
-                                                            <% for(let i=1912; i<=2022; i++) { %>
-                                                                <option value="<%= i%>"
-                                                                    class="admin-user__edit-form-form-group-select__option">
-                                                                    <%=i%>
-                                                                </option>
-                                                                <% } %>
-                                                        </select>
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label for="admin-user__edit-form-form-group-input--date"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Giới tính
-                                                        </label>
-                                                        <select name="gender" id=""
-                                                            class="admin-user__edit-form-form-group-select">
-                                                            <option value="orthers"
-                                                                class="admin-user__edit-form-form-group-select__option">
-                                                                Khác</option>
-                                                            <option value="nam"
-                                                                class="admin-user__edit-form-form-group-select__option">
-                                                                Nam</option>
-                                                            <option value="nữ"
-                                                                class="admin-user__edit-form-form-group-select__option">
-                                                                Nữ</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label for="admin-user__edit-form-form-group-input--address"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Địa chỉ
-                                                        </label>
-                                                        <input type="text"
-                                                            id="admin-user__edit-form-form-group-input--address"
-                                                            class="admin-user__edit-form-form-group-input"
-                                                            value="<%= user.address %>" name="address">
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label for="admin-user__edit-form-form-group-input--phoneNumber"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Số điện thoại
-                                                        </label>
-                                                        <input type="text"
-                                                            id="admin-user__edit-form-form-group-input--phoneNumber"
-                                                            class="admin-user__edit-form-form-group-input"
-                                                            value="<%= user.phoneNumber %>" name="phoneNumber">
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label
-                                                            for="admin-user__edit-form-form-group-input--identityCard"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Số CMND
-                                                        </label>
-                                                        <input type="text"
-                                                            id="admin-user__edit-form-form-group-input--identityCard"
-                                                            class="admin-user__edit-form-form-group-input"
-                                                            value="<%= user.identityCard %>" name="identityCard">
-                                                    </div>
-                                                    <div class="admin-user__edit-form-form-group">
-                                                        <label for="admin-user__edit-form-form-group-input--introduce"
-                                                            class="admin-user__edit-form-form-group-key">
-                                                            Giới thiệu
-                                                        </label>
-                                                        <textarea rows="3" type="text"
-                                                            id="admin-user__edit-form-form-group-input--introduce"
-                                                            class="admin-user__edit-form-form-group-input"
-                                                            value="<%= user.introduce %>" name="introduce">
-
-                                                        </textarea>
-                                                    </div>
-
-                                                    <div class="admin-user__edit-form-button">
+                                                                <% }) %>
+                                                            </div>
+                                                        <% } %>
+                                                    </li>
+                                                    <!-- <li class="admin-user-component__adminUser-right-item">
+                                                        <h6
+                                                            class="admin-user-component__adminUser-right-item-title">
+                                                            Video yêu thích
+                                                        </h6>
                                                         <div
-                                                            class="admin-user__edit-form-button-item admin-user__edit-form-button-submit">
-                                                            Lưu
+                                                            class="admin-user-component__adminUser-right-item-des">
+                                                            <a href=""
+                                                                class="admin-user-component__adminUser-right-item-des__link">
+                                                                <div
+                                                                    class="admin-user-component__adminUser-right-item-des__number">
+                                                                    0
+                                                                </div>
+                                                                <div
+                                                                    class="admin-user-component__adminUser-right-item-des__text">
+                                                                    video
+                                                                </div>
+                                                            </a>
                                                         </div>
-                                                        <div
-                                                            class="admin-user__edit-form-button-item admin-user__edit-form-button-comeback">
-                                                            Trở lại
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                    </li> -->
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="admin-user__edit">
+                                <div class="container">
+                                    <div class="admin-user__edit-heading">
+                                        CẬP NHẬT TÀI KHOẢN
+                                    </div>
+                                    <div class="admin-user__edit-editing">
+                                        <form action="/user/<%=User._id%>/quan-ly" method="POST"
+                                            class="admin-user__edit-form">
+                                            <div class="admin-user__edit-form-form-group">
+                                                <div class="admin-user__edit-form-form-group-key">
+                                                    Ảnh đại diện
+                                                </div>
+                                                <div class="admin-user__edit-form-form-group-value">
+                                                    <img src="<%= user.avatar%>" alt=""
+                                                        class="admin-user__edit-form-form-group-value-img">
+                                                </div>
+                                                <label for="admin-user__edit-form-form-group-input"
+                                                    class="admin-user__edit-form-form-group-label">
+                                                    Thay avatar
+                                                </label>
+                                                <input type="file" id="admin-user__edit-form-form-group-input"
+                                                    class="admin-user__edit-form-form-group-input admin-user__edit-form-form-group-input--file">
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label for="admin-user__edit-form-form-group-input--username"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Tên đăng nhập
+                                                </label>
+                                                <input type="text"
+                                                    id="admin-user__edit-form-form-group-input--username"
+                                                    class="admin-user__edit-form-form-group-input"
+                                                    value="<%= user.username %>" disabled>
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label for="admin-user__edit-form-form-group-input--fullname"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Tên hiển thị
+                                                </label>
+                                                <input type="text"
+                                                    id="admin-user__edit-form-form-group-input--fullname"
+                                                    class="admin-user__edit-form-form-group-input"
+                                                    value="<%= user.fullname %>" name="fullname">
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label for="admin-user__edit-form-form-group-input--date"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Ngày sinh
+                                                </label>
+                                                <select name="day" id=""
+                                                    class="admin-user__edit-form-form-group-select">
+                                                    <% for(let i=1; i<=31; i++) { %>
+                                                        <option value="<%= i%>"
+                                                            class="admin-user__edit-form-form-group-select__option">
+                                                            <%=i%>
+                                                        </option>
+                                                        <% } %>
+                                                </select>
+                                                <select name="month" id=""
+                                                    class="admin-user__edit-form-form-group-select">
+                                                    <% for(let i=1; i<=12; i++) { %>
+                                                        <option value="<%= i%>"
+                                                            class="admin-user__edit-form-form-group-select__option">
+                                                            <%=i%>
+                                                        </option>
+                                                        <% } %>
+                                                </select>
+                                                <select name="year" id=""
+                                                    class="admin-user__edit-form-form-group-select">
+                                                    <% for(let i=1912; i<=2022; i++) { %>
+                                                        <option value="<%= i%>"
+                                                            class="admin-user__edit-form-form-group-select__option">
+                                                            <%=i%>
+                                                        </option>
+                                                        <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label for="admin-user__edit-form-form-group-input--date"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Giới tính
+                                                </label>
+                                                <select name="gender" id=""
+                                                    class="admin-user__edit-form-form-group-select">
+                                                    <option value="orthers"
+                                                        class="admin-user__edit-form-form-group-select__option">
+                                                        Khác</option>
+                                                    <option value="nam"
+                                                        class="admin-user__edit-form-form-group-select__option">
+                                                        Nam</option>
+                                                    <option value="nữ"
+                                                        class="admin-user__edit-form-form-group-select__option">
+                                                        Nữ</option>
+                                                </select>
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label for="admin-user__edit-form-form-group-input--address"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Địa chỉ
+                                                </label>
+                                                <input type="text"
+                                                    id="admin-user__edit-form-form-group-input--address"
+                                                    class="admin-user__edit-form-form-group-input"
+                                                    value="<%= user.address %>" name="address">
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label for="admin-user__edit-form-form-group-input--phoneNumber"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Số điện thoại
+                                                </label>
+                                                <input type="text"
+                                                    id="admin-user__edit-form-form-group-input--phoneNumber"
+                                                    class="admin-user__edit-form-form-group-input"
+                                                    value="<%= user.phoneNumber %>" name="phoneNumber">
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label
+                                                    for="admin-user__edit-form-form-group-input--identityCard"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Số CMND
+                                                </label>
+                                                <input type="text"
+                                                    id="admin-user__edit-form-form-group-input--identityCard"
+                                                    class="admin-user__edit-form-form-group-input"
+                                                    value="<%= user.identityCard %>" name="identityCard">
+                                            </div>
+                                            <div class="admin-user__edit-form-form-group">
+                                                <label for="admin-user__edit-form-form-group-input--introduce"
+                                                    class="admin-user__edit-form-form-group-key">
+                                                    Giới thiệu
+                                                </label>
+                                                <textarea rows="3" type="text"
+                                                    id="admin-user__edit-form-form-group-input--introduce"
+                                                    class="admin-user__edit-form-form-group-input"
+                                                    value="<%= user.introduce %>" name="introduce">
+
+                                                </textarea>
+                                            </div>
+
+                                            <div class="admin-user__edit-form-button">
+                                                <div
+                                                    class="admin-user__edit-form-button-item admin-user__edit-form-button-submit">
+                                                    Lưu
+                                                </div>
+                                                <div
+                                                    class="admin-user__edit-form-button-item admin-user__edit-form-button-comeback">
+                                                    Trở lại
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
                 </div>
-        </div>
-    </body>
+            </div>
 
-    </html>
+        </div>
+</div>
+
 <%- include('../../includes/end.ejs') %>

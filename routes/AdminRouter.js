@@ -19,6 +19,7 @@ const storageEvent = multerStorage.storageEvent;
 //   app.use();
 //   app.use();
 
+router.get('/fetch-personality', adminController.fetchPersonalityAdmin);
 router.get('/fetch-singers', adminController.fetchSingersAdmin);
 router.get('/fetch-musics', adminController.fetchMusicsAdmin);
 router.get('/fetch-musics-rank-vietnam', adminController.fetchVietnamMusicAdmin);

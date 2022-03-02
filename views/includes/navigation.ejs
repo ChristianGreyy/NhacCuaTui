@@ -921,11 +921,14 @@
         </ul>
     </div>
     <div class="header-right">
-        <div class="header-right-search ">
+        <div class="header-right-search">
             <div class="header-right-search-icon">
                 <i class="fas fa-search"></i>
             </div>
             <input type="text" class="header-right-search-input" placeholder="Tìm kiếm ">
+            <div class="header-right-search-child">
+                
+            </div>
         </div>
         <div class="header-right-payment">
             <i class="fas fa-credit-card"></i>
@@ -956,7 +959,7 @@
                             <i class="fab fa-bitcoin"></i>
                         </div>
                         <div class="header-right-user-des-coin-number">
-                            <%= User.coin %>
+                            <%= User.coins %>
                         </div>  
                     </div>
                 </div>
@@ -978,11 +981,6 @@
                         <li class="header-right-user-child-item">
                             <a href="/user/<%= User._id %>/quan-ly" class="header-right-user-child-item-link">
                                 Tài khoản
-                            </a>
-                        </li>
-                        <li class="header-right-user-child-item">
-                            <a href="" class="header-right-user-child-item-link">
-                                Lịch sử
                             </a>
                         </li>
                         <form action="/dang-xuat" method="POST" class="header-right-user-child-item-form--logout">

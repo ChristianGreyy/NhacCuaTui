@@ -260,5 +260,53 @@ if(document.querySelector('.admin-user__edit-editing--successfully-content__butt
     }
 }
 
+const submitFormTheLovePlaylist = (() => {
+    if(document.querySelector('.music-content-left__music-heart')) {
+        document.querySelector('.music-content-left__music-heart').onclick = (e) => {
+            document.querySelector('.music-content-left__music-heart-form').submit();
+        }
+    }
+})()
 
+const submitAddFriend =(() => {
+    if(document.querySelector('.personal-user__content-left-des-wrapper-button')) {
+        document.querySelector('.personal-user__content-left-des-wrapper-button').onclick = (e) => {
+            document.querySelector('.personal-user__content-left-des-wrapper__form').submit();
+        }
+    }
+});
+
+const fetchPersonalityAdmin = (async () => {
+    const response = await fetch('/admin/fetch-personality');
+    const data = await response.json();
+    const user = data.user;
+    const id = window.location.href.split('/')[window.location.href.split('/').length - 1];
+    const isFriend = user.friends.find(idUser => {
+        return idUser.toString() === id.toString()
+    })
+    let string = '';
+    if(isFriend) {
+        string = `
+        <div style="color: var(--main-color);" class="personal-user__content-left-des-wrapper-button-des--follow">
+            Bạn đã theo dõi 
+        </div>
+        `
+    } else {
+        string = `
+            <form action="/user/ket-ban/${id}" method="POST" class="personal-user__content-left-des-wrapper__form"></form>
+                <div class="personal-user__content-left-des-wrapper-button">
+                    <div class="personal-user__content-left-des-wrapper-button-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="personal-user__content-left-des-wrapper-button-des">
+                        Theo dõi
+                    </div>
+                </div>
+            </form>
+        
+        `
+    }
+    document.querySelectorAll('.personal-user__content-left-des-wrapper')[5].innerHTML = string;
+    submitAddFriend();
+})()
 

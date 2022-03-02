@@ -4,36 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= pageTitle %></title>
-    <link rel="stylesheet" href="/icofont/icofont.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Đăng nhập admin</title>
     <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    <div class="app-admin">
-        <div class="app-admin-left">
-            <%- include('../includes/aside-admin.ejs') %>
-        </div>
-        <div class="app-admin-right">
-            <div class="app-admin-right-heading">
-                Đăng bài hát
-            </div>
-            <form action="tao-bai-hat" method="POST" class="app-admin-right__form" enctype="multipart/form-data">
-                <div class="app-admin-right__form-group">
-                    <label for="name" class="app-admin-right__form-group-label">
-                        Tên sự kiện
+
+    <div class="admin-login">
+        <div class="admin-login-container">
+            <h3 class="admin-login-container-heading">
+                Đăng nhập trang admin
+            </h3>
+            <form action="/admin/login" method="POST" class="admin-login-container__form">
+                <div class="admin-login-container__form-group">
+                    <label for="username" class="admin-login-container__form-group-label">
+                        Đăng nhập
                     </label>
-                    <input type="text" id="name" name="name" autocomplete="off" class="app-admin-right__form-group-input">
+                    <input type="text" name="username" id="username" class="admin-login-container__form-group-input">
                 </div>
-                <div class="app-admin-right__form-group">
-                    <label for="background" class="app-admin-right__form-group-label">
-                        Ảnh
+                <div class="admin-login-container__form-group">
+                    <label for="password" class="admin-login-container__form-group-label">
+                        Mật khẩu
                     </label>
-                    <input type="file" id="background" name="background" class="app-admin-right__form-group-input">
+                <input type="password" name="password" id="password" class="admin-login-container__form-group-input">
                 </div>
-            
-                <div class="app-admin-right-button">
-                    Tạo sụ kiện
+                <div class="admin-login-container__button">
+                    Đăng nhập
                 </div>
             </form>
         </div>

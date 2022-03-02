@@ -1,5 +1,6 @@
 .home {
   padding: 0px 32px;
+  overflow: hidden;
 }
 
 .home-slider {

@@ -6,6 +6,7 @@ const identiyMiddleware = require('../middlewares/identity');
 const authMiddleware = require('../middlewares/auth');
 
 router.get('/', userController.getUsers);
+
 router.get('/:id/ban-be', identiyMiddleware.check, userController.getPersonalFriendUser);
 router.get('/:id/bai-hat-tui-upload', identiyMiddleware.check, userController.getPersonalUploadUser);
 router.get('/:id/video', identiyMiddleware.check, userController.getPersonalVideoUser);
@@ -22,5 +23,10 @@ router.get('/:id/quan-ly-thiet-bi', authMiddleware, identiyMiddleware.check, ide
 router.post('/:id/quan-ly', authMiddleware, userController.postAdminUser);
 router.get('/:id/doi-mat-khau', authMiddleware, userController.getUpdatePasswordAdminUser);
 router.post('/:id/doi-mat-khau', authMiddleware, userController.postUpdatePasswordAdminUser);
+
+router.post('/ket-ban/:idUser', authMiddleware, userController.postAddFriend);
+
+router.post('/playlist/:idPlaylist/:idUser', authMiddleware, userController.postCreatePlaylist);
+
 
 module.exports = router;

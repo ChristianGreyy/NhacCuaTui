@@ -1,131 +1,128 @@
 <%- include('../includes/head.ejs') %>
-    <body>
-        <div class="app">
-            <%- include('../includes/navigation.ejs') %>
-            <div class="personal-user">
-                <%- include('../includes/personal-singer.ejs') %>
-                <div class="personal-user__component personal-user__component--singer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-9">
-                                <div class="personal-user__component--singer-list">
-                                    <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
-                                        <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
-                                            Tiểu sử
-                                        </div>
-                                        <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
-                                            <i class="icofont-rounded-double-right"></i>
-                                        </div>
-                                    </div>
-                                    <div class="personal-user__component--singer__content personal-user__component--singer__introduce">
-                                        <%= singer.introduce %>
-                                    </div>
+<div class="app">
+    <%- include('../includes/navigation.ejs') %>
+    <div class="personal-user">
+        <%- include('../includes/personal-singer.ejs') %>
+        <div class="personal-user__component personal-user__component--singer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="personal-user__component--singer-list">
+                            <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
+                                <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
+                                    Tiểu sử
                                 </div>
-                                <div class="personal-user__component--singer-list">
-                                    <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
-                                        <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
-                                            Album <%= singer.fullname %>
-                                        </div>
-                                        <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
-                                            <i class="icofont-rounded-double-right"></i>
-                                        </div>
-                                    </div>
-                                    <div class="personal-user__component--singer__content personal-user__component--singer__album">
-                                        <% playlists.forEach(playlist => { %>
-                                            <li class="personal-user__component--singer__album-items">
-                                                <a href="" class="personal-user__component--singer__album-items-image">
-                                                    <div class="personal-user__component--singer__album-items-image-icon">
-                                                        <i class="icofont-ui-play"></i>
-                                                    </div>
-                                                    <div class="personal-user__component--singer__album-items-image-alpha">
-                                                    </div>
-                                                    <img src="<%= playlist.background %>" alt="" class="personal-user__component--singer__album-items-background">
-                                                </a>
-                                                <div class="personal-user__component--singer__album-items-name">
-                                                    <%= playlist.title %>
-                                                </div>
-                                                <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
-                                                    <%= singer.fullname %>
-                                                </a>
-                                            </li>
-                                        <% }) %>
-                                    </div>
+                                <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
+                                    <i class="icofont-rounded-double-right"></i>
                                 </div>
-                                <div class="personal-user__component--singer-list">
-                                    <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
-                                        <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
-                                            Bài hát của <%= singer.fullname %>
+                            </div>
+                            <div class="personal-user__component--singer__content personal-user__component--singer__introduce">
+                                <%= singer.introduce %>
+                            </div>
+                        </div>
+                        <div class="personal-user__component--singer-list">
+                            <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
+                                <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
+                                    Album <%= singer.fullname %>
+                                </div>
+                                <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
+                                    <i class="icofont-rounded-double-right"></i>
+                                </div>
+                            </div>
+                            <div class="personal-user__component--singer__content personal-user__component--singer__album">
+                                <% playlists.forEach(playlist => { %>
+                                    <li class="personal-user__component--singer__album-items">
+                                        <a href="" class="personal-user__component--singer__album-items-image">
+                                            <div class="personal-user__component--singer__album-items-image-icon">
+                                                <i class="icofont-ui-play"></i>
+                                            </div>
+                                            <div class="personal-user__component--singer__album-items-image-alpha">
+                                            </div>
+                                            <img src="<%= playlist.background %>" alt="" class="personal-user__component--singer__album-items-background">
+                                        </a>
+                                        <div class="personal-user__component--singer__album-items-name">
+                                            <%= playlist.title %>
                                         </div>
-                                        <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
-                                            <i class="icofont-rounded-double-right"></i>
-                                        </div>
-                                    </div>
-                                    <div class="personal-user__component--singer__content personal-user__component--singer__music">
-                                        <ul class="music-content-left__newMusic-list">
-                                            <% singer.musics.forEach(music => { %>
-                                                <li class="music-content-left__newMusic-list__items">
-                                                    <div class="music-content-left__newMusic-list__items-left">
-                                                        <a href="/bai-hat/<%= music._id %>" class="music-content-left__newMusic-list__items-left-avatar-link">
-                                                            <img src="<%= music.background %>" alt="" class="music-content-left__newMusic-list__items-left-avatar">
+                                        <a href="/nghe-si/<%= singer._id %>" class="personal-user__component--singer__album-items-singer">
+                                            <%= singer.fullname %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </div>
+                        </div>
+                        <div class="personal-user__component--singer-list">
+                            <div class="personal-user__component--singer-list-title personal-user__component--singer__introduce-title">
+                                <div class="personal-user__component--singer-list-title-text personal-user__component--singer__introduce-title-text">
+                                    Bài hát của <%= singer.fullname %>
+                                </div>
+                                <div class="personal-user__component--singer-list-title-icon personal-user__component--singer__introduce-title-icon">
+                                    <i class="icofont-rounded-double-right"></i>
+                                </div>
+                            </div>
+                            <div class="personal-user__component--singer__content personal-user__component--singer__music">
+                                <ul class="music-content-left__newMusic-list">
+                                    <% singer.musics.forEach(music => { %>
+                                        <li class="music-content-left__newMusic-list__items">
+                                            <div class="music-content-left__newMusic-list__items-left">
+                                                <a href="/bai-hat/<%= music._id %>" class="music-content-left__newMusic-list__items-left-avatar-link">
+                                                    <img src="<%= music.background %>" alt="" class="music-content-left__newMusic-list__items-left-avatar">
+                                                </a>
+                                                <div class="music-content-left__newMusic-list__items-left-des">
+                                                    <div class="music-content-left__newMusic-list__items-left-des-name">
+                                                        <a href="/bai-hat/<%= music._id %>" class="music-content-left__newMusic-list__items-left-des-name-link">
+                                                            <%= music.name %>
                                                         </a>
-                                                        <div class="music-content-left__newMusic-list__items-left-des">
-                                                            <div class="music-content-left__newMusic-list__items-left-des-name">
-                                                                <a href="/bai-hat/<%= music._id %>" class="music-content-left__newMusic-list__items-left-des-name-link">
-                                                                    <%= music.name %>
-                                                                </a>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                    <div class="music-content-left__newMusic-list__items-right">
-                                                        <ul class="music-content-left__newMusic-list__items-right-mark">
-                                                            <li class="music-content-left__newMusic-list__items-right-mark__items music-content-left__newMusic-list__items-right-mark__items--1">
-                                                                Official 
-                                                            </li>
-                                                            <li class="music-content-left__newMusic-list__items-right-mark__items music-content-left__newMusic-list__items-right-mark__items--2">
-                                                                HQ
-                                                            </li>
-                                                        </ul>
-                                                        <div class="music-content-left__newMusic-list__items-right-listen">
-                                                            <div class="music-content-left__newMusic-list__items-right-listen-icon">
-                                                                <i class="fas fa-headphones"></i>
-                                                            </div>
-                                                            <div class="music-content-left__newMusic-list__items-right-listen-number">
-                                                                <%= music.views %>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="music-content-left__newMusic-list__items-right-icon">
-                                                            <li class="music-content-left__newMusic-list__items-right-icon-items">
-                                                                <a href="/bai-hat/<%= music._id %>" class="music-content-left__newMusic-list__items-right-icon-items__link">
-                                                                    <i class="fas fa-play"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li class="music-content-left__newMusic-list__items-right-icon-items">
-                                                                <a href="" class="music-content-left__newMusic-list__items-right-icon-items__link">
-                                                                    <i class="fas fa-heart"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li class="music-content-left__newMusic-list__items-right-icon-items">
-                                                                <a href="/bai-hat/<%= music._id %>"" target="__blank" class="music-content-left__newMusic-list__items-right-icon-items__link">
-                                                                    <i class="fas fa-window-restore"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+                                                </div>
+                                            </div>
+                                            <div class="music-content-left__newMusic-list__items-right">
+                                                <ul class="music-content-left__newMusic-list__items-right-mark">
+                                                    <li class="music-content-left__newMusic-list__items-right-mark__items music-content-left__newMusic-list__items-right-mark__items--1">
+                                                        Official 
+                                                    </li>
+                                                    <li class="music-content-left__newMusic-list__items-right-mark__items music-content-left__newMusic-list__items-right-mark__items--2">
+                                                        HQ
+                                                    </li>
+                                                </ul>
+                                                <div class="music-content-left__newMusic-list__items-right-listen">
+                                                    <div class="music-content-left__newMusic-list__items-right-listen-icon">
+                                                        <i class="fas fa-headphones"></i>
                                                     </div>
-                                                </li>
-                                            <% }) %>
-                                        </ul>
-                                    </div>
-                                </div>  
+                                                    <div class="music-content-left__newMusic-list__items-right-listen-number">
+                                                        <%= music.views %>
+                                                    </div>
+                                                </div>
+                                                <ul class="music-content-left__newMusic-list__items-right-icon">
+                                                    <li class="music-content-left__newMusic-list__items-right-icon-items">
+                                                        <a href="/bai-hat/<%= music._id %>" class="music-content-left__newMusic-list__items-right-icon-items__link">
+                                                            <i class="fas fa-play"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="music-content-left__newMusic-list__items-right-icon-items">
+                                                        <a href="" class="music-content-left__newMusic-list__items-right-icon-items__link">
+                                                            <i class="fas fa-heart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="music-content-left__newMusic-list__items-right-icon-items">
+                                                        <a href="/bai-hat/<%= music._id %>"" target="__blank" class="music-content-left__newMusic-list__items-right-icon-items__link">
+                                                            <i class="fas fa-window-restore"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    <% }) %>
+                                </ul>
                             </div>
-                            <div class="col-3">
-                               <%- include('../includes/personalSinger-aside.ejs') %>
-                            </div>
-                        </div>    
+                        </div>  
                     </div>
-                </div>
+                    <div class="col-3">
+                        <%- include('../includes/personalSinger-aside.ejs') %>
+                    </div>
+                </div>    
             </div>
         </div>
-    </body>
+    </div>
+</div>
 
-</html>
 <%- include('../includes/end.ejs') %>
